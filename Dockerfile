@@ -8,7 +8,6 @@ WORKDIR /code/
 COPY ./app ./app
 COPY ./alembic ./alembic
 COPY ./alembic.ini ./
-COPY ./import.py ./
 
 EXPOSE 8000
 

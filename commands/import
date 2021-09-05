@@ -1,0 +1,1 @@
+docker-compose run --rm app python -c 'from app.importer.runner import run; run()'
