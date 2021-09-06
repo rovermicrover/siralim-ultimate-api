@@ -5,7 +5,8 @@ import csv
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
-from app.orm.base import build_session, slug_default, to_slug
+from app.orm.base import slug_default, to_slug
+from app.pg import build_session
 from app.orm.creature import CreatureOrm
 from app.orm.klass import KlassOrm
 from app.orm.race import RaceOrm

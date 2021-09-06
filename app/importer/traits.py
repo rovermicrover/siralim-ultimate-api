@@ -4,7 +4,8 @@ import csv
 from collections import Counter
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
-from app.orm.base import build_session, slug_default
+from app.orm.base import slug_default
+from app.pg import build_session
 from app.orm.trait import TraitOrm
 
 NEEDED_KEYS = { "name", "material_name", "description" }

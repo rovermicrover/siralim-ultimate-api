@@ -3,7 +3,8 @@ import csv
 
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
-from app.orm.base import build_session, slug_default
+from app.orm.base import slug_default
+from app.pg import build_session
 from app.orm.klass import KlassOrm
 
 def klasses_importer():

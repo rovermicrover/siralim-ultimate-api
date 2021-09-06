@@ -1,11 +1,15 @@
+from typing import Optional
 import os
 
+from pydantic.main import BaseModel
 from sqlalchemy.orm import declarative_base
-from sqlalchemy import create_engine, select
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import select
 
 from slugify import slugify
 
+class PaginationSchema(BaseModel):
+  page: int
+  size: int
 
 class BaseOrm(object):
   def as_dict_for_import(self):
@@ -14,28 +18,21 @@ class BaseOrm(object):
     return d
 
   @classmethod
-  def get_all(orm, session, options = []):
-    stmt = select(orm).options(*options)
+  def get_all(orm, session, eager_loads = [], pagination: Optional[PaginationSchema] = None):
+    stmt = select(orm).options(*eager_loads)
+    if pagination is not None:
+      stmt = stmt.limit(pagination.size).offset(pagination.page * pagination.size)
     return session.execute(stmt).scalars().all()
 
   @classmethod
-  def get_by_slug_or_id(orm, session, slug_or_id: str, options = []):
+  def get_by_slug_or_id(orm, session, slug_or_id: str, eager_loads = []):
     stmt = select(orm).where(
       orm.id == slug_or_id if slug_or_id.isdigit() else orm.slug == slug_or_id
-    ).options(*options)
+    ).options(*eager_loads)
     return session.execute(stmt).scalars().one()
 
 
 BaseOrm = declarative_base(cls=BaseOrm)
-
-
-def build_session():
-  return sessionmaker(create_engine(os.environ['DATABASE_URL'], echo=True, future=True))
-
-
-def has_session():
-  with build_session().begin() as session:
-    yield session
 
 
 def to_slug(to_slug_value):

@@ -3,7 +3,8 @@ from typing import List
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
-from app.orm.base import has_session
+from .helpers import has_session, has_pagination
+from app.orm.base import PaginationSchema
 from app.orm.source import SourceOrm
 from app.models.source import SourceModel
 
@@ -13,16 +14,19 @@ router = APIRouter(
 )
 
 class IndexSchema(BaseModel):
-    data: List[SourceModel]
+  data: List[SourceModel]
+  pagination: PaginationSchema
+
+pagination_depend = has_pagination()
 
 @router.get("/", response_model=IndexSchema)
-def index(session = Depends(has_session)):
+def index(session = Depends(has_session), pagination: PaginationSchema = Depends(pagination_depend)):
   sources_orm = SourceOrm.get_all(session)
   sources_model = SourceModel.from_orm_list(sources_orm)
-  return IndexSchema(data=sources_model)
+  return IndexSchema(data=sources_model, pagination=pagination)
 
 class GetSchema(BaseModel):
-    data: SourceModel
+  data: SourceModel
 
 @router.get("/{source_id}", response_model=GetSchema)
 def get(source_id: str, session = Depends(has_session)):

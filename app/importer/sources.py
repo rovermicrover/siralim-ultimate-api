@@ -4,7 +4,8 @@ import csv
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
-from app.orm.base import build_session, to_slug
+from app.orm.base import to_slug
+from app.pg import build_session
 from app.orm.source import SourceOrm
 
 def sources_importer():
