@@ -27,7 +27,7 @@ pagination_depend = has_pagination()
 
 @router.get("/", response_model=IndexSchema)
 def index(session = Depends(has_session), pagination: PaginationSchema = Depends(pagination_depend)):
-  spells_orm = SpellOrm.get_all(session, eager_loads=EAGER_LOAD_OPTIONS)
+  spells_orm = SpellOrm.get_all(session, eager_loads=EAGER_LOAD_OPTIONS, pagination=pagination)
   spells_model = SpellModel.from_orm_list(spells_orm)
   return IndexSchema(data=spells_model, pagination=pagination)
 

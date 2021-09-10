@@ -21,7 +21,7 @@ pagination_depend = has_pagination()
 
 @router.get("/", response_model=IndexSchema)
 def index(session = Depends(has_session), pagination: PaginationSchema = Depends(pagination_depend)):
-  trais_orm = TraitOrm.get_all(session)
+  trais_orm = TraitOrm.get_all(session, pagination=pagination)
   traits_model = TraitModel.from_orm_list(trais_orm)
   return IndexSchema(data=traits_model, pagination=pagination)
 

@@ -21,7 +21,7 @@ pagination_depend = has_pagination()
 
 @router.get("/", response_model=IndexSchema)
 def index(session = Depends(has_session), pagination: PaginationSchema = Depends(pagination_depend)):
-  sources_orm = SourceOrm.get_all(session)
+  sources_orm = SourceOrm.get_all(session, pagination=pagination)
   sources_model = SourceModel.from_orm_list(sources_orm)
   return IndexSchema(data=sources_model, pagination=pagination)
 
