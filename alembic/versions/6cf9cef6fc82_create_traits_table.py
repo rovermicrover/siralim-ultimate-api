@@ -23,7 +23,7 @@ def upgrade():
         sa.Column('name', sa.String(50), nullable=False),
         sa.Column('slug', sa.String(50), nullable=False, unique=True),
         sa.Column('material_name', sa.String(50)),
-        sa.Column('description', sa.UnicodeText()),
+        sa.Column('description', sa.Text()),
     )
 
 

@@ -22,7 +22,7 @@ def upgrade():
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('name', sa.String(50), nullable=False),
         sa.Column('slug', sa.String(50), nullable=False, unique=True),
-        sa.Column('description', sa.UnicodeText()),
+        sa.Column('description', sa.Text()),
         sa.Column('default_klass_id', sa.Integer, nullable=False),
     )
 

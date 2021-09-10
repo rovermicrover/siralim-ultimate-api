@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Unicode, ForeignKey
+from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
 from .base import BaseOrm, build_slug_defaulter
 
@@ -10,7 +10,7 @@ class RaceOrm(BaseOrm):
   id = Column(Integer, primary_key=True)
   name = Column(String(50), nullable=False)
   slug = Column(String(50), nullable=False, unique=True, default=slug_defaulter, onupdate=slug_defaulter)
-  description = Column(Unicode(200))
+  description = Column(Text())
 
   default_klass_id = Column(Integer, ForeignKey('klasses.id'), nullable=False)
 

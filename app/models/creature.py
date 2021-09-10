@@ -12,6 +12,8 @@ class CreatureModel(BaseModel, BaseModelOrm):
     name: str
     slug: str
     description: Optional[str] = None
+
+    battle_sprite: str
     
     health: int
     attack: int

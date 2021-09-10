@@ -1,6 +1,7 @@
 from app.importer.traits import NEEDED_KEYS
 import os
 import csv
+import base64
 
 from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
@@ -13,7 +14,8 @@ from app.orm.race import RaceOrm
 from app.orm.source import SourceOrm
 from app.orm.trait import TraitOrm
 
-NEEDED_KEYS = ["name", "health", "attack", "intelligence", "defense", "speed", "klass", "race", "sources", "trait"]
+NEEDED_KEYS = ["name", "health", "attack", "intelligence", "defense", "speed", "klass", "race", "sources", "trait", "battle_sprite"]
+BATTLE_SPRITES_PATH = os.path.join(ROOT_DIR, 'data', 'battle_sprites')
 
 def creatures_importer():
   with build_session().begin() as session:
@@ -46,6 +48,11 @@ def creatures_importer():
         value["trait_id"] = slug_to_traits[to_slug(trait)].id
         value["source_ids"] = [slug_to_sources[to_slug(source)].id for source in sources]
 
+        battle_sprite = value.pop("battle_sprite")
+        battle_sprite_file = os.path.join(BATTLE_SPRITES_PATH, battle_sprite)
+        battle_sprite_base64 = base64.b64encode(open(battle_sprite_file, "rb").read())
+        value["battle_sprite"] = f"data:image/png;base64,{battle_sprite_base64}"
+
         values.append(value)
 
     stmt = insert(CreatureOrm).values(values)
@@ -54,6 +61,7 @@ def creatures_importer():
       set_={
         "name": stmt.excluded.name,
         "description": stmt.excluded.description,
+        "battle_sprite": stmt.excluded.battle_sprite,
         "health": stmt.excluded.health,
         "attack": stmt.excluded.attack,
         "intelligence": stmt.excluded.intelligence,
