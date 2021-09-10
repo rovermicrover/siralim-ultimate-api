@@ -1,0 +1,3 @@
+./commands/migrate
+./commands/import
+./commands/dev
