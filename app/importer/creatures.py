@@ -7,7 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
 from app.orm.base import slug_default, to_slug
-from app.pg import build_session
+from app.orm.base import Session
 from app.orm.creature import CreatureOrm
 from app.orm.klass import KlassOrm
 from app.orm.race import RaceOrm
@@ -18,7 +18,7 @@ NEEDED_KEYS = ["name", "health", "attack", "intelligence", "defense", "speed", "
 BATTLE_SPRITES_PATH = os.path.join(ROOT_DIR, 'data', 'battle_sprites')
 
 def creatures_importer():
-  with build_session().begin() as session:
+  with Session.begin() as session:
     values = list()
 
     klasses = session.execute(select(KlassOrm)).scalars().all()

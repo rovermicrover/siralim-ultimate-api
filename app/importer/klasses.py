@@ -4,11 +4,11 @@ import csv
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
 from app.orm.base import slug_default
-from app.pg import build_session
+from app.orm.base import Session
 from app.orm.klass import KlassOrm
 
 def klasses_importer():
-  with build_session().begin() as session:
+  with Session.begin() as session:
     values = list()
 
     with open(os.path.join(ROOT_DIR, 'data', 'klasses.csv')) as csvfile:

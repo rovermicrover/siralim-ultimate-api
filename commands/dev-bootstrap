@@ -1,3 +1,5 @@
+docker-compose build
+docker-compose up -d --remove-orphans postgres
 ./commands/migrate
 ./commands/import
 ./commands/dev

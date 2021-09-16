@@ -10,4 +10,5 @@ class KlassOrm(BaseOrm):
   name = Column(String(50), nullable=False)
   slug = Column(String(50), nullable=False, unique=True, default=slug_defaulter, onupdate=slug_defaulter)
   description = Column(Text())
+  
   color = Column(String(10), nullable=False)

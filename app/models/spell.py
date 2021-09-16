@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 from pydantic import BaseModel
 
 from .base import BaseModelOrm
@@ -13,6 +13,8 @@ class SpellModel(BaseModel, BaseModelOrm):
     charges: int
     klass: KlassModel
     source: SourceModel
+
+    tags: List[str]
 
     class Config:
         orm_mode = True

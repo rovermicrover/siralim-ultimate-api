@@ -1,0 +1,53 @@
+name,category,turns,leave_chance,max_stacks,icon,description
+Agile,buff,3,,1,stat_g_agile_0.png,"Creatures with Agile have an additional, independent chance to dodge attacks."
+Arcane,buff,,,1,stat_g_arcane_0.png,"When an Arcane creature casts a spell, the spell does not consume any Charges. Then, this buff is removed."
+Barrier,buff,,,1,stat_g_barrier_0.png,"Barrier absorbs a certain amount of damage. After the maximum amount of damage is dealt, the buff is removed. Barrier strength cannot exceed 200% of a creature's highest stat when this buff is applied."
+Berserk,buff,3,,1,stat_g_berserk_0.png,Berserk creatures deal 50% more damage.
+Defensive,buff,3,,1,stat_g_defensive_0.png,Creatures with Defensive automatically defend at the end of their turn.
+Invisible,buff,,,1,stat_g_invisible_0.png,Invisible creatures cannot be manually targeted by enemy attacks or spells. This buff is removed after the creature takes an action.
+Immune,buff,1,,1,stat_g_immunity_0.png,Creatures with Immune can't be afflicted with debuffs.
+Leeching,buff,3,,1,stat_g_leech_0.png,Creatures with Leaching recover Health equal to 25% of the damage they deal.
+Mending,buff,3,,1,stat_g_mend_0.png,Creatures with Mending recover 30% Health at the start of their turn.
+Proficient,buff,3,,1,stat_g_proficient_0.png,"Proficient creatures gain 30% more benefits from their Artifact's Stat Slots, other than Health."
+Protected,buff,3,,1,stat_g_protect_0.png,Creatures with Protected take 50% less damage.
+Rebirth,buff,3,,1,stat_g_rebirth_0.png,Creatures with Rebirth are resurrected with 50% Health when they die.
+Repelling,buff,3,,1,stat_g_ward_0.png,Repelling creatures have a 50% chance to ignore damage from spells.
+Savage,buff,3,,1,stat_g_savage_0.png,Savage creatures have an additional independent chance to deal critical damage with attacks.
+Shelled,buff,,,1,stat_g_shell_0.png,Shelled negates the next incoming attack or spell.
+Splashing,buff,3,,1,stat_g_splash_0.png,Creatures with Splashing deal 50% of their damage to enemies adjacent to the target they attack.
+Taunting,buff,3,,1,stat_g_taunt_0.png,Creatures with Taunting automatically Provoke at the end of their turn.
+Warded,buff,3,,1,stat_g_resistant_0.png,Creatures with Warded cannot lose stats.
+Bleeding,debuff,3,,1,stat_b_bleed_0.png,Creatures with Bleeding take damage equal to 30% of their Current Health at the start of each turn.
+Blighted,debuff,3,,1,stat_b_blight_0.png,Creatures with Blighted cannot be healed and take damage from healing effects equal to 25% of the effect.
+Blind,debuff,3,,1,stat_b_blind_0.png,Blind creatures cannot choose their targets when attacking or casting single-target spells.
+Bomb,debuff,3,,1,stat_b_bomb_0.png,"At the start of a crature's turn, its Bomb detonates, dealing damage to the creatures equal to 80% of the afflictor's Speed. Then, this debuff is removed."
+Burning,debuff,3,,1,stat_b_burn_0.png,Creatures with Burning take damage based on the inflictor's Intelligence each turn.
+Confused,debuff,3,,1,stat_b_confused_0.png,Confused creatures have a 50% chance to attack or cast harmful spells on their allies.
+Cursed,debuff,3,,1,stat_b_cursed_0.png,"When creatures with Cursed deal damage with attacks or spells, they take damage equal to 100% of their target's Attack."
+Disarmed,debuff,3,,1,stat_b_disarm_0.png,"Disarmed creatures lose the benefits from their equipped Artifact, other than Health."
+Feared,debuff,3,,1,stat_b_fear_0.png,Feared creatures cannot gain stats.
+Frozen,debuff,,,1,stat_b_frozen_0.png,"Frozen creatures are unable to act until they thaw, and have a 25% chance to thaw at the start of their turn. This chance doubles after each of their turns."
+Inverted,debuff,,,1,stat_b_inverted_0.png,"Inverted creatures heal enemies instead of damaging them with attacks and spells, and damage allies instead of healing them. This debuff is removed after enough damage or healing has been done to offset its potency."
+Poisoned,debuff,3,,1,stat_b_poison_0.png,Creatures with Poisoned take damage based on the inflictor's Attack each turn.
+Scorned,debuff,1,,1,stat_b_scorn_0.png,Creatures with Scored cannot attack. Overwrites Silened.
+Silenced,debuff,1,,1,stat_b_silence_0.png,Creatures with Silenced cannot cast spells. Overwrites Scorned.
+Sleeping,debuff,3,,1,stat_b_sleep_0.png,Creatures with Sleeping cannot act until they either take damage or this debuff wears off.
+Snared,debuff,3,,1,stat_b_snare_0.png,Creatures with Snared are stuck at the bottom of the Timeline until they break free. They have a 10% chance to break free at the start of each reature's turn.
+Stone,debuff,1,,1,stat_b_stone_0.png,Creatures with Stone cannot dodge or deal critical damage.
+Vulnerable,debuff,3,,1,stat_b_vulnerable_0.png,Vulnerable creatures take 50% more damage.
+Weak,debuff,3,,1,stat_b_weak_0.png,Weak creatures deal 50% less damage.
+Amalgamation,minion,,25,1,stat_m_amalgamation_0.png,"After the Amalgamation's master deals damage with an attack or spell, this minion deals damage to a random enemy equal to 5% of its master's highest stat multiplied by the number of minions it has."
+Animated Gem,minion,,25,1,stat_m_animatedgem_0.png,"After the Animated Gem's master manually casts a spell, this minion casts one of it's master's Spell Gems as well, chosen randomly."
+Animated Weapon,minion,,25,1,stat_m_animatedweapon_0.png,"After the Animated Weapon's master attacks, it deals additional damage equal to the highest total stat from all of its Artifact's Stat Slots."
+Conquest,minion,,25,1,stat_m_conquest_0.png,"After Conquest's master manually casts a spell, it grants all your creatures a random buff."
+Death,minion,,25,1,stat_m_death_0.png,"At the start of Death's master's turn, it has a chance to kill the enemy with the lowest Health. The chance is increased based on how low the enemy's Health is."
+Dire Wolves,minion,,25,5,stat_m_direwolf_0.png,"After this minion's master attacks, each Dire Wolves deals damage to the target equal to 30% of its Speed."
+Doppelganger,minion,,25,1,stat_m_doppelganger_0.png,The Doppelganger's master has a 25% chance to take an extra turn.
+Famine,minion,,25,1,stat_m_famine_0.png,"After Famine's master attacks, it decreases the target's maximum Health by an amount equal to 30% of the damage dealt."
+Illusion,minion,,25,1,stat_m_illusion_0.png,"This minion's master's post-action effects (on-attack, on-cast, and so on) activate 2 additional times."
+Spiderlings,minion,,25,9,stat_m_spiderling_0.png,"After this minion's master takes damage from an enemy, each of its Spiderlings explode, dealing damage to the enemy equal to 50% of the master's Current health."
+Torun Junior,minion,,0,1,stat_m_liltorun_0.png,Torun Junior SHOOTS LASTER AND !@#$
+Unstable Horror,minion,,25,9,stat_m_shamblinghorror_0.png,"This minion's master has a 5% more stats for each Unstable Horror it has. After this minion's master Defends or Provokes, it deal damage to all enemies equal to 10% of its master's highest stat fo each stack of Unstable Horror it has."
+War,minion,,25,1,stat_m_war_0.png,"After War's master is damaged, it deals damage to the enemy equal to 50% of the damage taken."
+Writhelings,minion,,25,5,stat_m_writheling_0.png,After this minion's master takes damage from an attack or spell each Writhelings afflicts  random enemy with a random debuff.
+Zombies,minion,,25,9,stat_m_zombie_0.png,"At the start of this minion's master's turn, each Zombies deals damage to a random enemy equal to 50% of its Attack."

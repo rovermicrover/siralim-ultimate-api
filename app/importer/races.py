@@ -6,12 +6,12 @@ from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
 from app.orm.base import to_slug
-from app.pg import build_session
+from app.orm.base import Session
 from app.orm.race import RaceOrm
 from app.orm.klass import KlassOrm
 
 def races_importer():
-  with build_session().begin() as session:
+  with Session.begin() as session:
     races = set()
     races_to_classes = dict()
 
