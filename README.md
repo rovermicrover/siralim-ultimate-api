@@ -19,7 +19,7 @@ It is written in Python using FastAPI.
 Run
 
 ```bash
-$ commands/dev
+$ commands/dev-bootstrap
 ```
 
 All app files are synced via docker-compose so you can just start deving and changes will show up automatically 
