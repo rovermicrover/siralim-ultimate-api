@@ -5,8 +5,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import contains_eager, aliased
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
-from .helpers import has_session, has_pagination, has_sorting
-from app.orm.base import PaginationSchema, SortingSchema, select
+from .helpers import  PaginationSchema, SortingSchema, select, has_session, has_pagination, has_sorting
 from app.orm.race import RaceOrm
 from app.orm.klass import KlassOrm
 from app.models.race import RaceModel
