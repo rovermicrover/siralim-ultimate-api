@@ -1,3 +1,4 @@
+import inspect
 from enum import Enum
 from typing import Dict, Optional
 from sqlalchemy.orm.attributes import InstrumentedAttribute
@@ -16,7 +17,8 @@ def has_pagination(default_size: Optional[int] = 25):
 
 def has_sorting(sortables: Dict[str, InstrumentedAttribute], default_sort_by: str):
   has_sorting_enum_tuples = [(key, key) for key in sortables.keys()]
-  has_sorting_enum = Enum('HasSortingEnum', has_sorting_enum_tuples, type=str)
+  filename = inspect.stack()[1].filename 
+  has_sorting_enum = Enum(f'{filename}HasSortingEnum', has_sorting_enum_tuples, type=str)
   default_sort_by_enum = has_sorting_enum[default_sort_by]
 
   def _has_sorting(
