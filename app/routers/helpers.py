@@ -33,7 +33,9 @@ class CustomSelect(Select):
         return self.order_by(order_by)
 
     def pagination(self, pagination: PaginationSchema):
-        return self.limit(pagination.size).offset(pagination.page * pagination.size)
+        return self.limit(pagination.size).offset(
+            pagination.page * pagination.size
+        )
 
     def get_scalars(self, session):
         return session.execute(self).scalars().all()
@@ -59,7 +61,9 @@ def has_pagination(default_size: Optional[int] = 25):
     return _has_pagination
 
 
-def has_sorting(sortables: Dict[str, InstrumentedAttribute], default_sort_by: str):
+def has_sorting(
+    sortables: Dict[str, InstrumentedAttribute], default_sort_by: str
+):
     has_sorting_enum_tuples = [(key, key) for key in sortables.keys()]
     filename = inspect.stack()[1].filename
     has_sorting_enum = Enum(

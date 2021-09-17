@@ -33,7 +33,9 @@ def races_importer():
 
         for race in races:
             klasses = races_to_classes[race]
-            most_common_klass_slug = to_slug(max(klasses, key=Counter(klasses).get))
+            most_common_klass_slug = to_slug(
+                max(klasses, key=Counter(klasses).get)
+            )
             most_common_klass = slug_to_klasses[most_common_klass_slug]
 
             value = {

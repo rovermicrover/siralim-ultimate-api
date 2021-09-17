@@ -42,7 +42,10 @@ def index(
     sorting: SortingSchema = Depends(sorting_depend),
 ):
     klasses_orm = (
-        select(KlassOrm).pagination(pagination).sorting(sorting).get_scalars(session)
+        select(KlassOrm)
+        .pagination(pagination)
+        .sorting(sorting)
+        .get_scalars(session)
     )
     klasses_model = KlassModel.from_orm_list(klasses_orm)
     return IndexSchema(data=klasses_model, pagination=pagination)
@@ -55,7 +58,9 @@ class GetSchema(BaseModel):
 @router.get("/{klass_id}", response_model=GetSchema)
 def get(klass_id: str, session=Depends(has_session)):
     klasses_orm = (
-        select(KlassOrm).where(KlassOrm.where_slug_or_id(klass_id)).get_scalar(session)
+        select(KlassOrm)
+        .where(KlassOrm.where_slug_or_id(klass_id))
+        .get_scalar(session)
     )
     klasses_model = KlassModel.from_orm(klasses_orm)
     return GetSchema(data=klasses_model)

@@ -16,7 +16,9 @@ def get_tag_regexes(session):
     status_effects = session.execute(select(StatusEffectOrm)).scalars().all()
 
     tag_regexes = {
-        "does-not-stack": [re.compile("This trait does not stack", re.IGNORECASE)],
+        "does-not-stack": [
+            re.compile("This trait does not stack", re.IGNORECASE)
+        ],
         "cast": [re.compile(r"\bCast[s]?\b")],
         "attacks": [re.compile(r"\bAttacks\b")],
         "attacked": [re.compile(r"\bAttacked\b")],

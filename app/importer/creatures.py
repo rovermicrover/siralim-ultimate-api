@@ -64,11 +64,15 @@ def creatures_importer():
                 ]
 
                 battle_sprite = value.pop("battle_sprite")
-                battle_sprite_file = os.path.join(BATTLE_SPRITES_PATH, battle_sprite)
+                battle_sprite_file = os.path.join(
+                    BATTLE_SPRITES_PATH, battle_sprite
+                )
                 battle_sprite_base64 = base64.b64encode(
                     open(battle_sprite_file, "rb").read()
                 ).decode("utf-8")
-                value["battle_sprite"] = f"data:image/png;base64,{battle_sprite_base64}"
+                value[
+                    "battle_sprite"
+                ] = f"data:image/png;base64,{battle_sprite_base64}"
 
                 values.append(value)
 

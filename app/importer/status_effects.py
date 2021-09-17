@@ -26,7 +26,9 @@ def status_effects_importer():
     with Session.begin() as session:
         values = list()
 
-        with open(os.path.join(ROOT_DIR, "data", "status_effects.csv")) as csvfile:
+        with open(
+            os.path.join(ROOT_DIR, "data", "status_effects.csv")
+        ) as csvfile:
             for row in csv.DictReader(csvfile):
                 value = {key: row[key] for key in NEEDED_KEYS}
                 slug_default("name", value)
@@ -39,9 +41,9 @@ def status_effects_importer():
 
                 icon = value.pop("icon")
                 icon_file = os.path.join(STATUS_ICONS_PATH, icon)
-                icon_base64 = base64.b64encode(open(icon_file, "rb").read()).decode(
-                    "utf-8"
-                )
+                icon_base64 = base64.b64encode(
+                    open(icon_file, "rb").read()
+                ).decode("utf-8")
                 value["icon"] = f"data:image/png;base64,{icon_base64}"
 
                 values.append(value)

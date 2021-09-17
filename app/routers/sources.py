@@ -42,7 +42,10 @@ def index(
     sorting: SortingSchema = Depends(sorting_depend),
 ):
     sources_orm = (
-        select(SourceOrm).pagination(pagination).sorting(sorting).get_scalars(session)
+        select(SourceOrm)
+        .pagination(pagination)
+        .sorting(sorting)
+        .get_scalars(session)
     )
     sources_model = SourceModel.from_orm_list(sources_orm)
     return IndexSchema(data=sources_model, pagination=pagination)

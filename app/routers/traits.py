@@ -43,7 +43,10 @@ def index(
     sorting: SortingSchema = Depends(sorting_depend),
 ):
     traits_orm = (
-        select(TraitOrm).pagination(pagination).sorting(sorting).get_scalars(session)
+        select(TraitOrm)
+        .pagination(pagination)
+        .sorting(sorting)
+        .get_scalars(session)
     )
     traits_model = TraitModel.from_orm_list(traits_orm)
     return IndexSchema(data=traits_model, pagination=pagination)
@@ -56,7 +59,9 @@ class GetSchema(BaseModel):
 @router.get("/{trait_id}", response_model=GetSchema)
 def get(trait_id: str, session=Depends(has_session)):
     trait_orm = (
-        select(TraitOrm).where(TraitOrm.where_slug_or_id(trait_id)).get_scalar(session)
+        select(TraitOrm)
+        .where(TraitOrm.where_slug_or_id(trait_id))
+        .get_scalar(session)
     )
     trait_model = TraitModel.from_orm(trait_orm)
     return GetSchema(data=trait_model)

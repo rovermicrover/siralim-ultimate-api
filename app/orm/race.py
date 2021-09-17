@@ -20,7 +20,9 @@ class RaceOrm(BaseOrm):
     )
     description = Column(Text())
 
-    default_klass_id = Column(Integer, ForeignKey("klasses.id"), nullable=False)
+    default_klass_id = Column(
+        Integer, ForeignKey("klasses.id"), nullable=False
+    )
 
     default_klass = relationship(
         "KlassOrm", primaryjoin="RaceOrm.default_klass_id == KlassOrm.id"

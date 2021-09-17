@@ -1,6 +1,14 @@
 from fastapi import FastAPI
 
-from .routers import classes, creatures, races, sources, spells, traits, status_effects
+from .routers import (
+    classes,
+    creatures,
+    races,
+    sources,
+    spells,
+    traits,
+    status_effects,
+)
 
 app = FastAPI()
 

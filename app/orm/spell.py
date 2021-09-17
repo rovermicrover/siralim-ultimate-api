@@ -26,7 +26,11 @@ class SpellOrm(BaseOrm):
     klass_id = Column(Integer, ForeignKey("klasses.id"), nullable=False)
     source_id = Column(Integer, ForeignKey("sources.id"), nullable=False)
 
-    klass = relationship("KlassOrm", primaryjoin="SpellOrm.klass_id == KlassOrm.id")
-    source = relationship("SourceOrm", primaryjoin="SpellOrm.source_id == SourceOrm.id")
+    klass = relationship(
+        "KlassOrm", primaryjoin="SpellOrm.klass_id == KlassOrm.id"
+    )
+    source = relationship(
+        "SourceOrm", primaryjoin="SpellOrm.source_id == SourceOrm.id"
+    )
 
     tags = Column(postgresql.ARRAY(Text))

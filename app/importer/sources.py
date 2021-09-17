@@ -21,7 +21,9 @@ def sources_importer():
             for row in csv.DictReader(csvfile):
                 sources.update(row["source"].split(","))
 
-        values = [{"name": source, "slug": to_slug(source)} for source in sources]
+        values = [
+            {"name": source, "slug": to_slug(source)} for source in sources
+        ]
 
         # Uniq on slug
         values = list({value["slug"]: value for value in values}.values())
