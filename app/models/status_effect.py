@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from .base import BaseModelOrm
 from app.common.status_effect import StatusEffectCategoriesEnum
 
+
 class StatusEffectModel(BaseModel, BaseModelOrm):
     id: int
     name: str
@@ -13,10 +14,10 @@ class StatusEffectModel(BaseModel, BaseModelOrm):
     category: StatusEffectCategoriesEnum
 
     icon: str
-    
+
     turns: Optional[int] = None
     leave_chance: Optional[int] = None
     max_stacks: int
-    
+
     class Config:
         orm_mode = True

@@ -3,6 +3,7 @@ from pydantic import BaseModel
 
 from .base import BaseModelOrm
 
+
 class KlassModel(BaseModel, BaseModelOrm):
     id: int
     name: str

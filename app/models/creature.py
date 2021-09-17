@@ -7,6 +7,7 @@ from .race import RaceModel
 from .source import SourceModel
 from .trait import TraitModel
 
+
 class CreatureModel(BaseModel, BaseModelOrm):
     id: int
     name: str
@@ -14,13 +15,13 @@ class CreatureModel(BaseModel, BaseModelOrm):
     description: Optional[str] = None
 
     battle_sprite: str
-    
+
     health: int
     attack: int
     intelligence: int
     defense: int
     speed: int
-    
+
     klass: KlassModel
     race: RaceModel
     sources: List[SourceModel]

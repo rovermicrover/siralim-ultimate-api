@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from .base import BaseModelOrm
 from .klass import KlassModel
 
+
 class RaceModel(BaseModel, BaseModelOrm):
     id: int
     name: str

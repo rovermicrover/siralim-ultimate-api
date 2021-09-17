@@ -5,6 +5,7 @@ from .base import BaseModelOrm
 from .klass import KlassModel
 from .source import SourceModel
 
+
 class SpellModel(BaseModel, BaseModelOrm):
     id: int
     name: str
