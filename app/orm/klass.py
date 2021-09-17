@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text
+
 from .base import BaseOrm, build_slug_defaulter
 
 

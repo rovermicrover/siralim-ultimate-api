@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Text
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql.expression import null
+
 from .base import BaseOrm, build_slug_defaulter
 
 

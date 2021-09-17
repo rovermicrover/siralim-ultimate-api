@@ -1,5 +1,3 @@
-from app.orm.trait import TraitOrm
-from app.orm.klass import KlassOrm
 from typing import Dict, List
 
 from fastapi import APIRouter, Depends
@@ -17,7 +15,9 @@ from .helpers import (
 )
 from app.orm.creature import CreatureOrm
 from app.models.creature import CreatureModel
+from app.orm.klass import KlassOrm
 from app.orm.race import RaceOrm
+from app.orm.trait import TraitOrm
 
 router = APIRouter(
     prefix="/creatures",

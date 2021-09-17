@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text, Enum
+
 from .base import BaseOrm, build_slug_defaulter
 from app.common.status_effect import StatusEffectCategoriesEnum
 
