@@ -5,6 +5,9 @@ from pydantic import BaseModel
 from sqlalchemy.orm import contains_eager, aliased
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
+from app.orm.race import RaceOrm
+from app.orm.klass import KlassOrm
+from app.models.race import RaceModel
 from .helpers import (
     PaginationSchema,
     SortingSchema,
@@ -13,9 +16,6 @@ from .helpers import (
     has_pagination,
     has_sorting,
 )
-from app.orm.race import RaceOrm
-from app.orm.klass import KlassOrm
-from app.models.race import RaceModel
 
 router = APIRouter(
     prefix="/races",

@@ -4,6 +4,8 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
+from app.orm.source import SourceOrm
+from app.models.source import SourceModel
 from .helpers import (
     PaginationSchema,
     SortingSchema,
@@ -12,8 +14,6 @@ from .helpers import (
     has_pagination,
     has_sorting,
 )
-from app.orm.source import SourceOrm
-from app.models.source import SourceModel
 
 router = APIRouter(
     prefix="/sources",

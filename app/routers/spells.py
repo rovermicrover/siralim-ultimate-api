@@ -5,6 +5,10 @@ from pydantic import BaseModel
 from sqlalchemy.orm import contains_eager
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
+from app.orm.spell import SpellOrm
+from app.models.spell import SpellModel
+from app.orm.klass import KlassOrm
+from app.orm.source import SourceOrm
 from .helpers import (
     PaginationSchema,
     SortingSchema,
@@ -13,10 +17,6 @@ from .helpers import (
     has_pagination,
     has_sorting,
 )
-from app.orm.spell import SpellOrm
-from app.models.spell import SpellModel
-from app.orm.klass import KlassOrm
-from app.orm.source import SourceOrm
 
 router = APIRouter(
     prefix="/spells",

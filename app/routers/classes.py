@@ -4,6 +4,8 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
+from app.orm.klass import KlassOrm
+from app.models.klass import KlassModel
 from .helpers import (
     PaginationSchema,
     SortingSchema,
@@ -12,8 +14,6 @@ from .helpers import (
     has_pagination,
     has_sorting,
 )
-from app.orm.klass import KlassOrm
-from app.models.klass import KlassModel
 
 router = APIRouter(
     prefix="/classes",
