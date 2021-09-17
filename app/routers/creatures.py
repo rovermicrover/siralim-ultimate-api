@@ -86,11 +86,11 @@ class GetSchema(BaseModel):
 def get(creature_id: str, session=Depends(has_session)):
     creatures_orm = (
         select(CreatureOrm)
-        .where(CreatureOrm.where_slug_or_id(creature_id))
         .join(RaceOrm)
         .join(KlassOrm, CreatureOrm.klass_id == KlassOrm.id)
         .join(TraitOrm)
         .options(*EAGER_LOAD_OPTIONS)
+        .where(CreatureOrm.where_slug_or_id(creature_id))
         .get_scalar(session)
     )
     creatures_model = CreatureModel.from_orm(creatures_orm)

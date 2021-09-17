@@ -75,10 +75,10 @@ class GetSchema(BaseModel):
 def get(spell_id: str, session=Depends(has_session)):
     spell_orm = (
         select(SpellOrm)
-        .where(SpellOrm.where_slug_or_id(spell_id))
         .join(KlassOrm)
         .join(SourceOrm)
         .options(*EAGER_LOAD_OPTIONS)
+        .where(SpellOrm.where_slug_or_id(spell_id))
         .get_scalar(session)
     )
     spell_model = SpellModel.from_orm(spell_orm)

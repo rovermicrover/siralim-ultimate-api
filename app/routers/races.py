@@ -67,9 +67,9 @@ class GetSchema(BaseModel):
 def get(race_id: str, session=Depends(has_session)):
     races_orm = (
         select(RaceOrm)
-        .where(RaceOrm.where_slug_or_id(race_id))
         .join(KlassOrm)
         .options(*EAGER_LOAD_OPTIONS)
+        .where(RaceOrm.where_slug_or_id(race_id))
         .get_scalar(session)
     )
     races_model = RaceModel.from_orm(races_orm)
