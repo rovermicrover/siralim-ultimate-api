@@ -2,18 +2,17 @@ import inspect
 from enum import Enum
 from typing import Dict, List, Optional, Union
 from functools import reduce
-from pydantic.fields import ModelField
 
 from pydantic.main import BaseModel
 from pydantic.types import conint
 from sqlalchemy.orm.attributes import InstrumentedAttribute
-from sqlalchemy.orm.base import instance_str
 from sqlalchemy.sql.selectable import Select
 from sqlalchemy.util.langhelpers import public_factory
 from sqlalchemy.sql import sqltypes
 from sqlalchemy.dialects import postgresql
 
-from app.orm.base import Session
+from app import orm as OrmMap
+from app.orm.base import Session, engine
 
 
 class PaginationSchema(BaseModel):
@@ -24,6 +23,7 @@ class PaginationSchema(BaseModel):
 class SortDirections(str, Enum):
     asc = "asc"
     desc = "desc"
+
 
 filter_comparators_to_sql_function = {
     "==": "__eq__",
@@ -41,6 +41,7 @@ filter_comparators_to_sql_function = {
     "like": "like",
     "ilike": "ilike",
 }
+
 
 class NumericFilterComparators(str, Enum):
     eq = "=="
@@ -74,9 +75,11 @@ class ArrayFilterComparators(str, Enum):
     contained_by = "<@"
     overlap = "&&"
 
+
 def strs_to_enum(name, list: List[str]):
     list_of_tuples = [(str, str) for str in list]
     return Enum(name, list_of_tuples, type=str)
+
 
 def build_filtering_schema(fields: List[InstrumentedAttribute]):
     filters_by_type = {
@@ -87,7 +90,9 @@ def build_filtering_schema(fields: List[InstrumentedAttribute]):
 
     for field in fields:
         type = field.type
-        if isinstance(type, sqltypes.Integer) or isinstance(type, sqltypes.Numeric):
+        if isinstance(type, sqltypes.Integer) or isinstance(
+            type, sqltypes.Numeric
+        ):
             filters_by_type["int"].append(field.name)
         elif isinstance(type, postgresql.ARRAY):
             filters_by_type["array"].append(field.name)
@@ -104,31 +109,37 @@ def build_filtering_schema(fields: List[InstrumentedAttribute]):
     filter_type_enums = reduce(fields_to_enum, filters_by_type.items(), {})
 
     class ArrayFilterSchema(BaseModel):
-        field: filter_type_enums['array']
+        field: filter_type_enums["array"]
         comparator: ArrayFilterComparators
         value: Union[List[str], List[int], None]
 
     filter_schemas = []
 
-    if len(filter_type_enums['int']):
+    if len(filter_type_enums["int"]):
+
         class IntFilterSchema(BaseModel):
-            field: filter_type_enums['int']
+            field: filter_type_enums["int"]
             comparator: NumericFilterComparators
             value: Union[int, float, None]
+
         filter_schemas.append(IntFilterSchema)
 
-    if len(filter_type_enums['str']):
+    if len(filter_type_enums["str"]):
+
         class StrFilterSchema(BaseModel):
-            field: filter_type_enums['str']
+            field: filter_type_enums["str"]
             comparator: StringFilterComparators
             value: Union[str, None]
+
         filter_schemas.append(StrFilterSchema)
 
-    if len(filter_type_enums['array']):
+    if len(filter_type_enums["array"]):
+
         class ArrayFilterSchema(BaseModel):
-            field: filter_type_enums['array']
+            field: filter_type_enums["array"]
             comparator: ArrayFilterComparators
             value: Union[List[str], List[int], None]
+
         filter_schemas.append(ArrayFilterSchema)
 
     class FiltersSchema(BaseModel):
@@ -137,15 +148,28 @@ def build_filtering_schema(fields: List[InstrumentedAttribute]):
     return FiltersSchema
 
 
-class SortingSchema(object):
-    def __init__(self, by: InstrumentedAttribute, direction: SortDirections):
-        self.by = by
-        self.direction = direction
+def build_sorting_schema(fields: List[InstrumentedAttribute]):
+    filename = inspect.stack()[1].filename
+    enum_name = f"{filename}SortingEnum"
+    sort_field_enum = strs_to_enum(enum_name, [f.name for f in fields])
+
+    class SortingSchema(BaseModel):
+        by: sort_field_enum
+        direction: SortDirections
+
+    SortingSchema.__name__ = f"{filename}SortingSchema"
+
+    return SortingSchema
 
 
 class CustomSelect(Select):
-    def sorting(self, sorting: SortingSchema):
-        order_by = sorting.by
+    def get_orm(self):
+        orm_name = self.get_final_froms()[0].name
+        return getattr(OrmMap, orm_name)
+
+    def sorting(self, sorting):
+        orm = self.get_orm()
+        order_by = getattr(orm, sorting.by)
         if sorting.direction == SortDirections.desc:
             order_by = order_by.desc()
         return self.order_by(order_by)
@@ -156,21 +180,24 @@ class CustomSelect(Select):
         )
 
     def filter(self, orm, filter: Dict):
+        orm = self.get_orm()
         field = getattr(orm, filter.field)
-        comparator_func_name = filter_comparators_to_sql_function[filter.comparator]
+        comparator_func_name = filter_comparators_to_sql_function[
+            filter.comparator
+        ]
         comparator = getattr(field, comparator_func_name)
         return self.where(comparator(filter.value))
 
-    def filters(self, orm, filters):
+    def filters(self, filters):
         print(filters)
         if not len(filters):
             return self
         filter = filters[:1][0]
         filters = filters[1:]
         if len(filters):
-            return self.filter(orm, filter).filters(orm, filters)
+            return self.filter(filter).filters(filters)
         else:
-            return self.filter(orm, filter)
+            return self.filter(filter)
 
     def get_scalars(self, session):
         return session.execute(self).scalars().all()
@@ -196,21 +223,11 @@ def has_pagination(default_size: Optional[int] = 25):
     return _has_pagination
 
 
-def has_sorting(
-    sortables: Dict[str, InstrumentedAttribute], default_sort_by: str
-):
-    has_sorting_enum_tuples = [(key, key) for key in sortables.keys()]
-    filename = inspect.stack()[1].filename
-    has_sorting_enum = Enum(
-        f"{filename}HasSortingEnum", has_sorting_enum_tuples, type=str
-    )
-    default_sort_by_enum = has_sorting_enum[default_sort_by]
-
+def has_sorting(sorting_schema: BaseModel, default_sort_by: str):
     def _has_sorting(
-        sort_by: Optional[has_sorting_enum] = default_sort_by_enum,
+        sort_by: Optional[sorting_schema] = default_sort_by,
         sort_direction: Optional[SortDirections] = SortDirections.asc,
-    ) -> SortingSchema:
-        by = sortables[sort_by]
-        return SortingSchema(by=by, direction=sort_direction)
+    ) -> sorting_schema:
+        return sorting_schema(by=sort_by, direction=sort_direction)
 
     return _has_sorting

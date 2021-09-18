@@ -8,7 +8,7 @@ from app.orm.source import SourceOrm
 from app.models.source import SourceModel
 from .helpers import (
     PaginationSchema,
-    SortingSchema,
+    build_sorting_schema,
     select,
     has_session,
     has_pagination,
@@ -20,19 +20,22 @@ router = APIRouter(
     tags=["sources"],
 )
 
-SORTABLES: Dict[str, InstrumentedAttribute] = {
-    "id": SourceOrm.id,
-    "name": SourceOrm.name,
-}
+SortingSchema = build_sorting_schema(
+    [
+        SourceOrm.id,
+        SourceOrm.name,
+    ]
+)
 
 
 class IndexSchema(BaseModel):
     data: List[SourceModel]
     pagination: PaginationSchema
+    sorting: SortingSchema
 
 
 pagination_depend = has_pagination()
-sorting_depend = has_sorting(SORTABLES, "id")
+sorting_depend = has_sorting(SortingSchema, "id")
 
 
 @router.get("/", response_model=IndexSchema)
@@ -48,7 +51,9 @@ def index(
         .get_scalars(session)
     )
     sources_model = SourceModel.from_orm_list(sources_orm)
-    return IndexSchema(data=sources_model, pagination=pagination)
+    return IndexSchema(
+        data=sources_model, pagination=pagination, sorting=sorting
+    )
 
 
 class GetSchema(BaseModel):

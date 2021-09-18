@@ -1,3 +1,4 @@
+from app.routers.classes import SortingSchema
 from typing import List, Dict
 
 from fastapi import APIRouter, Depends
@@ -10,7 +11,7 @@ from app.orm.klass import KlassOrm
 from app.models.race import RaceModel
 from .helpers import (
     PaginationSchema,
-    SortingSchema,
+    build_sorting_schema,
     select,
     has_session,
     has_pagination,
@@ -22,12 +23,13 @@ router = APIRouter(
     tags=["races"],
 )
 
-SORTABLES: Dict[str, InstrumentedAttribute] = {
-    "id": RaceOrm.id,
-    "name": RaceOrm.name,
-    "default_class_id": RaceOrm.default_klass_id,
-    "default_class_name": KlassOrm.name,
-}
+SortingSchema = build_sorting_schema(
+    [
+        RaceOrm.id,
+        RaceOrm.name,
+        RaceOrm.default_klass_id,
+    ]
+)
 
 EAGER_LOAD_OPTIONS = [contains_eager(RaceOrm.default_klass)]
 
@@ -35,10 +37,11 @@ EAGER_LOAD_OPTIONS = [contains_eager(RaceOrm.default_klass)]
 class IndexSchema(BaseModel):
     data: List[RaceModel]
     pagination: PaginationSchema
+    sorting: SortingSchema
 
 
 pagination_depend = has_pagination()
-sorting_depend = has_sorting(SORTABLES, "id")
+sorting_depend = has_sorting(SortingSchema, "id")
 
 
 @router.get("/", response_model=IndexSchema)
@@ -56,7 +59,9 @@ def index(
         .get_scalars(session)
     )
     races_model = RaceModel.from_orm_list(races_orm)
-    return IndexSchema(data=races_model, pagination=pagination)
+    return IndexSchema(
+        data=races_model, pagination=pagination, sorting=SortingSchema
+    )
 
 
 class GetSchema(BaseModel):

@@ -11,7 +11,7 @@ from app.orm.klass import KlassOrm
 from app.orm.source import SourceOrm
 from .helpers import (
     PaginationSchema,
-    SortingSchema,
+    build_sorting_schema,
     select,
     has_session,
     has_pagination,
@@ -23,15 +23,15 @@ router = APIRouter(
     tags=["spells"],
 )
 
-SORTABLES: Dict[str, InstrumentedAttribute] = {
-    "id": SpellOrm.id,
-    "name": SpellOrm.name,
-    "charges": SpellOrm.charges,
-    "class_id": SpellOrm.klass_id,
-    "class_name": KlassOrm.name,
-    "source_id": SpellOrm.source_id,
-    "source_name": SourceOrm.name,
-}
+SortingSchema = build_sorting_schema(
+    [
+        SpellOrm.id,
+        SpellOrm.name,
+        SpellOrm.charges,
+        SpellOrm.klass_id,
+        SpellOrm.source_id,
+    ]
+)
 
 EAGER_LOAD_OPTIONS = [
     contains_eager(SpellOrm.klass),
@@ -42,10 +42,11 @@ EAGER_LOAD_OPTIONS = [
 class IndexSchema(BaseModel):
     data: List[SpellModel]
     pagination: PaginationSchema
+    sorting: SortingSchema
 
 
 pagination_depend = has_pagination()
-sorting_depend = has_sorting(SORTABLES, "id")
+sorting_depend = has_sorting(SortingSchema, "id")
 
 
 @router.get("/", response_model=IndexSchema)
@@ -64,7 +65,9 @@ def index(
         .get_scalars(session)
     )
     spells_model = SpellModel.from_orm_list(spells_orm)
-    return IndexSchema(data=spells_model, pagination=pagination)
+    return IndexSchema(
+        data=spells_model, pagination=pagination, sorting=sorting
+    )
 
 
 class GetSchema(BaseModel):

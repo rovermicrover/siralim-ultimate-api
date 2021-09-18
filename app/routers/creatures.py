@@ -12,7 +12,7 @@ from app.orm.race import RaceOrm
 from app.orm.trait import TraitOrm
 from .helpers import (
     PaginationSchema,
-    SortingSchema,
+    build_sorting_schema,
     select,
     has_session,
     has_pagination,
@@ -24,21 +24,20 @@ router = APIRouter(
     tags=["creatures"],
 )
 
-SORTABLES: Dict[str, InstrumentedAttribute] = {
-    "id": CreatureOrm.id,
-    "name": CreatureOrm.name,
-    "health": CreatureOrm.health,
-    "attack": CreatureOrm.attack,
-    "intelligence": CreatureOrm.intelligence,
-    "defense": CreatureOrm.defense,
-    "speed": CreatureOrm.speed,
-    "class_id": CreatureOrm.klass_id,
-    "class_name": KlassOrm.name,
-    "race_id": CreatureOrm.race_id,
-    "race_name": RaceOrm.name,
-    "trait_id": CreatureOrm.trait_id,
-    "trait_name": TraitOrm.name,
-}
+SortingSchema = build_sorting_schema(
+    [
+        CreatureOrm.id,
+        CreatureOrm.name,
+        CreatureOrm.health,
+        CreatureOrm.attack,
+        CreatureOrm.intelligence,
+        CreatureOrm.defense,
+        CreatureOrm.speed,
+        CreatureOrm.klass_id,
+        CreatureOrm.race_id,
+        CreatureOrm.trait_id,
+    ]
+)
 
 EAGER_LOAD_OPTIONS = (
     contains_eager(CreatureOrm.klass),
@@ -52,10 +51,11 @@ EAGER_LOAD_OPTIONS = (
 class IndexSchema(BaseModel):
     data: List[CreatureModel]
     pagination: PaginationSchema
+    sorting: SortingSchema
 
 
 pagination_depend = has_pagination()
-sorting_depend = has_sorting(SORTABLES, "id")
+sorting_depend = has_sorting(SortingSchema, "id")
 
 
 @router.get("/", response_model=IndexSchema)
@@ -75,7 +75,9 @@ def index(
         .get_scalars(session)
     )
     creatures_model = CreatureModel.from_orm_list(creatures_orm)
-    return IndexSchema(data=creatures_model, pagination=pagination)
+    return IndexSchema(
+        data=creatures_model, pagination=pagination, sorting=SortingSchema
+    )
 
 
 class GetSchema(BaseModel):

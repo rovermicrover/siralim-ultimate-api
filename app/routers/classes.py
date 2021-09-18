@@ -8,7 +8,7 @@ from app.orm.klass import KlassOrm
 from app.models.klass import KlassModel
 from .helpers import (
     PaginationSchema,
-    SortingSchema,
+    build_sorting_schema,
     build_filtering_schema,
     select,
     has_session,
@@ -21,19 +21,17 @@ router = APIRouter(
     tags=["classes"],
 )
 
-SORTABLES: Dict[str, InstrumentedAttribute] = {
-    "id": KlassOrm.id,
-    "name": KlassOrm.name,
-}
+SortingSchema = build_sorting_schema([KlassOrm.id, KlassOrm.name])
 
 
 class IndexSchema(BaseModel):
     data: List[KlassModel]
     pagination: PaginationSchema
+    sorting: SortingSchema
 
 
 pagination_depend = has_pagination(default_size=5)
-sorting_depend = has_sorting(SORTABLES, "id")
+sorting_depend = has_sorting(SortingSchema, "id")
 
 
 @router.get("/", response_model=IndexSchema)
@@ -49,29 +47,43 @@ def index(
         .get_scalars(session)
     )
     klasses_model = KlassModel.from_orm_list(klasses_orm)
-    return IndexSchema(data=klasses_model, pagination=pagination)
+    return IndexSchema(
+        data=klasses_model, pagination=pagination, sorting=sorting
+    )
+
 
 FilterSchema = build_filtering_schema([KlassOrm.name])
+
 
 class SearchSchema(BaseModel):
     data: List[KlassModel]
     filter: FilterSchema
     pagination: PaginationSchema
+    sorting: SortingSchema
+
 
 class SearchRequest(BaseModel):
     filter: FilterSchema
     pagination: PaginationSchema
+    sorting: SortingSchema
+
 
 @router.post("/search", response_model=SearchSchema)
 def search(search: SearchRequest, session=Depends(has_session)):
     klasses_orm = (
         select(KlassOrm)
-        .filters(KlassOrm, search.filter.filters)
+        .filters(search.filter.filters)
         .pagination(search.pagination)
+        .sorting(KlassOrm, search.sorting)
         .get_scalars(session)
     )
     klasses_model = KlassModel.from_orm_list(klasses_orm)
-    return SearchSchema(data=klasses_model, filter=search.filter, pagination=search.pagination)
+    return SearchSchema(
+        data=klasses_model,
+        filter=search.filter,
+        pagination=search.pagination,
+        sorting=search.sorting,
+    )
 
 
 class GetSchema(BaseModel):

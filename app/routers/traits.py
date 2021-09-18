@@ -8,7 +8,7 @@ from app.orm.trait import TraitOrm
 from app.models.trait import TraitModel
 from .helpers import (
     PaginationSchema,
-    SortingSchema,
+    build_sorting_schema,
     select,
     has_session,
     has_pagination,
@@ -20,20 +20,23 @@ router = APIRouter(
     tags=["traits"],
 )
 
-SORTABLES: Dict[str, InstrumentedAttribute] = {
-    "id": TraitOrm.id,
-    "name": TraitOrm.name,
-    "material_name": TraitOrm.material_name,
-}
+SortingSchema = build_sorting_schema(
+    [
+        TraitOrm.id,
+        TraitOrm.name,
+        TraitOrm.material_name,
+    ]
+)
 
 
 class IndexSchema(BaseModel):
     data: List[TraitModel]
     pagination: PaginationSchema
+    sorting: SortingSchema
 
 
 pagination_depend = has_pagination()
-sorting_depend = has_sorting(SORTABLES, "id")
+sorting_depend = has_sorting(SortingSchema, "id")
 
 
 @router.get("/", response_model=IndexSchema)
@@ -49,7 +52,9 @@ def index(
         .get_scalars(session)
     )
     traits_model = TraitModel.from_orm_list(traits_orm)
-    return IndexSchema(data=traits_model, pagination=pagination)
+    return IndexSchema(
+        data=traits_model, pagination=pagination, sorting=sorting
+    )
 
 
 class GetSchema(BaseModel):

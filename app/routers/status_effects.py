@@ -8,7 +8,7 @@ from app.orm.status_effect import StatusEffectOrm
 from app.models.status_effect import StatusEffectModel
 from .helpers import (
     PaginationSchema,
-    SortingSchema,
+    build_sorting_schema,
     select,
     has_session,
     has_pagination,
@@ -20,23 +20,26 @@ router = APIRouter(
     tags=["status-effects"],
 )
 
-SORTABLES: Dict[str, InstrumentedAttribute] = {
-    "id": StatusEffectOrm.id,
-    "name": StatusEffectOrm.name,
-    "category": StatusEffectOrm.category,
-    "turns": StatusEffectOrm.turns,
-    "leave_chance": StatusEffectOrm.leave_chance,
-    "max_stacks": StatusEffectOrm.max_stacks,
-}
+SortingSchema = build_sorting_schema(
+    [
+        StatusEffectOrm.id,
+        StatusEffectOrm.name,
+        StatusEffectOrm.category,
+        StatusEffectOrm.turns,
+        StatusEffectOrm.leave_chance,
+        StatusEffectOrm.max_stacks,
+    ]
+)
 
 
 class IndexSchema(BaseModel):
     data: List[StatusEffectModel]
     pagination: PaginationSchema
+    sorting: SortingSchema
 
 
 pagination_depend = has_pagination()
-sorting_depend = has_sorting(SORTABLES, "id")
+sorting_depend = has_sorting(SortingSchema, "id")
 
 
 @router.get("/", response_model=IndexSchema)
@@ -52,7 +55,9 @@ def index(
         .get_scalars(session)
     )
     status_effects_model = StatusEffectModel.from_orm_list(status_effects_orm)
-    return IndexSchema(data=status_effects_model, pagination=pagination)
+    return IndexSchema(
+        data=status_effects_model, pagination=pagination, sorting=sorting
+    )
 
 
 class GetSchema(BaseModel):
