@@ -43,6 +43,6 @@ class CreatureOrm(BaseOrm):
         uselist=True,
     )
 
-    klass_name = association_proxy('klass', 'name')
-    race_name = association_proxy('race', 'name')
-    trait_name = association_proxy('trait', 'name')
+    klass_name = association_proxy("klass", "name")
+    race_name = association_proxy("race", "name")
+    trait_name = association_proxy("trait", "name")

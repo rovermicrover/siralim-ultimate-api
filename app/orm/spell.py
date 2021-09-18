@@ -34,7 +34,7 @@ class SpellOrm(BaseOrm):
         "SourceOrm", primaryjoin="SpellOrm.source_id == SourceOrm.id"
     )
 
-    klass_name = association_proxy('klass', 'name')
-    source_name = association_proxy('source', 'name')
+    klass_name = association_proxy("klass", "name")
+    source_name = association_proxy("source", "name")
 
     tags = Column(postgresql.ARRAY(Text))

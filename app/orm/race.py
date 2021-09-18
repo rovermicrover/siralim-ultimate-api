@@ -29,4 +29,4 @@ class RaceOrm(BaseOrm):
         "KlassOrm", primaryjoin="RaceOrm.default_klass_id == KlassOrm.id"
     )
 
-    default_klass_name = association_proxy('default_klass', 'name')
+    default_klass_name = association_proxy("default_klass", "name")

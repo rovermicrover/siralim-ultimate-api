@@ -83,7 +83,9 @@ def strs_to_enum(name, list: List[str]):
     return Enum(name, list_of_tuples, type=str)
 
 
-def build_filtering_schema(fields: List[InstrumentedAttribute]):
+def build_filtering_schema(
+    fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]]
+):
     filters_by_type = {
         "int": [],
         "str": [],
@@ -91,7 +93,12 @@ def build_filtering_schema(fields: List[InstrumentedAttribute]):
     }
 
     for field in fields:
-        type = field.type
+
+        if isinstance(fields, ColumnAssociationProxyInstance):
+            type = field.attr[1].type
+        else:
+            type = field.type
+
         if isinstance(type, sqltypes.Integer) or isinstance(
             type, sqltypes.Numeric
         ):
@@ -150,15 +157,21 @@ def build_filtering_schema(fields: List[InstrumentedAttribute]):
     return FiltersSchema
 
 
-def build_sorting_schema(fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]]):
+def get_field_name(
+    field: Union[InstrumentedAttribute, ColumnAssociationProxyInstance]
+):
+    if isinstance(field, ColumnAssociationProxyInstance):
+        local, remote = field.attr
+        return "_".join([local.key, remote.key])
+    else:
+        return field.key
+
+
+def build_sorting_schema(
+    fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]]
+):
     filename = inspect.stack()[1].filename
     enum_name = f"{filename}SortingEnum"
-    def get_field_name(field):
-        if isinstance(field, ColumnAssociationProxyInstance):
-            local, remote = field.attr
-            return '_'.join([local.key, remote.key])
-        else:
-            return field.key
 
     field_names = map(get_field_name, fields)
     sort_field_enum = strs_to_enum(enum_name, field_names)
@@ -240,7 +253,9 @@ def has_pagination(default_size: Optional[int] = 25):
 
 def has_sorting(sorting_schema: BaseModel, default_sort_by: str):
     def _has_sorting(
-        sort_by: Optional[sorting_schema.__fields__['by'].type_] = default_sort_by,
+        sort_by: Optional[
+            sorting_schema.__fields__["by"].type_
+        ] = default_sort_by,
         sort_direction: Optional[SortDirections] = SortDirections.asc,
     ) -> sorting_schema:
         print(sort_by)
