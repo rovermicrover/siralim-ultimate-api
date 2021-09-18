@@ -71,11 +71,13 @@ class StringFilterComparators(str, Enum):
 
 
 class ArrayFilterComparators(str, Enum):
-    is_null = "is_null"
-    is_not_null = "is_not_null"
+    overlap = "&&"
     contains = "@>"
     contained_by = "<@"
-    overlap = "&&"
+    eq = "=="
+    ne = "!="
+    is_null = "is_null"
+    is_not_null = "is_not_null"
 
 
 def strs_to_enum(name, list: List[str]):
