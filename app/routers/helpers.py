@@ -91,7 +91,8 @@ def build_filtering_schema(
     filters_by_type = {
         "int": [],
         "str": [],
-        "array": [],
+        "array_str": [],
+        "array_int": [],
     }
 
     for field in fields:
@@ -106,7 +107,10 @@ def build_filtering_schema(
         ):
             filters_by_type["int"].append(get_field_name(field))
         elif isinstance(type, postgresql.ARRAY):
-            filters_by_type["array"].append(get_field_name(field))
+            if isinstance(type.item_type, sqltypes.Integer) or isinstance(type.item_type, sqltypes.Numeric):
+                filters_by_type["array_int"].append(get_field_name(field))
+            else:
+                 filters_by_type["array_str"].append(get_field_name(field))
         else:
             filters_by_type["str"].append(get_field_name(field))
 
@@ -117,11 +121,6 @@ def build_filtering_schema(
         return acc
 
     filter_type_enums = reduce(fields_to_enum, filters_by_type.items(), {})
-
-    class ArrayFilterSchema(BaseModel):
-        field: filter_type_enums["array"]
-        comparator: ArrayFilterComparators
-        value: Union[List[str], List[int], None]
 
     filter_schemas = []
 
@@ -147,16 +146,27 @@ def build_filtering_schema(
 
         filter_schemas.append(StrFilterSchema)
 
-    if len(filter_type_enums["array"]):
+    if len(filter_type_enums["array_str"]):
 
-        class ArrayFilterSchema(BaseModel):
-            field: filter_type_enums["array"]
+        class ArrayStrFilterSchema(BaseModel):
+            field: filter_type_enums["array_str"]
             comparator: ArrayFilterComparators
             value: Union[List[str], List[int], None]
 
-        ArrayFilterSchema.__name__ = f"{str(uuid4())}ArrayFilterSchema"
+        ArrayStrFilterSchema.__name__ = f"{str(uuid4())}ArrayStrFilterSchema"
 
-        filter_schemas.append(ArrayFilterSchema)
+        filter_schemas.append(ArrayStrFilterSchema)
+
+    if len(filter_type_enums["array_int"]):
+
+        class ArrayIntFilterSchema(BaseModel):
+            field: filter_type_enums["array_int"]
+            comparator: ArrayFilterComparators
+            value: Union[List[str], List[int], None]
+
+        ArrayIntFilterSchema.__name__ = f"{str(uuid4())}ArrayIntFilterSchema"
+
+        filter_schemas.append(ArrayIntFilterSchema)
 
     class FiltersSchema(BaseModel):
         filters: List[Union[tuple(filter_schemas)]]
