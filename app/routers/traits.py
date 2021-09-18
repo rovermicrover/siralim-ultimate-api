@@ -9,6 +9,7 @@ from app.models.trait import TraitModel
 from .helpers import (
     PaginationSchema,
     build_sorting_schema,
+    build_filtering_schema,
     select,
     has_session,
     has_pagination,

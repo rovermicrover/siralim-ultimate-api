@@ -13,6 +13,7 @@ from app.orm.trait import TraitOrm
 from .helpers import (
     PaginationSchema,
     build_sorting_schema,
+    build_filtering_schema,
     select,
     has_session,
     has_pagination,
@@ -24,23 +25,23 @@ router = APIRouter(
     tags=["creatures"],
 )
 
-SortingSchema = build_sorting_schema(
-    [
-        CreatureOrm.id,
-        CreatureOrm.name,
-        CreatureOrm.health,
-        CreatureOrm.attack,
-        CreatureOrm.intelligence,
-        CreatureOrm.defense,
-        CreatureOrm.speed,
-        CreatureOrm.klass_id,
-        CreatureOrm.klass_name,
-        CreatureOrm.race_id,
-        CreatureOrm.race_name,
-        CreatureOrm.trait_id,
-        CreatureOrm.trait_name,
-    ]
-)
+SORTING_FILTER_FIELDS = [
+    CreatureOrm.id,
+    CreatureOrm.name,
+    CreatureOrm.health,
+    CreatureOrm.attack,
+    CreatureOrm.intelligence,
+    CreatureOrm.defense,
+    CreatureOrm.speed,
+    CreatureOrm.klass_id,
+    CreatureOrm.klass_name,
+    CreatureOrm.race_id,
+    CreatureOrm.race_name,
+    CreatureOrm.trait_id,
+    CreatureOrm.trait_name,
+]
+
+SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
 
 EAGER_LOAD_OPTIONS = (
     contains_eager(CreatureOrm.klass),
@@ -80,6 +81,40 @@ def index(
     creatures_model = CreatureModel.from_orm_list(creatures_orm)
     return IndexSchema(
         data=creatures_model, pagination=pagination, sorting=SortingSchema
+    )
+
+
+FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+
+
+class SearchSchema(BaseModel):
+    data: List[CreatureModel]
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+class SearchRequest(BaseModel):
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+@router.post("/search", response_model=SearchSchema)
+def search(search: SearchRequest, session=Depends(has_session)):
+    creatures_orm = (
+        select(CreatureOrm)
+        .filters(search.filter.filters)
+        .pagination(search.pagination)
+        .sorting(search.sorting)
+        .get_scalars(session)
+    )
+    creatures_orm = CreatureModel.from_orm_list(creatures_orm)
+    return SearchSchema(
+        data=creatures_orm,
+        filter=search.filter,
+        pagination=search.pagination,
+        sorting=search.sorting,
     )
 
 

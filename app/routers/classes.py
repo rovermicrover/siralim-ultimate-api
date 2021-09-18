@@ -21,7 +21,9 @@ router = APIRouter(
     tags=["classes"],
 )
 
-SortingSchema = build_sorting_schema([KlassOrm.id, KlassOrm.name])
+SORTING_FILTER_FIELDS = [KlassOrm.id, KlassOrm.name]
+
+SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
 
 
 class IndexSchema(BaseModel):
@@ -52,7 +54,7 @@ def index(
     )
 
 
-FilterSchema = build_filtering_schema([KlassOrm.name])
+FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
 
 
 class SearchSchema(BaseModel):
@@ -74,7 +76,7 @@ def search(search: SearchRequest, session=Depends(has_session)):
         select(KlassOrm)
         .filters(search.filter.filters)
         .pagination(search.pagination)
-        .sorting(KlassOrm, search.sorting)
+        .sorting(search.sorting)
         .get_scalars(session)
     )
     klasses_model = KlassModel.from_orm_list(klasses_orm)

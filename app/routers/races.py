@@ -12,6 +12,7 @@ from app.models.race import RaceModel
 from .helpers import (
     PaginationSchema,
     build_sorting_schema,
+    build_filtering_schema,
     select,
     has_session,
     has_pagination,

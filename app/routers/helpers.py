@@ -2,6 +2,7 @@ import inspect
 from enum import Enum
 from typing import Dict, List, Optional, Union
 from functools import reduce
+from uuid import uuid4
 
 from pydantic.main import BaseModel
 from pydantic.types import conint
@@ -94,7 +95,7 @@ def build_filtering_schema(
 
     for field in fields:
 
-        if isinstance(fields, ColumnAssociationProxyInstance):
+        if isinstance(field, ColumnAssociationProxyInstance):
             type = field.attr[1].type
         else:
             type = field.type
@@ -102,16 +103,17 @@ def build_filtering_schema(
         if isinstance(type, sqltypes.Integer) or isinstance(
             type, sqltypes.Numeric
         ):
-            filters_by_type["int"].append(field.name)
+            filters_by_type["int"].append(get_field_name(field))
         elif isinstance(type, postgresql.ARRAY):
-            filters_by_type["array"].append(field.name)
+            filters_by_type["array"].append(get_field_name(field))
         else:
-            filters_by_type["str"].append(field.name)
+            filters_by_type["str"].append(get_field_name(field))
+
+    print(filters_by_type)
 
     def fields_to_enum(acc, type_fields):
         type, fields = type_fields
-        filename = inspect.stack()[1].filename
-        enum_name = f"{filename}{type}FilterEnum"
+        enum_name = f"{str(uuid4())}{type}FilterEnum"
         acc[type] = strs_to_enum(enum_name, fields)
         return acc
 
@@ -131,6 +133,8 @@ def build_filtering_schema(
             comparator: NumericFilterComparators
             value: Union[int, float, None]
 
+        IntFilterSchema.__name__ = f"{str(uuid4())}IntFilterSchema"
+
         filter_schemas.append(IntFilterSchema)
 
     if len(filter_type_enums["str"]):
@@ -140,6 +144,8 @@ def build_filtering_schema(
             comparator: StringFilterComparators
             value: Union[str, None]
 
+        StrFilterSchema.__name__ = f"{str(uuid4())}StrFilterSchema"
+        
         filter_schemas.append(StrFilterSchema)
 
     if len(filter_type_enums["array"]):
@@ -149,10 +155,14 @@ def build_filtering_schema(
             comparator: ArrayFilterComparators
             value: Union[List[str], List[int], None]
 
+        ArrayFilterSchema.__name__ = f"{str(uuid4())}ArrayFilterSchema"
+        
         filter_schemas.append(ArrayFilterSchema)
 
     class FiltersSchema(BaseModel):
         filters: List[Union[tuple(filter_schemas)]]
+
+    FiltersSchema.__name__ = f"{str(uuid4())}FiltersSchema"
 
     return FiltersSchema
 
@@ -207,7 +217,7 @@ class CustomSelect(Select):
             pagination.page * pagination.size
         )
 
-    def filter(self, orm, filter: Dict):
+    def filter(self, filter: Dict):
         orm = self.get_orm()
         field = getattr(orm, filter.field)
         comparator_func_name = filter_comparators_to_sql_function[
