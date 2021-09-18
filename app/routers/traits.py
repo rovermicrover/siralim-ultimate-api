@@ -25,6 +25,7 @@ SORTING_FILTER_FIELDS = [
     TraitOrm.id,
     TraitOrm.name,
     TraitOrm.material_name,
+    TraitOrm.tags,
 ]
 
 SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)

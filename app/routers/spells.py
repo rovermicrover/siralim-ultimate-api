@@ -32,6 +32,7 @@ SORTING_FILTER_FIELDS = [
     SpellOrm.klass_name,
     SpellOrm.source_id,
     SpellOrm.source_name,
+    SpellOrm.tags,
 ]
 
 SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)

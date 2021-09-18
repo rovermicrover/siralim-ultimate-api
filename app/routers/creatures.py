@@ -39,6 +39,7 @@ SORTING_FILTER_FIELDS = [
     CreatureOrm.race_name,
     CreatureOrm.trait_id,
     CreatureOrm.trait_name,
+    CreatureOrm.trait_tags,
 ]
 
 SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
