@@ -21,12 +21,12 @@ router = APIRouter(
     tags=["sources"],
 )
 
-SortingSchema = build_sorting_schema(
-    [
-        SourceOrm.id,
-        SourceOrm.name,
-    ]
-)
+SORTING_FILTER_FIELDS = [
+    SourceOrm.id,
+    SourceOrm.name,
+]
+
+SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
 
 
 class IndexSchema(BaseModel):

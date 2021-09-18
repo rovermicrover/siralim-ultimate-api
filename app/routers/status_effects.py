@@ -21,16 +21,16 @@ router = APIRouter(
     tags=["status-effects"],
 )
 
-SortingSchema = build_sorting_schema(
-    [
-        StatusEffectOrm.id,
-        StatusEffectOrm.name,
-        StatusEffectOrm.category,
-        StatusEffectOrm.turns,
-        StatusEffectOrm.leave_chance,
-        StatusEffectOrm.max_stacks,
-    ]
-)
+SORTING_FILTER_FIELDS = [
+    StatusEffectOrm.id,
+    StatusEffectOrm.name,
+    StatusEffectOrm.category,
+    StatusEffectOrm.turns,
+    StatusEffectOrm.leave_chance,
+    StatusEffectOrm.max_stacks,
+]
+
+SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
 
 
 class IndexSchema(BaseModel):

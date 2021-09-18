@@ -21,13 +21,13 @@ router = APIRouter(
     tags=["traits"],
 )
 
-SortingSchema = build_sorting_schema(
-    [
-        TraitOrm.id,
-        TraitOrm.name,
-        TraitOrm.material_name,
-    ]
-)
+SORTING_FILTER_FIELDS = [
+    TraitOrm.id,
+    TraitOrm.name,
+    TraitOrm.material_name,
+]
+
+SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
 
 
 class IndexSchema(BaseModel):

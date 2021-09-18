@@ -24,14 +24,14 @@ router = APIRouter(
     tags=["races"],
 )
 
-SortingSchema = build_sorting_schema(
-    [
-        RaceOrm.id,
-        RaceOrm.name,
-        RaceOrm.default_klass_id,
-        RaceOrm.default_klass_name,
-    ]
-)
+SORTING_FILTER_FIELDS = [
+    RaceOrm.id,
+    RaceOrm.name,
+    RaceOrm.default_klass_id,
+    RaceOrm.default_klass_name,
+]
+
+SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
 
 EAGER_LOAD_OPTIONS = [contains_eager(RaceOrm.default_klass)]
 

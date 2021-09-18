@@ -24,17 +24,17 @@ router = APIRouter(
     tags=["spells"],
 )
 
-SortingSchema = build_sorting_schema(
-    [
-        SpellOrm.id,
-        SpellOrm.name,
-        SpellOrm.charges,
-        SpellOrm.klass_id,
-        SpellOrm.klass_name,
-        SpellOrm.source_id,
-        SpellOrm.source_name,
-    ]
-)
+SORTING_FILTER_FIELDS = [
+    SpellOrm.id,
+    SpellOrm.name,
+    SpellOrm.charges,
+    SpellOrm.klass_id,
+    SpellOrm.klass_name,
+    SpellOrm.source_id,
+    SpellOrm.source_name,
+]
+
+SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
 
 EAGER_LOAD_OPTIONS = [
     contains_eager(SpellOrm.klass),
