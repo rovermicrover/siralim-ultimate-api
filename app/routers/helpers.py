@@ -1,4 +1,3 @@
-import inspect
 from enum import Enum
 from typing import Dict, List, Optional, Union
 from functools import reduce
@@ -180,8 +179,7 @@ def get_field_name(
 def build_sorting_schema(
     fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]]
 ):
-    filename = inspect.stack()[1].filename
-    enum_name = f"{filename}SortingEnum"
+    enum_name = f"{str(uuid4())}SortingEnum"
 
     field_names = map(get_field_name, fields)
     sort_field_enum = strs_to_enum(enum_name, field_names)
@@ -190,7 +188,7 @@ def build_sorting_schema(
         by: sort_field_enum
         direction: SortDirections
 
-    SortingSchema.__name__ = f"{filename}SortingSchema"
+    SortingSchema.__name__ = f"{str(uuid4())}SortingSchema"
 
     return SortingSchema
 
