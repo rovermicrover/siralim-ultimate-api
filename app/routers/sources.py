@@ -56,6 +56,40 @@ def index(
         data=sources_model, pagination=pagination, sorting=sorting
     )
 
+FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+
+
+class SearchSchema(BaseModel):
+    data: List[SourceModel]
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+class SearchRequest(BaseModel):
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+@router.post("/search", response_model=SearchSchema)
+def search(search: SearchRequest, session=Depends(has_session)):
+    soures_orm = (
+        select(SourceOrm)
+        .filters(search.filter.filters)
+        .pagination(search.pagination)
+        .sorting(search.sorting)
+        .get_scalars(session)
+    )
+    soures_model = SourceModel.from_orm_list(soures_orm)
+    return SearchSchema(
+        data=soures_model,
+        filter=search.filter,
+        pagination=search.pagination,
+        sorting=search.sorting,
+    )
+
+
 
 class GetSchema(BaseModel):
     data: SourceModel

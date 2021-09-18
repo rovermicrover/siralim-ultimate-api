@@ -58,6 +58,39 @@ def index(
     )
 
 
+FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+
+
+class SearchSchema(BaseModel):
+    data: List[TraitModel]
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+class SearchRequest(BaseModel):
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+@router.post("/search", response_model=SearchSchema)
+def search(search: SearchRequest, session=Depends(has_session)):
+    traits_orm = (
+        select(TraitOrm)
+        .filters(search.filter.filters)
+        .pagination(search.pagination)
+        .sorting(search.sorting)
+        .get_scalars(session)
+    )
+    traits_model = TraitModel.from_orm_list(traits_orm)
+    return SearchSchema(
+        data=traits_model,
+        filter=search.filter,
+        pagination=search.pagination,
+        sorting=search.sorting,
+    )
+
 class GetSchema(BaseModel):
     data: TraitModel
 

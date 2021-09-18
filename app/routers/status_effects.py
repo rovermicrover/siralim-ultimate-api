@@ -60,6 +60,38 @@ def index(
         data=status_effects_model, pagination=pagination, sorting=sorting
     )
 
+FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+
+
+class SearchSchema(BaseModel):
+    data: List[StatusEffectModel]
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+class SearchRequest(BaseModel):
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+@router.post("/search", response_model=SearchSchema)
+def search(search: SearchRequest, session=Depends(has_session)):
+    status_effects_orm = (
+        select(StatusEffectOrm)
+        .filters(search.filter.filters)
+        .pagination(search.pagination)
+        .sorting(search.sorting)
+        .get_scalars(session)
+    )
+    status_effects_model = StatusEffectModel.from_orm_list(status_effects_orm)
+    return SearchSchema(
+        data=status_effects_model,
+        filter=search.filter,
+        pagination=search.pagination,
+        sorting=search.sorting,
+    )
 
 class GetSchema(BaseModel):
     data: StatusEffectModel

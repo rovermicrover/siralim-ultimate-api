@@ -72,6 +72,38 @@ def index(
         data=spells_model, pagination=pagination, sorting=sorting
     )
 
+FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+
+
+class SearchSchema(BaseModel):
+    data: List[SpellModel]
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+class SearchRequest(BaseModel):
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+@router.post("/search", response_model=SearchSchema)
+def search(search: SearchRequest, session=Depends(has_session)):
+    spells_orm = (
+        select(SpellOrm)
+        .filters(search.filter.filters)
+        .pagination(search.pagination)
+        .sorting(search.sorting)
+        .get_scalars(session)
+    )
+    spells_model = SpellModel.from_orm_list(spells_orm)
+    return SearchSchema(
+        data=spells_model,
+        filter=search.filter,
+        pagination=search.pagination,
+        sorting=search.sorting,
+    )
 
 class GetSchema(BaseModel):
     data: SpellModel

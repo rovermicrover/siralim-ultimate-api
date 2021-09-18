@@ -66,6 +66,40 @@ def index(
     )
 
 
+FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+
+
+class SearchSchema(BaseModel):
+    data: List[RaceModel]
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+class SearchRequest(BaseModel):
+    filter: FilterSchema
+    pagination: PaginationSchema
+    sorting: SortingSchema
+
+
+@router.post("/search", response_model=SearchSchema)
+def search(search: SearchRequest, session=Depends(has_session)):
+    races_orm = (
+        select(RaceOrm)
+        .filters(search.filter.filters)
+        .pagination(search.pagination)
+        .sorting(search.sorting)
+        .get_scalars(session)
+    )
+    races_model = RaceModel.from_orm_list(races_orm)
+    return SearchSchema(
+        data=races_model,
+        filter=search.filter,
+        pagination=search.pagination,
+        sorting=search.sorting,
+    )
+
+
 class GetSchema(BaseModel):
     data: RaceModel
 
