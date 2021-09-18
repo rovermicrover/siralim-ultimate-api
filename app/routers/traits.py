@@ -92,6 +92,7 @@ def search(search: SearchRequest, session=Depends(has_session)):
         sorting=search.sorting,
     )
 
+
 class GetSchema(BaseModel):
     data: TraitModel
 

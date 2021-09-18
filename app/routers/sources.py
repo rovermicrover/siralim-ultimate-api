@@ -56,6 +56,7 @@ def index(
         data=sources_model, pagination=pagination, sorting=sorting
     )
 
+
 FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
 
 
@@ -88,7 +89,6 @@ def search(search: SearchRequest, session=Depends(has_session)):
         pagination=search.pagination,
         sorting=search.sorting,
     )
-
 
 
 class GetSchema(BaseModel):
