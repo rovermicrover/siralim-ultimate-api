@@ -107,10 +107,12 @@ def build_filtering_schema(
         ):
             filters_by_type["int"].append(get_field_name(field))
         elif isinstance(type, postgresql.ARRAY):
-            if isinstance(type.item_type, sqltypes.Integer) or isinstance(type.item_type, sqltypes.Numeric):
+            if isinstance(type.item_type, sqltypes.Integer) or isinstance(
+                type.item_type, sqltypes.Numeric
+            ):
                 filters_by_type["array_int"].append(get_field_name(field))
             else:
-                 filters_by_type["array_str"].append(get_field_name(field))
+                filters_by_type["array_str"].append(get_field_name(field))
         else:
             filters_by_type["str"].append(get_field_name(field))
 

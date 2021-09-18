@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from pydantic.main import BaseModel
 
 from .routers import (
     classes,
@@ -20,7 +21,12 @@ app.include_router(spells.router)
 app.include_router(status_effects.router)
 app.include_router(traits.router)
 
+class HealthCheckSchema(BaseModel):
+    healthcheck: bool
 
-@app.get("/")
+class RootSchema(BaseModel):
+    data: HealthCheckSchema
+
+@app.get("/", response_model=RootSchema)
 async def root():
-    return {"message": "Hello Bigger Applications!!"}
+    return {"data": {"healthcheck": True}}
