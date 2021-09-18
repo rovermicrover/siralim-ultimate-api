@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.associationproxy import association_proxy
 
 from .base import BaseOrm, build_slug_defaulter
 
@@ -27,3 +28,5 @@ class RaceOrm(BaseOrm):
     default_klass = relationship(
         "KlassOrm", primaryjoin="RaceOrm.default_klass_id == KlassOrm.id"
     )
+
+    default_klass_name = association_proxy('default_klass', 'name')

@@ -6,10 +6,12 @@ from functools import reduce
 from pydantic.main import BaseModel
 from pydantic.types import conint
 from sqlalchemy.orm.attributes import InstrumentedAttribute
+from sqlalchemy.orm.util import _ORMJoin
 from sqlalchemy.sql.selectable import Select
 from sqlalchemy.util.langhelpers import public_factory
 from sqlalchemy.sql import sqltypes
 from sqlalchemy.dialects import postgresql
+from sqlalchemy.ext.associationproxy import ColumnAssociationProxyInstance
 
 from app import orm as OrmMap
 from app.orm.base import Session, engine
@@ -148,10 +150,18 @@ def build_filtering_schema(fields: List[InstrumentedAttribute]):
     return FiltersSchema
 
 
-def build_sorting_schema(fields: List[InstrumentedAttribute]):
+def build_sorting_schema(fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]]):
     filename = inspect.stack()[1].filename
     enum_name = f"{filename}SortingEnum"
-    sort_field_enum = strs_to_enum(enum_name, [f.name for f in fields])
+    def get_field_name(field):
+        if isinstance(field, ColumnAssociationProxyInstance):
+            local, remote = field.attr
+            return '_'.join([local.key, remote.key])
+        else:
+            return field.key
+
+    field_names = map(get_field_name, fields)
+    sort_field_enum = strs_to_enum(enum_name, field_names)
 
     class SortingSchema(BaseModel):
         by: sort_field_enum
@@ -164,12 +174,17 @@ def build_sorting_schema(fields: List[InstrumentedAttribute]):
 
 class CustomSelect(Select):
     def get_orm(self):
-        orm_name = self.get_final_froms()[0].name
-        return getattr(OrmMap, orm_name)
+        print(self.get_final_froms())
+        final_from = self.get_final_froms()[0]
+        if isinstance(final_from, _ORMJoin):
+            final_from = final_from.left
+        return getattr(OrmMap, final_from.name)
 
     def sorting(self, sorting):
         orm = self.get_orm()
         order_by = getattr(orm, sorting.by)
+        if isinstance(order_by, ColumnAssociationProxyInstance):
+            order_by = order_by.remote_attr
         if sorting.direction == SortDirections.desc:
             order_by = order_by.desc()
         return self.order_by(order_by)
@@ -225,9 +240,10 @@ def has_pagination(default_size: Optional[int] = 25):
 
 def has_sorting(sorting_schema: BaseModel, default_sort_by: str):
     def _has_sorting(
-        sort_by: Optional[sorting_schema] = default_sort_by,
+        sort_by: Optional[sorting_schema.__fields__['by'].type_] = default_sort_by,
         sort_direction: Optional[SortDirections] = SortDirections.asc,
     ) -> sorting_schema:
+        print(sort_by)
         return sorting_schema(by=sort_by, direction=sort_direction)
 
     return _has_sorting

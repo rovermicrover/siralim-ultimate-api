@@ -34,8 +34,11 @@ SortingSchema = build_sorting_schema(
         CreatureOrm.defense,
         CreatureOrm.speed,
         CreatureOrm.klass_id,
+        CreatureOrm.klass_name,
         CreatureOrm.race_id,
+        CreatureOrm.race_name,
         CreatureOrm.trait_id,
+        CreatureOrm.trait_name,
     ]
 )
 

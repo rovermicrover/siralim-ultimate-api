@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Text
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.associationproxy import association_proxy
 
 from .base import BaseOrm, build_slug_defaulter
 
@@ -41,3 +42,7 @@ class CreatureOrm(BaseOrm):
         primaryjoin="SourceOrm.id == any_(foreign(CreatureOrm.source_ids))",
         uselist=True,
     )
+
+    klass_name = association_proxy('klass', 'name')
+    race_name = association_proxy('race', 'name')
+    trait_name = association_proxy('trait', 'name')

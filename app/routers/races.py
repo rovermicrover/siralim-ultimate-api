@@ -28,6 +28,7 @@ SortingSchema = build_sorting_schema(
         RaceOrm.id,
         RaceOrm.name,
         RaceOrm.default_klass_id,
+        RaceOrm.default_klass_name,
     ]
 )
 
@@ -60,7 +61,7 @@ def index(
     )
     races_model = RaceModel.from_orm_list(races_orm)
     return IndexSchema(
-        data=races_model, pagination=pagination, sorting=SortingSchema
+        data=races_model, pagination=pagination, sorting=sorting
     )
 
 

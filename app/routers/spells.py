@@ -29,7 +29,9 @@ SortingSchema = build_sorting_schema(
         SpellOrm.name,
         SpellOrm.charges,
         SpellOrm.klass_id,
+        SpellOrm.klass_name,
         SpellOrm.source_id,
+        SpellOrm.source_name,
     ]
 )
 

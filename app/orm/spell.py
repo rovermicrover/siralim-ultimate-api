@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.associationproxy import association_proxy
 
 from .base import BaseOrm, build_slug_defaulter
 
@@ -32,5 +33,8 @@ class SpellOrm(BaseOrm):
     source = relationship(
         "SourceOrm", primaryjoin="SpellOrm.source_id == SourceOrm.id"
     )
+
+    klass_name = association_proxy('klass', 'name')
+    source_name = association_proxy('source', 'name')
 
     tags = Column(postgresql.ARRAY(Text))
