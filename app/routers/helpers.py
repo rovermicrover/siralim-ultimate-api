@@ -14,7 +14,7 @@ from sqlalchemy.dialects import postgresql
 from sqlalchemy.ext.associationproxy import ColumnAssociationProxyInstance
 
 from app import orm as OrmMap
-from app.orm.base import Session, engine
+from app.orm.base import Session
 
 
 class PaginationSchema(BaseModel):
