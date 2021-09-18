@@ -108,8 +108,6 @@ def build_filtering_schema(
         else:
             filters_by_type["str"].append(get_field_name(field))
 
-    print(filters_by_type)
-
     def fields_to_enum(acc, type_fields):
         type, fields = type_fields
         enum_name = f"{str(uuid4())}{type}FilterEnum"
@@ -144,7 +142,7 @@ def build_filtering_schema(
             value: Union[str, None]
 
         StrFilterSchema.__name__ = f"{str(uuid4())}StrFilterSchema"
-        
+
         filter_schemas.append(StrFilterSchema)
 
     if len(filter_type_enums["array"]):
@@ -155,7 +153,7 @@ def build_filtering_schema(
             value: Union[List[str], List[int], None]
 
         ArrayFilterSchema.__name__ = f"{str(uuid4())}ArrayFilterSchema"
-        
+
         filter_schemas.append(ArrayFilterSchema)
 
     class FiltersSchema(BaseModel):
@@ -195,7 +193,6 @@ def build_sorting_schema(
 
 class CustomSelect(Select):
     def get_orm(self):
-        print(self.get_final_froms())
         final_from = self.get_final_froms()[0]
         if isinstance(final_from, _ORMJoin):
             final_from = final_from.left
@@ -225,7 +222,6 @@ class CustomSelect(Select):
         return self.where(comparator(filter.value))
 
     def filters(self, filters):
-        print(filters)
         if not len(filters):
             return self
         filter = filters[:1][0]
@@ -266,7 +262,6 @@ def has_sorting(sorting_schema: BaseModel, default_sort_by: str):
         ] = default_sort_by,
         sort_direction: Optional[SortDirections] = SortDirections.asc,
     ) -> sorting_schema:
-        print(sort_by)
         return sorting_schema(by=sort_by, direction=sort_direction)
 
     return _has_sorting
