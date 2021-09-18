@@ -9,6 +9,7 @@ from app.models.klass import KlassModel
 from .helpers import (
     PaginationSchema,
     SortingSchema,
+    build_filtering_schema,
     select,
     has_session,
     has_pagination,
@@ -49,6 +50,28 @@ def index(
     )
     klasses_model = KlassModel.from_orm_list(klasses_orm)
     return IndexSchema(data=klasses_model, pagination=pagination)
+
+FilterSchema = build_filtering_schema([KlassOrm.name])
+
+class SearchSchema(BaseModel):
+    data: List[KlassModel]
+    filter: FilterSchema
+    pagination: PaginationSchema
+
+class SearchRequest(BaseModel):
+    filter: FilterSchema
+    pagination: PaginationSchema
+
+@router.post("/search", response_model=SearchSchema)
+def search(search: SearchRequest, session=Depends(has_session)):
+    klasses_orm = (
+        select(KlassOrm)
+        .filters(KlassOrm, search.filter.filters)
+        .pagination(search.pagination)
+        .get_scalars(session)
+    )
+    klasses_model = KlassModel.from_orm_list(klasses_orm)
+    return SearchSchema(data=klasses_model, filter=search.filter, pagination=search.pagination)
 
 
 class GetSchema(BaseModel):
