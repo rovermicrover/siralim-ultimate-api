@@ -208,7 +208,9 @@ def build_sorting_schema(
 class CustomSelect(Select):
     def get_orm(self):
         final_from = self.get_final_froms()[0]
-        if isinstance(final_from, _ORMJoin):
+        print("FOOBAR")
+        print(final_from.__class__)
+        while isinstance(final_from, _ORMJoin):
             final_from = final_from.left
         return getattr(OrmMap, final_from.name)
 

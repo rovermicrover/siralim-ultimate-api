@@ -81,7 +81,7 @@ def index(
     )
     creatures_model = CreatureModel.from_orm_list(creatures_orm)
     return IndexSchema(
-        data=creatures_model, pagination=pagination, sorting=SortingSchema
+        data=creatures_model, pagination=pagination, sorting=sorting
     )
 
 
