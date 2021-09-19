@@ -2,8 +2,6 @@
 
 * Cache headers
 
-* Content Policy
-
 # Data
 
 * Race & Class icons still need to be imported
@@ -25,3 +23,7 @@
 # Tests
 
 * Once in a stable place will write them, for now just destorying docker state and starting from scratch to test
+
+# Terraform
+
+Build Example Terraform to build infrastruture that can be commited with zero secrets.
