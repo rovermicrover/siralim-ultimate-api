@@ -34,9 +34,9 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
         run: |
           # Build a docker container and push it to ECR 
-          GIT_BRANCH = ${GITHUB_REF##*/}
-          LATEST_TAG = "${ECR_REGISTRY}/${$ECR_REPOSITORY}:${GIT_BRANCH}-latest"
-          GIT_SHA_TAG = "${ECR_REGISTRY}/${$ECR_REPOSITORY}:${GIT_BRANCH}-${GITHUB_SHA}"
+          GIT_BRANCH=${GITHUB_REF##*/}
+          LATEST_TAG="${ECR_REGISTRY}/${$ECR_REPOSITORY}:${GIT_BRANCH}-latest"
+          GIT_SHA_TAG="${ECR_REGISTRY}/${$ECR_REPOSITORY}:${GIT_BRANCH}-${GITHUB_SHA}"
 
           echo "Building ${GIT_SHA_TAG}"
           docker build -t $GIT_SHA_TAG .
