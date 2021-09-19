@@ -23,28 +23,28 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_ECR_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-
       - name: Build, tag, and push the image to Amazon ECR
         id: build-image
         env:
           ECR_REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
         run: |
+          # LOGIN
+          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
+
           # Build a docker container and push it to ECR 
           GIT_BRANCH=${GITHUB_REF##*/}
           LATEST_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-latest
           GIT_SHA_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-${GITHUB_SHA}
 
           echo "Building ${GIT_SHA_TAG}"
-          docker build -t $GIT_SHA_TAG .
+          docker build -t $ECR_REPOSITORY .
           
           echo "Pushing ${LATEST_TAG}"
-          docker push $GIT_SHA_TAG
-
-          echo "Pushing ${LATEST_TAG}"
-          docker tag $GIT_SHA_TAG $LATEST_TAG
+          docker tag $ECR_REPOSITORY $LATEST_TAG
           docker push $LATEST_TAG
+
+          echo "Pushing ${GIT_SHA_TAG}"
+          docker tag $ECR_REPOSITORY $GIT_SHA_TAG
+          docker push $GIT_SHA_TAG
             
