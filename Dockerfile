@@ -1,14 +1,21 @@
-FROM python:3.9.6
+FROM python:3.9.7
+
+RUN pip install --upgrade pip
+
+RUN useradd --create-home --shell /bin/bash --no-log-init --system -u 999 api
+USER api
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /code/
 
-COPY ./app ./app
-COPY ./alembic ./alembic
-COPY ./alembic.ini ./
+COPY --chown=api:api ./app ./app
+COPY --chown=api:api ./alembic ./alembic
+COPY --chown=api:api ./alembic.ini ./
 
 EXPOSE 8000
 
-CMD [ "uvicorn", "--host", "0.0.0.0", "--reload", "app.main:app" ]
+ENV PATH="/home/api/.local/bin:${PATH}"
+
+CMD ["uvicorn", "--host", "0.0.0.0", "--reload", "app.main:app" ]

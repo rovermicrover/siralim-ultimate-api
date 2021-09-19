@@ -1,3 +1,4 @@
+import logging
 from .klasses import klasses_importer
 from .races import races_importer
 from .status_effects import status_effects_importer
@@ -8,6 +9,7 @@ from .creatures import creatures_importer
 
 
 def run():
+    logging.getLogger("sqlalchemy").setLevel(logging.INFO)
     klasses_importer()
     races_importer()
     status_effects_importer()
