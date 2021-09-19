@@ -31,10 +31,9 @@ filter_comparators_to_sql_function = {
     "==": "__eq__",
     "!=": "__ne__",
     ">": "__gt__",
-    ">=": "__gte__",
+    ">=": "__ge__",
     "<": "__lt__",
-    "<=": "__lte__",
-    "between": "between",
+    "<=": "__le__",
     "is_null": "is_",
     "is_not_null": "is_not",
     "@>": "contains",
@@ -52,7 +51,6 @@ class NumericFilterComparators(str, Enum):
     gte = ">="
     lt = "<"
     lte = "<="
-    between = "between"
     is_null = "is_null"
     is_not_null = "is_not_null"
 
