@@ -94,3 +94,7 @@ class SourcesRouterTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         json = response.json()
         self.assertEqual(json["data"]["slug"], "zonte-shop")
+
+    def test_get_not_found(self):
+        response = client.get("/sources/foobar")
+        self.assertEqual(response.status_code, 404)

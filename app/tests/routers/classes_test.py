@@ -89,3 +89,7 @@ class ClassesRouterTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         json = response.json()
         self.assertEqual(json["data"]["slug"], "death")
+
+    def test_get_not_found(self):
+        response = client.get("/classes/foobar")
+        self.assertEqual(response.status_code, 404)

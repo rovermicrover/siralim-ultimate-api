@@ -94,3 +94,7 @@ class TraitsRouterTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         json = response.json()
         self.assertEqual(json["data"]["slug"], "call-of-time")
+
+    def test_get_not_found(self):
+        response = client.get("/traits/foobar")
+        self.assertEqual(response.status_code, 404)

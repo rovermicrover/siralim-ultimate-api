@@ -91,3 +91,7 @@ class StatusEffectsRouterTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         json = response.json()
         self.assertEqual(json["data"]["slug"], "agile")
+
+    def test_get_not_found(self):
+        response = client.get("/status-effects/foobar")
+        self.assertEqual(response.status_code, 404)
