@@ -37,9 +37,12 @@ def get_tag_regexes(session):
         "debuff": [re.compile(r"\bdebuff(s)?\b", re.IGNORECASE)],
         "minion": [re.compile(r"\bminion(s)?\b", re.IGNORECASE)],
         "race": [re.compile(r"\brace(s)?\b", re.IGNORECASE)],
-        "class": [re.compile(r"\bclass(s)?\b", re.IGNORECASE)],
+        "class": [re.compile(r"\bclass(es)?\b", re.IGNORECASE)],
         "resurrect": [re.compile(r"\bresurrect(ion)?(ed)?\b", re.IGNORECASE)],
         "heal": [re.compile(r"\bheal(ing)?(ed)?\b", re.IGNORECASE)],
+        "turns-taken": [re.compile(r"\\bfor each turn they've taken in the current battle\b", re.IGNORECASE)],
+        "dodge": [re.compile(r"\bdodge(s)?(ed)?\b", re.IGNORECASE)],
+        "critical": [re.compile(r"\bcritical\b", re.IGNORECASE)],
     }
 
     for k in klasses:
