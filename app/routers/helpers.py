@@ -184,7 +184,7 @@ def get_field_name(
 
 def build_sorting_schema(
     fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]],
-    default_sort_by = "id"
+    default_sort_by="id",
 ):
     enum_name = f"{str(uuid4())}SortingEnum"
 

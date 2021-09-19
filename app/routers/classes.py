@@ -33,6 +33,7 @@ class IndexSchema(BaseModel):
     pagination: PaginationSchema
     sorting: SortingSchema
 
+
 pagination_depend = has_pagination(default_size=DEFAULT_PAGE_SIZE)
 sorting_depend = has_sorting(SortingSchema)
 
@@ -67,7 +68,9 @@ class SearchSchema(BaseModel):
 
 class SearchRequest(BaseModel):
     filter: FilterSchema
-    pagination: Optional[PaginationSchema] = PaginationSchema(size=DEFAULT_PAGE_SIZE)
+    pagination: Optional[PaginationSchema] = PaginationSchema(
+        size=DEFAULT_PAGE_SIZE
+    )
     sorting: Optional[SortingSchema] = SortingSchema()
 
 

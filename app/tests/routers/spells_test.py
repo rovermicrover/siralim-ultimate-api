@@ -7,46 +7,46 @@ from app.main import app
 client = TestClient(app)
 
 
-class SourcesRouterTests(unittest.TestCase):
+class SpellsRouterTests(unittest.TestCase):
     def test_index(self):
-        response = client.get("/sources/")
+        response = client.get("/spells/")
         self.assertEqual(response.status_code, 200)
         json = response.json()
         self.assertEqual(len(json["data"]), 25)
 
     def test_index_page_size(self):
-        response = client.get("/sources/?size=2")
+        response = client.get("/spells/?size=2")
         self.assertEqual(response.status_code, 200)
         json = response.json()
         self.assertEqual(len(json["data"]), 2)
 
     def test_index_page(self):
-        response1 = client.get("/sources/?page=0&size=2")
+        response1 = client.get("/spells/?page=0&size=2")
         self.assertEqual(response1.status_code, 200)
         json1 = response1.json()
         self.assertEqual(json1["data"][0]["id"], 1)
 
-        response2 = client.get("/sources/?page=1&size=2")
+        response2 = client.get("/spells/?page=1&size=2")
         self.assertEqual(response2.status_code, 200)
         json2 = response2.json()
         self.assertEqual(json2["data"][0]["id"], 3)
 
     def test_index_sort(self):
-        response = client.get("/sources/?sort_by=name&sort_direction=desc")
+        response = client.get("/spells/?sort_by=name&sort_direction=desc")
         self.assertEqual(response.status_code, 200)
         json = response.json()
-        self.assertEqual(json["data"][0]["name"], "Zonte Shop")
+        self.assertEqual(json["data"][0]["name"], "Zombie Clap")
 
     def test_search_filter_name(self):
         response = client.post(
-            "/sources/search",
+            "/spells/search",
             json={
                 "filter": {
                     "filters": [
                         {
                             "field": "name",
                             "comparator": "like",
-                            "value": "%Zonte%",
+                            "value": "%Arrow%",
                         },
                     ]
                 },
@@ -55,12 +55,12 @@ class SourcesRouterTests(unittest.TestCase):
         )
         self.assertEqual(response.status_code, 200)
         json = response.json()
-        self.assertEqual(len(json["data"]), 3)
-        self.assertEqual(json["data"][0]["name"], "Avatar of Zonte")
+        self.assertEqual(len(json["data"]), 10)
+        self.assertEqual(json["data"][0]["name"], "Disintegrating Arrow")
 
     def test_search_filter_id(self):
         response = client.post(
-            "/sources/search",
+            "/spells/search",
             json={
                 "filter": {
                     "filters": [
@@ -84,13 +84,17 @@ class SourcesRouterTests(unittest.TestCase):
         self.assertEqual(len(json["data"]), 5)
 
     def test_get_id(self):
-        response = client.get("/sources/1")
+        response = client.get("/spells/1")
         self.assertEqual(response.status_code, 200)
         json = response.json()
         self.assertEqual(json["data"]["id"], 1)
 
     def test_get_slug(self):
-        response = client.get("/sources/zonte-shop")
+        response = client.get("/spells/living-staff")
         self.assertEqual(response.status_code, 200)
         json = response.json()
-        self.assertEqual(json["data"]["slug"], "zonte-shop")
+        self.assertEqual(json["data"]["slug"], "living-staff")
+
+    def test_get_not_found(self):
+        response = client.get("/spells/foobar")
+        self.assertEqual(response.status_code, 404)

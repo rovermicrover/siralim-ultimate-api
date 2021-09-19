@@ -52,7 +52,7 @@ class TraitsRouterTests(unittest.TestCase):
                             "field": "tags",
                             "comparator": "&&",
                             "value": ["buff-barrier"],
-                        }
+                        },
                     ]
                 },
                 "sorting": {"by": "name", "direction": "desc"},

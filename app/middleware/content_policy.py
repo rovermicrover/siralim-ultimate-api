@@ -1,4 +1,3 @@
-import re
 from fastapi import Request
 
 CONTENT_POLICY = "default-src 'none'"

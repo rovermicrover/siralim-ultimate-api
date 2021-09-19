@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic.main import BaseModel
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from .middleware.content_policy import content_policy
+from .middleware import content_policy, not_found
 
 from .routers import (
     classes,
@@ -45,6 +45,7 @@ app.add_middleware(
 )
 
 app.add_middleware(BaseHTTPMiddleware, dispatch=content_policy)
+app.add_middleware(BaseHTTPMiddleware, dispatch=not_found)
 
 app.include_router(classes.router)
 app.include_router(creatures.router)
