@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from slugify import slugify
 
 
-engine = create_engine(os.environ["DATABASE_URL"], echo=True, future=True)
+engine = create_engine(os.environ["DATABASE_URL"], future=True)
 Session = sessionmaker(engine)
 
 

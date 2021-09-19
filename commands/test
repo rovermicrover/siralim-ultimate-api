@@ -1,1 +1,1 @@
-echo "TESTS COMING SOON!"
+docker-compose run --rm app python -c 'from app.tests import run; run()'

@@ -1,4 +1,5 @@
 import os
+import logging
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,6 +17,9 @@ from .routers import (
     traits,
     status_effects,
 )
+
+logging.basicConfig()
+logging.getLogger('sqlalchemy').setLevel(logging.INFO)
 
 app = FastAPI()
 
