@@ -60,9 +60,13 @@ $ commands/test
 
 ## TODO
 
-### Github
+### Github Actions
 
-* Github Actions
+* Tests
+
+* Lint
+
+* Docker
 
 ### Docker
 
@@ -96,11 +100,7 @@ $ commands/test
 
 ### Tests
 
-* Test of the rest of the routers
-
-* Run in github actions
-
-* Run lint check in github actions
+* More creature router tests
 
 ### Terraform
 
