@@ -1,9 +1,9 @@
 FROM python:3.9.7
 
-RUN pip install --upgrade pip
-
 RUN useradd --create-home --shell /bin/bash --no-log-init --system -u 999 api
 USER api
+
+RUN pip install --upgrade pip
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt

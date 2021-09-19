@@ -62,10 +62,6 @@ $ commands/test
 
 ### Github Actions
 
-* Tests
-
-* Lint
-
 * Docker
 
 ### Docker
