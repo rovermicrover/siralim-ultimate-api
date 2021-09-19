@@ -1,1 +1,1 @@
-black app
+docker-compose run --rm app python -m black app
