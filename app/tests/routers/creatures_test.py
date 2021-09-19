@@ -73,7 +73,7 @@ class CreaturesRouterTests(unittest.TestCase):
                             "field": "id",
                             "comparator": "<",
                             "value": 6,
-                        }
+                        },
                     ]
                 },
                 "sorting": {"by": "name", "direction": "desc"},

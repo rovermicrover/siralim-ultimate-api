@@ -7,5 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the stack
         run: ./commands/dev-bootstrap
+      - name: Lint Check
+        run: ./commands/lint-check
       - name: Test
         run: ./commands/test
