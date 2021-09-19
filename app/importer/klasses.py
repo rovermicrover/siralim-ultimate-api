@@ -7,6 +7,9 @@ from app.config import ROOT_DIR
 from app.orm.base import slug_default
 from app.orm.base import Session
 from app.orm.klass import KlassOrm
+from .icons import load_icon_to_base64
+
+KLASS_ICONS_PATH = os.path.join(ROOT_DIR, "data", "klass_icons")
 
 
 def klasses_importer():
@@ -15,8 +18,13 @@ def klasses_importer():
 
         with open(os.path.join(ROOT_DIR, "data", "klasses.csv")) as csvfile:
             for row in csv.DictReader(csvfile):
-                slug_default("name", row)
-                values.append(row)
+                value = row.copy()
+                slug_default("name", value)
+                icon = value.pop("icon")
+                icon_file = os.path.join(KLASS_ICONS_PATH, icon)
+                value["icon"] = load_icon_to_base64(icon_file)
+
+                values.append(value)
 
         stmt = insert(KlassOrm).values(values)
         stmt = stmt.on_conflict_do_update(
@@ -25,7 +33,7 @@ def klasses_importer():
                 "name": stmt.excluded.name,
                 "description": stmt.excluded.description,
                 "color": stmt.excluded.color,
-                "updated_at": text('now()'),
+                "updated_at": text("now()"),
             },
         )
         session.execute(stmt)

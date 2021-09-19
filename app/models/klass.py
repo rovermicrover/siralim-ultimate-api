@@ -11,7 +11,9 @@ class KlassModel(BaseModel, BaseModelOrm):
     name: str
     slug: str
     description: Optional[str] = None
+
     color: str
+    icon: str
 
     created_at: datetime
     updated_at: datetime

@@ -37,7 +37,7 @@ def traits_importer():
                 "description": stmt.excluded.description,
                 "material_name": stmt.excluded.material_name,
                 "tags": stmt.excluded.tags,
-                "updated_at": text('now()'),
+                "updated_at": text("now()"),
             },
         )
         session.execute(stmt)

@@ -20,6 +20,7 @@ class KlassOrm(BaseOrm):
     description = Column(Text())
 
     color = Column(String(10), nullable=False)
+    icon = Column(Text(), nullable=False)
 
     created_at = Column("created_at", TIMESTAMP, nullable=False)
     updated_at = Column("updated_at", TIMESTAMP, nullable=False)

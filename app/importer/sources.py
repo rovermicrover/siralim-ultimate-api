@@ -34,7 +34,7 @@ def sources_importer():
             set_={
                 "name": stmt.excluded.name,
                 "description": stmt.excluded.description,
-                "updated_at": text('now()'),
+                "updated_at": text("now()"),
             },
         )
         session.execute(stmt)

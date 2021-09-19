@@ -19,7 +19,7 @@ from .routers import (
 
 app = FastAPI()
 
-allow_origins = os.environ.get('ALLOW_ORIGINS', '').split(',')
+allow_origins = os.environ.get("ALLOW_ORIGINS", "").split(",")
 
 app.add_middleware(
     CORSMiddleware,

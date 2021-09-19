@@ -13,6 +13,7 @@ from app.orm.klass import KlassOrm
 from app.orm.race import RaceOrm
 from app.orm.source import SourceOrm
 from app.orm.trait import TraitOrm
+from .icons import load_icon_to_base64
 
 NEEDED_KEYS = [
     "name",
@@ -67,12 +68,9 @@ def creatures_importer():
                 battle_sprite_file = os.path.join(
                     BATTLE_SPRITES_PATH, battle_sprite
                 )
-                battle_sprite_base64 = base64.b64encode(
-                    open(battle_sprite_file, "rb").read()
-                ).decode("utf-8")
-                value[
-                    "battle_sprite"
-                ] = f"data:image/png;base64,{battle_sprite_base64}"
+                value["battle_sprite"] = load_icon_to_base64(
+                    battle_sprite_file
+                )
 
                 values.append(value)
 
@@ -92,7 +90,7 @@ def creatures_importer():
                 "race_id": stmt.excluded.race_id,
                 "trait_id": stmt.excluded.trait_id,
                 "source_ids": stmt.excluded.source_ids,
-                "updated_at": text('now()'),
+                "updated_at": text("now()"),
             },
         )
         session.execute(stmt)

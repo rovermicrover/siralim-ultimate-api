@@ -1,4 +1,3 @@
-from app.importer.traits import NEEDED_KEYS
 import os
 import csv
 import base64
@@ -9,6 +8,7 @@ from app.config import ROOT_DIR
 from app.orm.base import slug_default, to_slug
 from app.orm.base import Session
 from app.orm.status_effect import StatusEffectOrm
+from .icons import load_icon_to_base64
 
 NEEDED_KEYS = [
     "name",
@@ -41,10 +41,7 @@ def status_effects_importer():
 
                 icon = value.pop("icon")
                 icon_file = os.path.join(STATUS_ICONS_PATH, icon)
-                icon_base64 = base64.b64encode(
-                    open(icon_file, "rb").read()
-                ).decode("utf-8")
-                value["icon"] = f"data:image/png;base64,{icon_base64}"
+                value["icon"] = load_icon_to_base64(icon_file)
 
                 values.append(value)
 
@@ -59,7 +56,7 @@ def status_effects_importer():
                 "leave_chance": stmt.excluded.leave_chance,
                 "max_stacks": stmt.excluded.max_stacks,
                 "icon": stmt.excluded.icon,
-                "updated_at": text('now()'),
+                "updated_at": text("now()"),
             },
         )
         session.execute(stmt)

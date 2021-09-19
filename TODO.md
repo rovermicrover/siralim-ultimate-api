@@ -4,15 +4,19 @@
 
 # Data
 
-* Race & Class icons still need to be imported
+* Race Icons
 
-* More tags, Dodge & counter-attack for example
+* Spell Animations
 
-* Add Specializations and Perks
+* Creature Overworld Sprites Sprites
 
-* Skins
+* Creature Attack Animations
 
-* Wardrobe
+* Specializations and Perks, including Icons
+
+* Skins including Battle and Overworld Sprites
+
+* Wardrobe including Overworld Sprites
 
 * Spell Gem Properties
 

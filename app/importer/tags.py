@@ -40,7 +40,12 @@ def get_tag_regexes(session):
         "class": [re.compile(r"\bclass(es)?\b", re.IGNORECASE)],
         "resurrect": [re.compile(r"\bresurrect(ion)?(ed)?\b", re.IGNORECASE)],
         "heal": [re.compile(r"\bheal(ing)?(ed)?\b", re.IGNORECASE)],
-        "turns-taken": [re.compile(r"\\bfor each turn they've taken in the current battle\b", re.IGNORECASE)],
+        "turns-taken": [
+            re.compile(
+                r"\\bfor each turn they've taken in the current battle\b",
+                re.IGNORECASE,
+            )
+        ],
         "dodge": [re.compile(r"\bdodge(s)?(ed)?\b", re.IGNORECASE)],
         "critical": [re.compile(r"\bcritical\b", re.IGNORECASE)],
     }

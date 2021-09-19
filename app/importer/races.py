@@ -53,7 +53,7 @@ def races_importer():
                 "name": stmt.excluded.name,
                 "description": stmt.excluded.description,
                 "default_klass_id": stmt.excluded.default_klass_id,
-                "updated_at": text('now()'),
+                "updated_at": text("now()"),
             },
         )
         session.execute(stmt)

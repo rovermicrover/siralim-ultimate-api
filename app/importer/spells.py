@@ -50,7 +50,7 @@ def spells_importer():
                 "klass_id": stmt.excluded.klass_id,
                 "source_id": stmt.excluded.source_id,
                 "tags": stmt.excluded.tags,
-                "updated_at": text('now()'),
+                "updated_at": text("now()"),
             },
         )
         session.execute(stmt)
