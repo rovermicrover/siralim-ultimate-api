@@ -30,7 +30,19 @@ API End Points Swagger can be found at http://localhost:8000/docs
 
 ## How to Test
 
-### TESTS COMING SOON!
+### Requirements
+
+1. Bash
+
+2. Docker Compose
+
+### Walk Through To Get Test To Run
+
+Run
+
+```bash
+$ commands/test
+```
 
 ### Requirements
 
@@ -47,6 +59,10 @@ $ commands/test
 ```
 
 ## TODO
+
+### Docker
+
+* Build Docker Image With Github Actions
 
 ### Routers
 
@@ -76,7 +92,11 @@ $ commands/test
 
 ### Tests
 
-* Once in a stable place will write them, for now just destorying docker state and starting from scratch to test
+* Test of the rest of the routers
+
+* Run in github actions
+
+* Run lint check in github actions
 
 ### Terraform
 
