@@ -19,7 +19,7 @@ from .routers import (
 )
 
 logging.basicConfig()
-logging.getLogger('sqlalchemy').setLevel(logging.INFO)
+logging.getLogger("sqlalchemy").setLevel(logging.INFO)
 
 app = FastAPI()
 

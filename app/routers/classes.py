@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
@@ -21,6 +21,8 @@ router = APIRouter(
     tags=["classes"],
 )
 
+DEFAULT_PAGE_SIZE = 5
+
 SORTING_FILTER_FIELDS = [KlassOrm.id, KlassOrm.name]
 
 SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
@@ -31,9 +33,8 @@ class IndexSchema(BaseModel):
     pagination: PaginationSchema
     sorting: SortingSchema
 
-
-pagination_depend = has_pagination(default_size=5)
-sorting_depend = has_sorting(SortingSchema, "id")
+pagination_depend = has_pagination(default_size=DEFAULT_PAGE_SIZE)
+sorting_depend = has_sorting(SortingSchema)
 
 
 @router.get("/", response_model=IndexSchema)
@@ -66,8 +67,8 @@ class SearchSchema(BaseModel):
 
 class SearchRequest(BaseModel):
     filter: FilterSchema
-    pagination: PaginationSchema
-    sorting: SortingSchema
+    pagination: Optional[PaginationSchema] = PaginationSchema(size=DEFAULT_PAGE_SIZE)
+    sorting: Optional[SortingSchema] = SortingSchema()
 
 
 @router.post("/search", response_model=SearchSchema)

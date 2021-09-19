@@ -18,8 +18,8 @@ from app.orm.base import Session
 
 
 class PaginationSchema(BaseModel):
-    page: conint(ge=0)
-    size: conint(gt=0)
+    page: conint(ge=0) = 0
+    size: conint(gt=0) = 25
 
 
 class SortDirections(str, Enum):
@@ -60,10 +60,6 @@ class NumericFilterComparators(str, Enum):
 class StringFilterComparators(str, Enum):
     eq = "=="
     ne = "!="
-    gt = ">"
-    gte = ">="
-    lt = "<"
-    lte = "<="
     is_null = "is_null"
     is_not_null = "is_not_null"
     like = "like"
@@ -189,7 +185,8 @@ def get_field_name(
 
 
 def build_sorting_schema(
-    fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]]
+    fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]],
+    default_sort_by = "id"
 ):
     enum_name = f"{str(uuid4())}SortingEnum"
 
@@ -197,8 +194,8 @@ def build_sorting_schema(
     sort_field_enum = strs_to_enum(enum_name, field_names)
 
     class SortingSchema(BaseModel):
-        by: sort_field_enum
-        direction: SortDirections
+        by: sort_field_enum = default_sort_by
+        direction: SortDirections = SortDirections.asc
 
     SortingSchema.__name__ = f"{str(uuid4())}SortingSchema"
 
@@ -269,11 +266,11 @@ def has_pagination(default_size: Optional[int] = 25):
     return _has_pagination
 
 
-def has_sorting(sorting_schema: BaseModel, default_sort_by: str):
+def has_sorting(sorting_schema: BaseModel):
     def _has_sorting(
         sort_by: Optional[
             sorting_schema.__fields__["by"].type_
-        ] = default_sort_by,
+        ] = sorting_schema.__fields__["by"].default,
         sort_direction: Optional[SortDirections] = SortDirections.asc,
     ) -> sorting_schema:
         return sorting_schema(by=sort_by, direction=sort_direction)
