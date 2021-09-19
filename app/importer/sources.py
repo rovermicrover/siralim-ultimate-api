@@ -1,7 +1,7 @@
 import os
 import csv
 
-from sqlalchemy import select
+from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
 from app.orm.base import to_slug
@@ -34,6 +34,7 @@ def sources_importer():
             set_={
                 "name": stmt.excluded.name,
                 "description": stmt.excluded.description,
+                "updated_at": text('now()'),
             },
         )
         session.execute(stmt)

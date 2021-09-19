@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from typing import List, Optional
 from pydantic import BaseModel
 
@@ -12,6 +14,9 @@ class TraitModel(BaseModel, BaseModelOrm):
     material_name: Optional[str] = None
 
     tags: List[str]
+
+    created_at: datetime
+    updated_at: datetime
 
     class Config:
         orm_mode = True

@@ -3,7 +3,7 @@ import os
 import csv
 import base64
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
 from app.orm.base import slug_default, to_slug
@@ -92,6 +92,7 @@ def creatures_importer():
                 "race_id": stmt.excluded.race_id,
                 "trait_id": stmt.excluded.trait_id,
                 "source_ids": stmt.excluded.source_ids,
+                "updated_at": text('now()'),
             },
         )
         session.execute(stmt)

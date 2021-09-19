@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, ForeignKey
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, TIMESTAMP
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
@@ -38,3 +38,6 @@ class SpellOrm(BaseOrm):
     source_name = association_proxy("source", "name")
 
     tags = Column(postgresql.ARRAY(Text))
+
+    created_at = Column("created_at", TIMESTAMP, nullable=False)
+    updated_at = Column("updated_at", TIMESTAMP, nullable=False)

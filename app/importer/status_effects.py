@@ -3,7 +3,7 @@ import os
 import csv
 import base64
 
-from sqlalchemy import select
+from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
 from app.orm.base import slug_default, to_slug
@@ -59,6 +59,7 @@ def status_effects_importer():
                 "leave_chance": stmt.excluded.leave_chance,
                 "max_stacks": stmt.excluded.max_stacks,
                 "icon": stmt.excluded.icon,
+                "updated_at": text('now()'),
             },
         )
         session.execute(stmt)

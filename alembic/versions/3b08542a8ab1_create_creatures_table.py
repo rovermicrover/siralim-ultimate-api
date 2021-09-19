@@ -33,6 +33,8 @@ def upgrade():
         sa.Column('defense', sa.Integer, nullable=False),
         sa.Column('speed', sa.Integer, nullable=False),
         sa.Column('source_ids', sa.ARRAY(sa.Integer), nullable=False),
+        sa.Column('created_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
+        sa.Column('updated_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
     )
 
 

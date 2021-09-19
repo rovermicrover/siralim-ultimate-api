@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from typing import Optional
 from pydantic import BaseModel
 
@@ -11,6 +13,9 @@ class RaceModel(BaseModel, BaseModelOrm):
     slug: str
     description: Optional[str] = None
     default_klass: KlassModel
+
+    created_at: datetime
+    updated_at: datetime
 
     class Config:
         orm_mode = True

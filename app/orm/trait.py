@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, Integer, String, Text, TIMESTAMP
 from sqlalchemy.dialects import postgresql
 
 from .base import BaseOrm, build_slug_defaulter
@@ -23,3 +23,6 @@ class TraitOrm(BaseOrm):
     material_name = Column(String(50))
 
     tags = Column(postgresql.ARRAY(Text))
+
+    created_at = Column("created_at", TIMESTAMP, nullable=False)
+    updated_at = Column("updated_at", TIMESTAMP, nullable=False)

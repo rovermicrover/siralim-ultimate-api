@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Enum
+from sqlalchemy import Column, Integer, String, Text, Enum, TIMESTAMP
 
 from .base import BaseOrm, build_slug_defaulter
 from app.common.status_effect import StatusEffectCategoriesEnum
@@ -27,3 +27,6 @@ class StatusEffectOrm(BaseOrm):
     turns = Column("turns")
     leave_chance = Column("leave_chance", Integer)
     max_stacks = Column("max_stacks", Integer, nullable=False)
+
+    created_at = Column("created_at", TIMESTAMP, nullable=False)
+    updated_at = Column("updated_at", TIMESTAMP, nullable=False)

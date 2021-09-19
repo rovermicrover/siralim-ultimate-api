@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, Integer, String, Text, TIMESTAMP
 from sqlalchemy.orm import relationship
 
 from .base import BaseOrm, build_slug_defaulter
@@ -22,3 +22,6 @@ class SourceOrm(BaseOrm):
 
     creatures = relationship("CreatureOrm", back_populates="sources")
     spells = relationship("SpellOrm", back_populates="source")
+
+    created_at = Column("created_at", TIMESTAMP, nullable=False)
+    updated_at = Column("updated_at", TIMESTAMP, nullable=False)

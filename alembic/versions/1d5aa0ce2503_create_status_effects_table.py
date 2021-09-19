@@ -30,6 +30,8 @@ def upgrade():
         sa.Column('turns', sa.Integer),
         sa.Column('leave_chance', sa.Integer),
         sa.Column('max_stacks', sa.Integer, nullable=False),
+        sa.Column('created_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
+        sa.Column('updated_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
     )
 
 

@@ -2,7 +2,7 @@ import os
 import csv
 from collections import Counter
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
 from app.orm.base import slug_default, to_slug
@@ -50,6 +50,7 @@ def spells_importer():
                 "klass_id": stmt.excluded.klass_id,
                 "source_id": stmt.excluded.source_id,
                 "tags": stmt.excluded.tags,
+                "updated_at": text('now()'),
             },
         )
         session.execute(stmt)

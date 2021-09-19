@@ -1,10 +1,6 @@
 # Routers
 
-* Search/Filter
-
 * Cache headers
-
-* CORS headers
 
 * Content Policy
 

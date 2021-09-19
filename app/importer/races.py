@@ -2,7 +2,7 @@ import os
 import csv
 from collections import Counter
 
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
 from app.orm.base import to_slug
@@ -53,6 +53,7 @@ def races_importer():
                 "name": stmt.excluded.name,
                 "description": stmt.excluded.description,
                 "default_klass_id": stmt.excluded.default_klass_id,
+                "updated_at": text('now()'),
             },
         )
         session.execute(stmt)

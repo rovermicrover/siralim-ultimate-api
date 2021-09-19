@@ -24,6 +24,8 @@ def upgrade():
         sa.Column('slug', sa.String(50), nullable=False, unique=True),
         sa.Column('description', sa.Text()),
         sa.Column('color', sa.String(10), nullable=False),
+        sa.Column('created_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
+        sa.Column('updated_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
     )
 
 

@@ -1,7 +1,7 @@
 import os
 import csv
 
-from collections import Counter
+from sqlalchemy import text
 from sqlalchemy.dialects.postgresql import insert
 from app.config import ROOT_DIR
 from app.orm.base import slug_default
@@ -37,6 +37,7 @@ def traits_importer():
                 "description": stmt.excluded.description,
                 "material_name": stmt.excluded.material_name,
                 "tags": stmt.excluded.tags,
+                "updated_at": text('now()'),
             },
         )
         session.execute(stmt)

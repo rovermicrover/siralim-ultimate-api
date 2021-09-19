@@ -28,6 +28,8 @@ def upgrade():
         sa.Column('klass_id', sa.Integer, nullable=False),
         sa.Column('source_id', sa.Integer, nullable=False),
         sa.Column('tags', postgresql.ARRAY(sa.Text()), nullable=False),
+        sa.Column('created_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
+        sa.Column('updated_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
     )
 
 

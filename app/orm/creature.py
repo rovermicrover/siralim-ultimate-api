@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Text
+from sqlalchemy import Column, Integer, String, ForeignKey, Text, TIMESTAMP
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
 
@@ -47,3 +47,6 @@ class CreatureOrm(BaseOrm):
     race_name = association_proxy("race", "name")
     trait_name = association_proxy("trait", "name")
     trait_tags = association_proxy("trait", "tags")
+
+    created_at = Column("created_at", TIMESTAMP, nullable=False)
+    updated_at = Column("updated_at", TIMESTAMP, nullable=False)

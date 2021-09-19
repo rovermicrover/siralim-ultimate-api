@@ -26,6 +26,8 @@ def upgrade():
         sa.Column('material_name', sa.String(50)),
         sa.Column('description', sa.Text()),
         sa.Column('tags', postgresql.ARRAY(sa.Text()), nullable=False),
+        sa.Column('created_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
+        sa.Column('updated_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('now()')),
     )
 
 
