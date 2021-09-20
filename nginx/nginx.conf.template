@@ -1,0 +1,41 @@
+events {
+  worker_connections 768;
+}
+
+http {
+  # Nginx will handle gzip compression of responses from the app server
+  gzip on;
+  gzip_proxied any;
+  gzip_types text/plain application/json;
+  gzip_min_length 1000;
+  client_body_timeout 5;
+
+  proxy_ssl_server_name on;
+  # resolver needs to be set because we're using dynamic proxy_pass
+  resolver 8.8.8.8;
+
+  server{
+    listen 8080;
+    location /stub_status {
+        stub_status   on;
+    }
+  }
+
+  upstream api {
+    server $API_URL;
+  }
+
+  server {
+    listen $PORT;
+
+    # Nginx will reject anything not matching /api
+    location /api/ {
+      proxy_pass $PROTOCOL://api;
+      proxy_set_header X-FORWARDED-HOST $host;
+      proxy_set_header X-REAL-IP $remote_addr;
+      proxy_set_header Host $API_HOST;
+
+      rewrite /api(.*) $1 break;
+    }
+  }
+}

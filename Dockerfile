@@ -1,10 +1,5 @@
 FROM python:3.9.7
 
-RUN useradd --create-home --shell /bin/bash --no-log-init --system -u 999 api
-USER api
-
-ENV PATH="/home/api/.local/bin:${PATH}"
-
 RUN pip install --upgrade pip
 
 COPY requirements.txt ./
@@ -12,10 +7,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /code/
 
-COPY --chown=api:api ./app ./app
-COPY --chown=api:api ./alembic ./alembic
-COPY --chown=api:api ./alembic.ini ./
+COPY ./app ./app
+COPY ./alembic ./alembic
+COPY ./alembic.ini ./
 
 EXPOSE 8000
 
-CMD python -m uvicorn --host 0.0.0.0 --port $PORT --reload app.main:app --root-path /api
+RUN useradd --shell /bin/sh --no-log-init --system -u 999 api
+USER api
+CMD uvicorn --host 0.0.0.0 --port $PORT --reload app.main:app

@@ -1,4 +1,5 @@
 import os
+import re
 
 from logging.config import fileConfig
 
@@ -26,6 +27,7 @@ target_metadata = None
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
+PG_REGEX = re.compile(r'^postgres:')
 
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
@@ -39,8 +41,7 @@ def run_migrations_offline():
     script output.
 
     """
-    print('FOOBAR')
-    url = os.environ['DATABASE_URL']
+    url = re.sub(PG_REGEX, 'postgresql:', os.environ['DATABASE_URL'])
     print(url)
     context.configure(
         url=url,

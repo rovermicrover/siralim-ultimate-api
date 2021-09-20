@@ -18,6 +18,11 @@ services:
 
   nginx:
     build: ./nginx
+    environment:
+      - API_URL=app:8000
+      - API_HOST=app:8000
+      - PORT=80
+      - PROTOCOL=http
     ports:
       - "80:80"
     networks:

@@ -1,11 +1,14 @@
 import os
+import re
 
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import create_engine
 from slugify import slugify
 
+PG_REGEX = re.compile(r'^postgres:')
+DB_URL =  re.sub(PG_REGEX, 'postgresql:', os.environ["DATABASE_URL"])
 
-engine = create_engine(os.environ["DATABASE_URL"], future=True)
+engine = create_engine(DB_URL, future=True)
 Session = sessionmaker(engine)
 
 
