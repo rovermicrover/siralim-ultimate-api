@@ -30,38 +30,38 @@ jobs:
           username: ${{ secrets.AWS_ECR_ACCESS_KEY_ID }}
           password: ${{ secrets.AWS_ECR_SECRET_ACCESS_KEY }}
 
-      - name: Build, tag, and push the image to Amazon ECR
+      - name: Build, tag, and push the images to Amazon ECR
         id: build-image
         env:
           ECR_REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
         run: |
           # Build a docker container and push it to ECR 
+          NGINX_ECR_REPOSITORY=${ECR_REPOSITORY}-nginx
+          LATEST_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-latest
+          GIT_SHA_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-${GITHUB_SHA}
+          docker build -t $NGINX_ECR_REPOSITORY ./nginx
+
+          echo "Pushing NGINX ${GIT_SHA_NGINX_TAG}"
+          docker tag $NGINX_ECR_REPOSITORY:latest $GIT_SHA_NGINX_TAG
+          docker push $GIT_SHA_NGINX_TAG
+
+          echo "Pushing NGINX ${LATEST_NGINX_TAG}"
+          docker tag $NGINX_ECR_REPOSITORY:latest $LATEST_NGINX_TAG
+          docker push $LATEST_NGINX_TAG
+
           GIT_BRANCH=${GITHUB_REF##*/}
           LATEST_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-latest
           GIT_SHA_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-${GITHUB_SHA}
 
           echo "Building ${GIT_SHA_TAG}"
           docker build -t $ECR_REPOSITORY .
-          
-          echo "Pushing ${LATEST_TAG}"
-          docker tag $ECR_REPOSITORY:latest $LATEST_TAG
-          docker push $LATEST_TAG
 
           echo "Pushing ${GIT_SHA_TAG}"
           docker tag $ECR_REPOSITORY:latest $GIT_SHA_TAG
           docker push $GIT_SHA_TAG
-
-          NGINX_ECR_REPOSITORY=${ECR_REPOSITORY}-nginx
-          LATEST_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-latest
-          GIT_SHA_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-${GITHUB_SHA}
-          docker build -t $NGINX_ECR_REPOSITORY ./nginx
-
-          echo "Pushing NGINX ${LATEST_NGINX_TAG}"
-          docker tag $NGINX_ECR_REPOSITORY:latest $LATEST_NGINX_TAG
-          docker push $LATEST_NGINX_TAG
-
-          echo "Pushing NGINX ${GIT_SHA_NGINX_TAG}"
-          docker tag $NGINX_ECR_REPOSITORY:latest $GIT_SHA_NGINX_TAG
-          docker push $GIT_SHA_NGINX_TAG
+          
+          echo "Pushing ${LATEST_TAG}"
+          docker tag $ECR_REPOSITORY:latest $LATEST_TAG
+          docker push $LATEST_TAG
             
