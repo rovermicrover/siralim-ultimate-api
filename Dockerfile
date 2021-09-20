@@ -18,4 +18,4 @@ COPY --chown=api:api ./alembic.ini ./
 
 EXPOSE 8000
 
-CMD ["uvicorn", "--host", "0.0.0.0", "--reload", "app.main:app" ]
+CMD ["uvicorn", "--host", "0.0.0.0", "--reload", "app.main:app" , "--root-path", "/api"]

@@ -4,17 +4,23 @@ services:
 
   app:
     build: ./
-    ports:
-      - "8000:8000"
     environment:
       - DATABASE_URL=postgresql://postgres:F00B4RYY@postgres:5432
     volumes:
       - ./:/code
     networks:
+      - app
       - postgres
       - elasticsearch
       - memecached
       - redis
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - app
 
   postgres:
     image: postgres:12.8
@@ -74,6 +80,7 @@ volumes:
   postgres:
 
 networks:
+  app:
   elasticsearch:
   postgres:
   redis:

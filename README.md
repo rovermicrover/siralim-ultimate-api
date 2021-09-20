@@ -26,9 +26,9 @@ $ commands/dev-bootstrap
 
 All app files are synced via docker-compose so you can just start deving and changes will show up automatically 
 
-App can be accessed via http://localhost:8000/creatures/
+App can be accessed via http://localhost/api/creatures/
 
-API End Points Swagger can be found at http://localhost:8000/docs
+API End Points Swagger can be found at http://localhost/api/docs
 
 ## How to Test
 
