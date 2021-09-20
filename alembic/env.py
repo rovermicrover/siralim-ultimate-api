@@ -42,7 +42,6 @@ def run_migrations_offline():
 
     """
     url = re.sub(PG_REGEX, 'postgresql:', os.environ['DATABASE_URL'])
-    print(url)
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -61,7 +60,7 @@ def run_migrations_online():
     and associate a connection with the context.
 
     """
-    url = os.environ['DATABASE_URL']
+    url = re.sub(PG_REGEX, 'postgresql:', os.environ['DATABASE_URL'])
     connectable = create_engine(
         url,
         poolclass=pool.NullPool,
