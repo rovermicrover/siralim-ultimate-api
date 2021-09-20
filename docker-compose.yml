@@ -6,6 +6,7 @@ services:
     build: ./
     environment:
       - DATABASE_URL=postgresql://postgres:F00B4RYY@postgres:5432/siralim_ultimate_api
+      - PORT=8000
     volumes:
       - ./:/code
     networks:
