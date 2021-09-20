@@ -7,6 +7,7 @@ This project is a JSON API for Game data from [Siralim Ultimate](https://store.s
 It is written in [Python](https://www.python.org/) using [FastAPI](https://fastapi.tiangolo.com/).
 
 [Live Swagger Doc](https://siralim-ultimate.rovermicrover.com/api/docs)
+
 [Live Redoc](https://siralim-ultimate.rovermicrover.com/api/redoc)
 
 ## How To Dev
