@@ -12,7 +12,9 @@ It is written in Python using FastAPI.
 
 1. Bash
 
-2. Docker Compose
+2. git
+
+3. Docker Compose
 
 ### Walk Through To Get Dev ENV Started
 
@@ -37,20 +39,6 @@ API End Points Swagger can be found at http://localhost:8000/docs
 2. Docker Compose
 
 ### Walk Through To Get Test To Run
-
-Run
-
-```bash
-$ commands/test
-```
-
-### Requirements
-
-1. Bash
-
-2. Docker Compose
-
-### Walk Through To Run Tests
 
 Run
 
@@ -100,4 +88,4 @@ $ commands/test
 
 ### Terraform
 
-Build Example Terraform to build infrastruture that can be commited with zero secrets.
+* Build Example Terraform to build infrastruture that can be commited with zero secrets.
