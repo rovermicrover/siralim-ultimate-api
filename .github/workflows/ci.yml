@@ -33,7 +33,7 @@ jobs:
       - name: PUBLIC, Build, tag, and push the images to Amazon ECR
         id: build-image
         env:
-          ECR_REGISTRY: public.ecr.aws
+          ECR_REGISTRY: public.ecr.aws/l9t9y2i2
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
         run: |
           # Build a docker container and push it to ECR 
