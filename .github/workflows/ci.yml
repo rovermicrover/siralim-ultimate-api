@@ -36,7 +36,8 @@ jobs:
           ECR_REGISTRY: public.ecr.aws/l9t9y2i2
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
         run: |
-          # Build a docker container and push it to ECR 
+          GIT_BRANCH=${GITHUB_REF##*/}
+
           NGINX_ECR_REPOSITORY=${ECR_REPOSITORY}-nginx
           LATEST_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-latest
           GIT_SHA_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-${GITHUB_SHA}
@@ -50,7 +51,6 @@ jobs:
           docker tag $NGINX_ECR_REPOSITORY:latest $LATEST_NGINX_TAG
           docker push $LATEST_NGINX_TAG
 
-          GIT_BRANCH=${GITHUB_REF##*/}
           LATEST_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-latest
           GIT_SHA_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-${GITHUB_SHA}
 
@@ -78,7 +78,8 @@ jobs:
           ECR_REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
         run: |
-          # Build a docker container and push it to ECR 
+          GIT_BRANCH=${GITHUB_REF##*/}
+          
           NGINX_ECR_REPOSITORY=${ECR_REPOSITORY}-nginx
           LATEST_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-latest
           GIT_SHA_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-${GITHUB_SHA}
