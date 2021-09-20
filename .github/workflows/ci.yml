@@ -26,7 +26,7 @@ jobs:
       - name: Login to ECR
         uses: docker/login-action@v1
         with:
-          registry: ${{ secrets.AWS_ECR_REGISTRY }}
+          registry: public.ecr.aws
           username: ${{ secrets.AWS_ECR_ACCESS_KEY_ID }}
           password: ${{ secrets.AWS_ECR_SECRET_ACCESS_KEY }}
 
