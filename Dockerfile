@@ -18,4 +18,4 @@ COPY --chown=api:api ./alembic.ini ./
 
 EXPOSE 8000
 
-CMD uvicorn --host 0.0.0.0 --port $PORT --reload app.main:app --root-path /api
+CMD python -m uvicorn --host 0.0.0.0 --port $PORT --reload app.main:app --root-path /api
