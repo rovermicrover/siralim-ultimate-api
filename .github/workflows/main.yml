@@ -30,11 +30,13 @@ jobs:
       - name: Build and push nginx
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push --app ${{ secrets.HEROKU_NGINX_NAME }} --context-path ./nginx web 
+        working-directory: ./nginx
+        run: heroku container:push --app ${{ secrets.HEROKU_NGINX_NAME }} web
       - name: Release nginx
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release --app ${{ secrets.HEROKU_NGINX_NAME }} --context-path ./nginx web
+        working-directory: ./nginx
+        run: heroku container:release --app ${{ secrets.HEROKU_NGINX_NAME }} web
       - name: Release app
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
