@@ -53,8 +53,8 @@ jobs:
           docker push $GIT_SHA_TAG
 
           NGINX_ECR_REPOSITORY=${ECR_REPOSITORY}-nginx
-          LATEST_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx--latest
-          GIT_SHA_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx--${GITHUB_SHA}
+          LATEST_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-latest
+          GIT_SHA_NGINX_TAG=${ECR_REGISTRY}/${ECR_REPOSITORY}:${GIT_BRANCH}-nginx-${GITHUB_SHA}
           docker build -t $NGINX_ECR_REPOSITORY ./nginx
 
           echo "Pushing NGINX ${LATEST_NGINX_TAG}"
