@@ -73,7 +73,7 @@ jobs:
           password: ${{ secrets.AWS_ECR_SECRET_ACCESS_KEY }}
 
       - name: Private, Build, tag, and push the images to Amazon ECR
-        id: build-image
+        id: build-image-private
         env:
           ECR_REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
           ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
