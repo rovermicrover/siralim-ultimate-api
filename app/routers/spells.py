@@ -52,7 +52,7 @@ class IndexSchema(BaseModel):
 pagination_depend = has_pagination()
 sorting_depend = has_sorting(SortingSchema)
 
-
+@router.get("", response_model=IndexSchema, include_in_schema=False)
 @router.get("/", response_model=IndexSchema)
 def index(
     session=Depends(has_session),
