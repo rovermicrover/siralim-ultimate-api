@@ -17,6 +17,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: ./siralim-ultimate-api
+      - uses: actions/checkout@v2
+        with:
+          path: ./siralim-ultimate-nginx
       - name: Current path
         run: ls
       - name: Build the stack
