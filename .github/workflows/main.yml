@@ -7,12 +7,18 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Current path
+        run: pwd
       - uses: actions/checkout@v2
         with:
           repository: 'rovermicrover/siralim-ultimate-dev'
+      - name: Current path
+        run: pwd
       - uses: actions/checkout@v2
         with:
           path: ./siralim-ultimate-api
+      - name: Current path
+        run: pwd
       - name: Build the stack
         run: ./commands/dev-bootstrap
       - name: Lint Check
