@@ -9,9 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        repository: 'rovermicrover/siralim-ultimate-dev'
+      - uses: actions/checkout@v2
+        path: ./siralim-ultimate-api
       - name: Build the stack
         run: ./commands/dev-bootstrap
       - name: Lint Check
-        run: ./commands/lint-check
+        run: ./commands/app/lint-check
       - name: Test
-        run: ./commands/test
+        run: ./commands/app/test
