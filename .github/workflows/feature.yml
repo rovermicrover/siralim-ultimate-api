@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        repository: 'rovermicrover/siralim-ultimate-dev'
+        with:
+          repository: 'rovermicrover/siralim-ultimate-dev'
       - uses: actions/checkout@v2
         path: ./siralim-ultimate-api
       - name: Build the stack
