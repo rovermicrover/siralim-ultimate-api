@@ -12,29 +12,9 @@ It is written in [Python](https://www.python.org/) using [FastAPI](https://fasta
 
 ## How To Dev
 
-### Requirements
+See [rovermicrover/siralim-ultimate-dev](https://github.com/rovermicrover/siralim-ultimate-dev) which allows for easy deving via docker-compose all of parts of this projet.
 
-1. Bash
-
-2. git
-
-3. Docker Compose
-
-### Walk Through To Get Dev ENV Started
-
-Run
-
-```bash
-$ commands/dev-bootstrap
-```
-
-All app files are synced via docker-compose so you can just start deving and changes will show up automatically 
-
-[The app can then be accessed here](http://localhost/api/)
-
-[API End Points Swagger here](http://localhost/api/docs)
-
-[API End Points Redoc here](http://localhost/api/redoc)
+Also runs everything almost just like in production, even with NGINX, so no "It worked on my box" type issues.
 
 ## How to Test
 
