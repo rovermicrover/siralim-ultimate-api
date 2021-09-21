@@ -14,5 +14,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: ./siralim-ultimate-api
+      - uses: actions/checkout@v2
+        with:
+          repository: 'rovermicrover/siralim-ultimate-nginx'
+          path: ./siralim-ultimate-nginx
       - name: Build and run checks
         run: ./commands/api/ci
