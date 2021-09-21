@@ -1,1 +1,0 @@
-docker-compose run --rm app alembic upgrade head
