@@ -12,10 +12,7 @@ jobs:
         with:
           repository: 'rovermicrover/siralim-ultimate-dev'
       - uses: actions/checkout@v2
-        path: ./siralim-ultimate-api
-      - name: Build the stack
-        run: ./commands/dev-bootstrap
-      - name: Lint Check
-        run: ./commands/app/lint-check
-      - name: Test
-        run: ./commands/app/test
+        with:
+          path: ./siralim-ultimate-api
+      - name: Build and run checks
+        run: ./commands/api/ci

@@ -7,27 +7,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Current path
-        run: ls
       - uses: actions/checkout@v2
         with:
           repository: 'rovermicrover/siralim-ultimate-dev'
-      - name: Current path
-        run: ls
       - uses: actions/checkout@v2
         with:
           path: ./siralim-ultimate-api
-      - uses: actions/checkout@v2
-        with:
-          path: ./siralim-ultimate-nginx
-      - name: Current path
-        run: ls
-      - name: Build the stack
-        run: ./commands/dev-bootstrap
-      - name: Lint Check
-        run: ./commands/app/lint-check
-      - name: Test
-        run: ./commands/app/test
+      - name: Build and run checks
+        run: ./commands/api/ci
   heroku:
     needs: test
     runs-on: ubuntu-latest
