@@ -2,6 +2,7 @@ from typing import Dict, List, Optional
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
+from sqlalchemy import func
 from sqlalchemy.orm import contains_eager
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
@@ -10,7 +11,8 @@ from app.models.spell import SpellModel
 from app.orm.klass import KlassOrm
 from app.orm.source import SourceOrm
 from .helpers import (
-    PaginationSchema,
+    PaginationRequestSchema,
+    PaginationResponseSchema,
     build_sorting_schema,
     build_filtering_schema,
     select,
@@ -45,20 +47,24 @@ EAGER_LOAD_OPTIONS = [
 
 class IndexSchema(BaseModel):
     data: List[SpellModel]
-    pagination: PaginationSchema
+    pagination: PaginationRequestSchema
     sorting: SortingSchema
 
 
 pagination_depend = has_pagination()
 sorting_depend = has_sorting(SortingSchema)
 
+
 @router.get("", response_model=IndexSchema, include_in_schema=False)
 @router.get("/", response_model=IndexSchema)
 def index(
     session=Depends(has_session),
-    pagination: PaginationSchema = Depends(pagination_depend),
+    pagination: PaginationRequestSchema = Depends(pagination_depend),
     sorting: SortingSchema = Depends(sorting_depend),
 ):
+    spells_count = select(func.count(SpellOrm.id.distinct())).get_scalar(
+        session
+    )
     spells_orm = (
         select(SpellOrm)
         .join(KlassOrm)
@@ -70,7 +76,11 @@ def index(
     )
     spells_model = SpellModel.from_orm_list(spells_orm)
     return IndexSchema(
-        data=spells_model, pagination=pagination, sorting=sorting
+        data=spells_model,
+        pagination=PaginationResponseSchema.from_request(
+            pagination, spells_count
+        ),
+        sorting=sorting,
     )
 
 
@@ -80,21 +90,31 @@ FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
 class SearchSchema(BaseModel):
     data: List[SpellModel]
     filter: FilterSchema
-    pagination: PaginationSchema
+    pagination: PaginationRequestSchema
     sorting: SortingSchema
 
 
 class SearchRequest(BaseModel):
     filter: FilterSchema
-    pagination: Optional[PaginationSchema] = PaginationSchema()
+    pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
     sorting: Optional[SortingSchema] = SortingSchema()
 
 
 @router.post("/search", response_model=SearchSchema)
 def search(search: SearchRequest, session=Depends(has_session)):
+    spells_count = (
+        select(func.count(SpellOrm.id.distinct()))
+        .filters(search.filter.filters)
+        .join(KlassOrm)
+        .join(SourceOrm)
+        .get_scalar(session)
+    )
     spells_orm = (
         select(SpellOrm)
         .filters(search.filter.filters)
+        .join(KlassOrm)
+        .join(SourceOrm)
+        .options(*EAGER_LOAD_OPTIONS)
         .pagination(search.pagination)
         .sorting(search.sorting)
         .get_scalars(session)
@@ -103,7 +123,9 @@ def search(search: SearchRequest, session=Depends(has_session)):
     return SearchSchema(
         data=spells_model,
         filter=search.filter,
-        pagination=search.pagination,
+        pagination=PaginationResponseSchema.from_request(
+            search.pagination, spells_count
+        ),
         sorting=search.sorting,
     )
 

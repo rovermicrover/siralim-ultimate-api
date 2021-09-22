@@ -14,12 +14,22 @@ from sqlalchemy.dialects import postgresql
 from sqlalchemy.ext.associationproxy import ColumnAssociationProxyInstance
 
 from app import orm as OrmMap
-from app.orm.base import Session
+from app.orm.base import Session, BaseOrm
 
 
-class PaginationSchema(BaseModel):
+class PaginationRequestSchema(BaseModel):
     page: conint(ge=0) = 0
     size: conint(gt=0) = 25
+
+
+class PaginationResponseSchema(BaseModel):
+    page: conint(ge=0) = 0
+    size: conint(gt=0) = 25
+    count: conint(ge=0) = 0
+
+    @classmethod
+    def from_request(cls, pagination: PaginationRequestSchema, count: int):
+        return cls(page=pagination.page, size=pagination.size, count=count)
 
 
 class SortDirections(str, Enum):
@@ -216,7 +226,7 @@ class CustomSelect(Select):
             order_by = order_by.desc()
         return self.order_by(order_by)
 
-    def pagination(self, pagination: PaginationSchema):
+    def pagination(self, pagination: PaginationRequestSchema):
         return self.limit(pagination.size).offset(
             pagination.page * pagination.size
         )
@@ -258,8 +268,8 @@ def has_session():
 def has_pagination(default_size: Optional[int] = 25):
     def _has_pagination(
         page: Optional[int] = 0, size: Optional[int] = default_size
-    ) -> PaginationSchema:
-        return PaginationSchema(page=page, size=size)
+    ) -> PaginationRequestSchema:
+        return PaginationRequestSchema(page=page, size=size)
 
     return _has_pagination
 

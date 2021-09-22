@@ -2,7 +2,7 @@ import os
 import re
 
 from sqlalchemy.orm import declarative_base, sessionmaker
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Column, Integer
 from slugify import slugify
 
 PG_REGEX = re.compile(r"^postgres:")

@@ -3,14 +3,15 @@ from typing import List, Dict, Optional
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
-from sqlalchemy.orm import contains_eager, aliased
-from sqlalchemy.orm.attributes import InstrumentedAttribute
+from sqlalchemy import func
+from sqlalchemy.orm import contains_eager
 
 from app.orm.race import RaceOrm
 from app.orm.klass import KlassOrm
 from app.models.race import RaceModel
 from .helpers import (
-    PaginationSchema,
+    PaginationRequestSchema,
+    PaginationResponseSchema,
     build_sorting_schema,
     build_filtering_schema,
     select,
@@ -38,7 +39,7 @@ EAGER_LOAD_OPTIONS = [contains_eager(RaceOrm.default_klass)]
 
 class IndexSchema(BaseModel):
     data: List[RaceModel]
-    pagination: PaginationSchema
+    pagination: PaginationRequestSchema
     sorting: SortingSchema
 
 
@@ -50,9 +51,10 @@ sorting_depend = has_sorting(SortingSchema)
 @router.get("/", response_model=IndexSchema)
 def index(
     session=Depends(has_session),
-    pagination: PaginationSchema = Depends(pagination_depend),
+    pagination: PaginationRequestSchema = Depends(pagination_depend),
     sorting: SortingSchema = Depends(sorting_depend),
 ):
+    races_count = select(func.count(RaceOrm.id.distinct())).get_scalar(session)
     races_orm = (
         select(RaceOrm)
         .join(KlassOrm)
@@ -63,7 +65,9 @@ def index(
     )
     races_model = RaceModel.from_orm_list(races_orm)
     return IndexSchema(
-        data=races_model, pagination=pagination, sorting=sorting
+        data=races_model,
+        pagination=PaginationResponseSchema.from_request(pagination, races_count),
+        sorting=sorting,
     )
 
 
@@ -73,21 +77,29 @@ FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
 class SearchSchema(BaseModel):
     data: List[RaceModel]
     filter: FilterSchema
-    pagination: PaginationSchema
+    pagination: PaginationRequestSchema
     sorting: SortingSchema
 
 
 class SearchRequest(BaseModel):
     filter: FilterSchema
-    pagination: Optional[PaginationSchema] = PaginationSchema()
+    pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
     sorting: Optional[SortingSchema] = SortingSchema()
 
 
 @router.post("/search", response_model=SearchSchema)
 def search(search: SearchRequest, session=Depends(has_session)):
+    races_count = (
+        select(func.count(RaceOrm.id.distinct()))
+        .filters(search.filter.filters)
+        .join(KlassOrm)
+        .get_scalar(session)
+    )
     races_orm = (
         select(RaceOrm)
         .filters(search.filter.filters)
+        .join(KlassOrm)
+        .options(*EAGER_LOAD_OPTIONS)
         .pagination(search.pagination)
         .sorting(search.sorting)
         .get_scalars(session)
@@ -96,7 +108,9 @@ def search(search: SearchRequest, session=Depends(has_session)):
     return SearchSchema(
         data=races_model,
         filter=search.filter,
-        pagination=search.pagination,
+        pagination=PaginationResponseSchema.from_request(
+            search.pagination, races_count
+        ),
         sorting=search.sorting,
     )
 
