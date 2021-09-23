@@ -31,7 +31,7 @@ SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
 
 class IndexSchema(BaseModel):
     data: List[KlassModel]
-    pagination: PaginationRequestSchema
+    pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
@@ -71,7 +71,7 @@ FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
 class SearchSchema(BaseModel):
     data: List[KlassModel]
     filter: FilterSchema
-    pagination: PaginationRequestSchema
+    pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 

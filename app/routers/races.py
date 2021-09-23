@@ -39,7 +39,7 @@ EAGER_LOAD_OPTIONS = [contains_eager(RaceOrm.default_klass)]
 
 class IndexSchema(BaseModel):
     data: List[RaceModel]
-    pagination: PaginationRequestSchema
+    pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
@@ -77,7 +77,7 @@ FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
 class SearchSchema(BaseModel):
     data: List[RaceModel]
     filter: FilterSchema
-    pagination: PaginationRequestSchema
+    pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 

@@ -47,7 +47,7 @@ EAGER_LOAD_OPTIONS = [
 
 class IndexSchema(BaseModel):
     data: List[SpellModel]
-    pagination: PaginationRequestSchema
+    pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
@@ -90,7 +90,7 @@ FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
 class SearchSchema(BaseModel):
     data: List[SpellModel]
     filter: FilterSchema
-    pagination: PaginationRequestSchema
+    pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
