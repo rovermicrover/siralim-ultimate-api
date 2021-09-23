@@ -101,7 +101,9 @@ def search(search: SearchRequest, session=Depends(has_session)):
     return SearchSchema(
         data=klasses_model,
         filter=search.filter,
-        pagination=PaginationResponseSchema.from_request(search.pagination, klasses_count),
+        pagination=PaginationResponseSchema.from_request(
+            search.pagination, klasses_count
+        ),
         sorting=search.sorting,
     )
 

@@ -66,7 +66,9 @@ def index(
     races_model = RaceModel.from_orm_list(races_orm)
     return IndexSchema(
         data=races_model,
-        pagination=PaginationResponseSchema.from_request(pagination, races_count),
+        pagination=PaginationResponseSchema.from_request(
+            pagination, races_count
+        ),
         sorting=sorting,
     )
 
