@@ -1,4 +1,3 @@
-from app.routers.classes import SortingSchema
 from typing import List, Dict, Optional
 
 from fastapi import APIRouter, Depends
@@ -88,7 +87,7 @@ class RacesSearchSchema(BaseModel):
 class RacesSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
-    sorting: Optional[SortingSchema] = SortingSchema()
+    sorting: Optional[SortingRequestSchema] = SortingRequestSchema()
 
 
 @router.post("/search", response_model=RacesSearchSchema)
