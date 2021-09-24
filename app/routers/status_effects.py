@@ -31,10 +31,10 @@ SORTING_FILTER_FIELDS = [
     StatusEffectOrm.max_stacks,
 ]
 
-SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
+SortingSchema = build_sorting_schema("StatusEffet", SORTING_FILTER_FIELDS)
 
 
-class IndexSchema(BaseModel):
+class StatusEffectsIndexSchema(BaseModel):
     data: List[StatusEffectModel]
     pagination: PaginationResponseSchema
     sorting: SortingSchema
@@ -44,8 +44,10 @@ pagination_depend = has_pagination()
 sorting_depend = has_sorting(SortingSchema)
 
 
-@router.get("", response_model=IndexSchema, include_in_schema=False)
-@router.get("/", response_model=IndexSchema)
+@router.get(
+    "", response_model=StatusEffectsIndexSchema, include_in_schema=False
+)
+@router.get("/", response_model=StatusEffectsIndexSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
@@ -61,7 +63,7 @@ def index(
         .get_scalars(session)
     )
     status_effects_model = StatusEffectModel.from_orm_list(status_effects_orm)
-    return IndexSchema(
+    return StatusEffectsIndexSchema(
         data=status_effects_model,
         pagination=PaginationResponseSchema.from_request(
             pagination, status_effects_count
@@ -70,24 +72,24 @@ def index(
     )
 
 
-FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+FilterSchema = build_filtering_schema("StatusEffect", SORTING_FILTER_FIELDS)
 
 
-class SearchSchema(BaseModel):
+class StatusEffectsSearchSchema(BaseModel):
     data: List[StatusEffectModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
-class SearchRequest(BaseModel):
+class StatusEffectsSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
     sorting: Optional[SortingSchema] = SortingSchema()
 
 
-@router.post("/search", response_model=SearchSchema)
-def search(search: SearchRequest, session=Depends(has_session)):
+@router.post("/search", response_model=StatusEffectsSearchSchema)
+def search(search: StatusEffectsSearchRequest, session=Depends(has_session)):
     status_effects_count = (
         select(func.count(StatusEffectOrm.id.distinct()))
         .filters(search.filter.filters)
@@ -101,7 +103,7 @@ def search(search: SearchRequest, session=Depends(has_session)):
         .get_scalars(session)
     )
     status_effects_model = StatusEffectModel.from_orm_list(status_effects_orm)
-    return SearchSchema(
+    return StatusEffectsSearchSchema(
         data=status_effects_model,
         filter=search.filter,
         pagination=PaginationResponseSchema.from_request(
@@ -111,11 +113,11 @@ def search(search: SearchRequest, session=Depends(has_session)):
     )
 
 
-class GetSchema(BaseModel):
+class StatusEffectsGetSchema(BaseModel):
     data: StatusEffectModel
 
 
-@router.get("/{status_effect_id}", response_model=GetSchema)
+@router.get("/{status_effect_id}", response_model=StatusEffectsGetSchema)
 def get(status_effect_id: str, session=Depends(has_session)):
     status_effect_orm = (
         select(StatusEffectOrm)
@@ -123,4 +125,4 @@ def get(status_effect_id: str, session=Depends(has_session)):
         .get_scalar(session)
     )
     status_effect_model = StatusEffectModel.from_orm(status_effect_orm)
-    return GetSchema(data=status_effect_model)
+    return StatusEffectsGetSchema(data=status_effect_model)

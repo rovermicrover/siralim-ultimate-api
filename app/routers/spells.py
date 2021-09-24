@@ -37,7 +37,7 @@ SORTING_FILTER_FIELDS = [
     SpellOrm.tags,
 ]
 
-SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
+SortingSchema = build_sorting_schema("Spell", SORTING_FILTER_FIELDS)
 
 EAGER_LOAD_OPTIONS = [
     contains_eager(SpellOrm.klass),
@@ -45,7 +45,7 @@ EAGER_LOAD_OPTIONS = [
 ]
 
 
-class IndexSchema(BaseModel):
+class SpellsIndexSchema(BaseModel):
     data: List[SpellModel]
     pagination: PaginationResponseSchema
     sorting: SortingSchema
@@ -55,8 +55,8 @@ pagination_depend = has_pagination()
 sorting_depend = has_sorting(SortingSchema)
 
 
-@router.get("", response_model=IndexSchema, include_in_schema=False)
-@router.get("/", response_model=IndexSchema)
+@router.get("", response_model=SpellsIndexSchema, include_in_schema=False)
+@router.get("/", response_model=SpellsIndexSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
@@ -75,7 +75,7 @@ def index(
         .get_scalars(session)
     )
     spells_model = SpellModel.from_orm_list(spells_orm)
-    return IndexSchema(
+    return SpellsIndexSchema(
         data=spells_model,
         pagination=PaginationResponseSchema.from_request(
             pagination, spells_count
@@ -84,24 +84,24 @@ def index(
     )
 
 
-FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+FilterSchema = build_filtering_schema("Spell", SORTING_FILTER_FIELDS)
 
 
-class SearchSchema(BaseModel):
+class SpellsSearchSchema(BaseModel):
     data: List[SpellModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
-class SearchRequest(BaseModel):
+class SpellsSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
     sorting: Optional[SortingSchema] = SortingSchema()
 
 
-@router.post("/search", response_model=SearchSchema)
-def search(search: SearchRequest, session=Depends(has_session)):
+@router.post("/search", response_model=SpellsSearchSchema)
+def search(search: SpellsSearchRequest, session=Depends(has_session)):
     spells_count = (
         select(func.count(SpellOrm.id.distinct()))
         .filters(search.filter.filters)
@@ -120,7 +120,7 @@ def search(search: SearchRequest, session=Depends(has_session)):
         .get_scalars(session)
     )
     spells_model = SpellModel.from_orm_list(spells_orm)
-    return SearchSchema(
+    return SpellsSearchSchema(
         data=spells_model,
         filter=search.filter,
         pagination=PaginationResponseSchema.from_request(
@@ -130,11 +130,11 @@ def search(search: SearchRequest, session=Depends(has_session)):
     )
 
 
-class GetSchema(BaseModel):
+class SpellsGetSchema(BaseModel):
     data: SpellModel
 
 
-@router.get("/{spell_id}", response_model=GetSchema)
+@router.get("/{spell_id}", response_model=SpellsGetSchema)
 def get(spell_id: str, session=Depends(has_session)):
     spell_orm = (
         select(SpellOrm)
@@ -145,4 +145,4 @@ def get(spell_id: str, session=Depends(has_session)):
         .get_scalar(session)
     )
     spell_model = SpellModel.from_orm(spell_orm)
-    return GetSchema(data=spell_model)
+    return SpellsGetSchema(data=spell_model)

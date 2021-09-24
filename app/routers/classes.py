@@ -26,10 +26,10 @@ DEFAULT_PAGE_SIZE = 5
 
 SORTING_FILTER_FIELDS = [KlassOrm.id, KlassOrm.name]
 
-SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
+SortingSchema = build_sorting_schema("Klass", SORTING_FILTER_FIELDS)
 
 
-class IndexSchema(BaseModel):
+class KlassesIndexSchema(BaseModel):
     data: List[KlassModel]
     pagination: PaginationResponseSchema
     sorting: SortingSchema
@@ -39,8 +39,8 @@ pagination_depend = has_pagination(default_size=DEFAULT_PAGE_SIZE)
 sorting_depend = has_sorting(SortingSchema)
 
 
-@router.get("", response_model=IndexSchema, include_in_schema=False)
-@router.get("/", response_model=IndexSchema)
+@router.get("", response_model=KlassesIndexSchema, include_in_schema=False)
+@router.get("/", response_model=KlassesIndexSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
@@ -56,7 +56,7 @@ def index(
         .get_scalars(session)
     )
     klasses_model = KlassModel.from_orm_list(klasses_orm)
-    return IndexSchema(
+    return KlassesIndexSchema(
         data=klasses_model,
         pagination=PaginationResponseSchema.from_request(
             pagination, klasses_count
@@ -65,17 +65,17 @@ def index(
     )
 
 
-FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+FilterSchema = build_filtering_schema("Klass", SORTING_FILTER_FIELDS)
 
 
-class SearchSchema(BaseModel):
+class KlassesSearchSchema(BaseModel):
     data: List[KlassModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
-class SearchRequest(BaseModel):
+class KlassesSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema(
         size=DEFAULT_PAGE_SIZE
@@ -83,8 +83,8 @@ class SearchRequest(BaseModel):
     sorting: Optional[SortingSchema] = SortingSchema()
 
 
-@router.post("/search", response_model=SearchSchema)
-def search(search: SearchRequest, session=Depends(has_session)):
+@router.post("/search", response_model=KlassesSearchSchema)
+def search(search: KlassesSearchRequest, session=Depends(has_session)):
     klasses_count = (
         select(func.count(KlassOrm.id.distinct()))
         .filters(search.filter.filters)
@@ -98,7 +98,7 @@ def search(search: SearchRequest, session=Depends(has_session)):
         .get_scalars(session)
     )
     klasses_model = KlassModel.from_orm_list(klasses_orm)
-    return SearchSchema(
+    return KlassesSearchSchema(
         data=klasses_model,
         filter=search.filter,
         pagination=PaginationResponseSchema.from_request(
@@ -108,11 +108,11 @@ def search(search: SearchRequest, session=Depends(has_session)):
     )
 
 
-class GetSchema(BaseModel):
+class KlassesGetSchema(BaseModel):
     data: KlassModel
 
 
-@router.get("/{klass_id}", response_model=GetSchema)
+@router.get("/{klass_id}", response_model=KlassesGetSchema)
 def get(klass_id: str, session=Depends(has_session)):
     klasses_orm = (
         select(KlassOrm)
@@ -120,4 +120,4 @@ def get(klass_id: str, session=Depends(has_session)):
         .get_scalar(session)
     )
     klasses_model = KlassModel.from_orm(klasses_orm)
-    return GetSchema(data=klasses_model)
+    return KlassesGetSchema(data=klasses_model)

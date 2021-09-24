@@ -29,10 +29,10 @@ SORTING_FILTER_FIELDS = [
     TraitOrm.tags,
 ]
 
-SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
+SortingSchema = build_sorting_schema("Trait", SORTING_FILTER_FIELDS)
 
 
-class IndexSchema(BaseModel):
+class TraitsIndexSchema(BaseModel):
     data: List[TraitModel]
     pagination: PaginationResponseSchema
     sorting: SortingSchema
@@ -42,8 +42,8 @@ pagination_depend = has_pagination()
 sorting_depend = has_sorting(SortingSchema)
 
 
-@router.get("", response_model=IndexSchema, include_in_schema=False)
-@router.get("/", response_model=IndexSchema)
+@router.get("", response_model=TraitsIndexSchema, include_in_schema=False)
+@router.get("/", response_model=TraitsIndexSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
@@ -59,7 +59,7 @@ def index(
         .get_scalars(session)
     )
     traits_model = TraitModel.from_orm_list(traits_orm)
-    return IndexSchema(
+    return TraitsIndexSchema(
         data=traits_model,
         pagination=PaginationResponseSchema.from_request(
             pagination, traits_count
@@ -68,24 +68,24 @@ def index(
     )
 
 
-FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+FilterSchema = build_filtering_schema("Trait", SORTING_FILTER_FIELDS)
 
 
-class SearchSchema(BaseModel):
+class TraitsSearchSchema(BaseModel):
     data: List[TraitModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
-class SearchRequest(BaseModel):
+class TraitsSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
     sorting: Optional[SortingSchema] = SortingSchema()
 
 
-@router.post("/search", response_model=SearchSchema)
-def search(search: SearchRequest, session=Depends(has_session)):
+@router.post("/search", response_model=TraitsSearchSchema)
+def search(search: TraitsSearchRequest, session=Depends(has_session)):
     traits_count = (
         select(func.count(TraitOrm.id.distinct()))
         .filters(search.filter.filters)
@@ -99,7 +99,7 @@ def search(search: SearchRequest, session=Depends(has_session)):
         .get_scalars(session)
     )
     traits_model = TraitModel.from_orm_list(traits_orm)
-    return SearchSchema(
+    return TraitsSearchSchema(
         data=traits_model,
         filter=search.filter,
         pagination=PaginationResponseSchema.from_request(
@@ -109,11 +109,11 @@ def search(search: SearchRequest, session=Depends(has_session)):
     )
 
 
-class GetSchema(BaseModel):
+class TraitsGetSchema(BaseModel):
     data: TraitModel
 
 
-@router.get("/{trait_id}", response_model=GetSchema)
+@router.get("/{trait_id}", response_model=TraitsGetSchema)
 def get(trait_id: str, session=Depends(has_session)):
     trait_orm = (
         select(TraitOrm)
@@ -121,4 +121,4 @@ def get(trait_id: str, session=Depends(has_session)):
         .get_scalar(session)
     )
     trait_model = TraitModel.from_orm(trait_orm)
-    return GetSchema(data=trait_model)
+    return TraitsGetSchema(data=trait_model)

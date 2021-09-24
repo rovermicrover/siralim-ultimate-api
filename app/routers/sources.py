@@ -28,10 +28,10 @@ SORTING_FILTER_FIELDS = [
     SourceOrm.name,
 ]
 
-SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
+SortingSchema = build_sorting_schema("Source", SORTING_FILTER_FIELDS)
 
 
-class IndexSchema(BaseModel):
+class SourcesIndexSchema(BaseModel):
     data: List[SourceModel]
     pagination: PaginationResponseSchema
     sorting: SortingSchema
@@ -41,8 +41,8 @@ pagination_depend = has_pagination()
 sorting_depend = has_sorting(SortingSchema)
 
 
-@router.get("", response_model=IndexSchema, include_in_schema=False)
-@router.get("/", response_model=IndexSchema)
+@router.get("", response_model=SourcesIndexSchema, include_in_schema=False)
+@router.get("/", response_model=SourcesIndexSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
@@ -58,7 +58,7 @@ def index(
         .get_scalars(session)
     )
     sources_model = SourceModel.from_orm_list(sources_orm)
-    return IndexSchema(
+    return SourcesIndexSchema(
         data=sources_model,
         pagination=PaginationResponseSchema.from_request(
             pagination, sources_count
@@ -67,24 +67,24 @@ def index(
     )
 
 
-FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+FilterSchema = build_filtering_schema("Source", SORTING_FILTER_FIELDS)
 
 
-class SearchSchema(BaseModel):
+class SourcesSearchSchema(BaseModel):
     data: List[SourceModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
-class SearchRequest(BaseModel):
+class SourcesSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
     sorting: Optional[SortingSchema] = SortingSchema()
 
 
-@router.post("/search", response_model=SearchSchema)
-def search(search: SearchRequest, session=Depends(has_session)):
+@router.post("/search", response_model=SourcesSearchSchema)
+def search(search: SourcesSearchRequest, session=Depends(has_session)):
     soures_count = (
         select(func.count(SourceOrm.id.distinct()))
         .filters(search.filter.filters)
@@ -98,7 +98,7 @@ def search(search: SearchRequest, session=Depends(has_session)):
         .get_scalars(session)
     )
     soures_model = SourceModel.from_orm_list(soures_orm)
-    return SearchSchema(
+    return SourcesSearchSchema(
         data=soures_model,
         filter=search.filter,
         pagination=PaginationResponseSchema.from_request(
@@ -108,11 +108,11 @@ def search(search: SearchRequest, session=Depends(has_session)):
     )
 
 
-class GetSchema(BaseModel):
+class SourcesGetSchema(BaseModel):
     data: SourceModel
 
 
-@router.get("/{source_id}", response_model=GetSchema)
+@router.get("/{source_id}", response_model=SourcesGetSchema)
 def get(source_id: str, session=Depends(has_session)):
     source_orm = (
         select(SourceOrm)
@@ -120,4 +120,4 @@ def get(source_id: str, session=Depends(has_session)):
         .get_scalar(session)
     )
     source_model = SourceModel.from_orm(source_orm)
-    return GetSchema(data=source_model)
+    return SourcesGetSchema(data=source_model)

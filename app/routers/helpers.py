@@ -90,7 +90,8 @@ def strs_to_enum(name, list: List[str]):
 
 
 def build_filtering_schema(
-    fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]]
+    name: str,
+    fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]],
 ):
     filters_by_type = {
         "int": [],
@@ -122,7 +123,7 @@ def build_filtering_schema(
 
     def fields_to_enum(acc, type_fields):
         type, fields = type_fields
-        enum_name = f"{str(uuid4())}{type}FilterEnum"
+        enum_name = f"{name}{type.title().replace('_','')}FilterEnum"
         acc[type] = strs_to_enum(enum_name, fields)
         return acc
 
@@ -137,7 +138,7 @@ def build_filtering_schema(
             comparator: NumericFilterComparators
             value: Union[int, float, None]
 
-        IntFilterSchema.__name__ = f"{str(uuid4())}IntFilterSchema"
+        IntFilterSchema.__name__ = f"{name}IntFilterSchema"
 
         filter_schemas.append(IntFilterSchema)
 
@@ -148,7 +149,7 @@ def build_filtering_schema(
             comparator: StringFilterComparators
             value: Union[str, None]
 
-        StrFilterSchema.__name__ = f"{str(uuid4())}StrFilterSchema"
+        StrFilterSchema.__name__ = f"{name}StrFilterSchema"
 
         filter_schemas.append(StrFilterSchema)
 
@@ -159,7 +160,7 @@ def build_filtering_schema(
             comparator: ArrayFilterComparators
             value: Union[List[str], List[int], None]
 
-        ArrayStrFilterSchema.__name__ = f"{str(uuid4())}ArrayStrFilterSchema"
+        ArrayStrFilterSchema.__name__ = f"{name}ArrayStrFilterSchema"
 
         filter_schemas.append(ArrayStrFilterSchema)
 
@@ -170,14 +171,14 @@ def build_filtering_schema(
             comparator: ArrayFilterComparators
             value: Union[List[str], List[int], None]
 
-        ArrayIntFilterSchema.__name__ = f"{str(uuid4())}ArrayIntFilterSchema"
+        ArrayIntFilterSchema.__name__ = f"{name}ArrayIntFilterSchema"
 
         filter_schemas.append(ArrayIntFilterSchema)
 
     class FiltersSchema(BaseModel):
         filters: List[Union[tuple(filter_schemas)]]
 
-    FiltersSchema.__name__ = f"{str(uuid4())}FiltersSchema"
+    FiltersSchema.__name__ = f"{name}FiltersSchema"
 
     return FiltersSchema
 
@@ -193,10 +194,11 @@ def get_field_name(
 
 
 def build_sorting_schema(
+    name: str,
     fields: List[Union[InstrumentedAttribute, ColumnAssociationProxyInstance]],
     default_sort_by="id",
 ):
-    enum_name = f"{str(uuid4())}SortingEnum"
+    enum_name = f"{name}SortingEnum"
 
     field_names = map(get_field_name, fields)
     sort_field_enum = strs_to_enum(enum_name, field_names)
@@ -205,7 +207,7 @@ def build_sorting_schema(
         by: sort_field_enum = default_sort_by
         direction: SortDirections = SortDirections.asc
 
-    SortingSchema.__name__ = f"{str(uuid4())}SortingSchema"
+    SortingSchema.__name__ = f"{name}SortingSchema"
 
     return SortingSchema
 

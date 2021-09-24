@@ -32,12 +32,12 @@ SORTING_FILTER_FIELDS = [
     RaceOrm.default_klass_name,
 ]
 
-SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
+SortingSchema = build_sorting_schema("Race", SORTING_FILTER_FIELDS)
 
 EAGER_LOAD_OPTIONS = [contains_eager(RaceOrm.default_klass)]
 
 
-class IndexSchema(BaseModel):
+class RacesIndexSchema(BaseModel):
     data: List[RaceModel]
     pagination: PaginationResponseSchema
     sorting: SortingSchema
@@ -47,8 +47,8 @@ pagination_depend = has_pagination()
 sorting_depend = has_sorting(SortingSchema)
 
 
-@router.get("", response_model=IndexSchema, include_in_schema=False)
-@router.get("/", response_model=IndexSchema)
+@router.get("", response_model=RacesIndexSchema, include_in_schema=False)
+@router.get("/", response_model=RacesIndexSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
@@ -64,7 +64,7 @@ def index(
         .get_scalars(session)
     )
     races_model = RaceModel.from_orm_list(races_orm)
-    return IndexSchema(
+    return RacesIndexSchema(
         data=races_model,
         pagination=PaginationResponseSchema.from_request(
             pagination, races_count
@@ -73,24 +73,24 @@ def index(
     )
 
 
-FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+FilterSchema = build_filtering_schema("Race", SORTING_FILTER_FIELDS)
 
 
-class SearchSchema(BaseModel):
+class RacesSearchSchema(BaseModel):
     data: List[RaceModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
-class SearchRequest(BaseModel):
+class RacesSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
     sorting: Optional[SortingSchema] = SortingSchema()
 
 
-@router.post("/search", response_model=SearchSchema)
-def search(search: SearchRequest, session=Depends(has_session)):
+@router.post("/search", response_model=RacesSearchSchema)
+def search(search: RacesSearchRequest, session=Depends(has_session)):
     races_count = (
         select(func.count(RaceOrm.id.distinct()))
         .filters(search.filter.filters)
@@ -107,7 +107,7 @@ def search(search: SearchRequest, session=Depends(has_session)):
         .get_scalars(session)
     )
     races_model = RaceModel.from_orm_list(races_orm)
-    return SearchSchema(
+    return RacesSearchSchema(
         data=races_model,
         filter=search.filter,
         pagination=PaginationResponseSchema.from_request(
@@ -117,11 +117,11 @@ def search(search: SearchRequest, session=Depends(has_session)):
     )
 
 
-class GetSchema(BaseModel):
+class RacesGetSchema(BaseModel):
     data: RaceModel
 
 
-@router.get("/{race_id}", response_model=GetSchema)
+@router.get("/{race_id}", response_model=RacesGetSchema)
 def get(race_id: str, session=Depends(has_session)):
     races_orm = (
         select(RaceOrm)
@@ -131,4 +131,4 @@ def get(race_id: str, session=Depends(has_session)):
         .get_scalar(session)
     )
     races_model = RaceModel.from_orm(races_orm)
-    return GetSchema(data=races_model)
+    return RacesGetSchema(data=races_model)

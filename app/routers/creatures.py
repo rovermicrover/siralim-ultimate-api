@@ -43,7 +43,7 @@ SORTING_FILTER_FIELDS = [
     CreatureOrm.trait_tags,
 ]
 
-SortingSchema = build_sorting_schema(SORTING_FILTER_FIELDS)
+SortingSchema = build_sorting_schema("Creature", SORTING_FILTER_FIELDS)
 
 EAGER_LOAD_OPTIONS = (
     contains_eager(CreatureOrm.klass),
@@ -54,7 +54,7 @@ EAGER_LOAD_OPTIONS = (
 )
 
 
-class IndexSchema(BaseModel):
+class CreaturesIndexSchema(BaseModel):
     data: List[CreatureModel]
     pagination: PaginationResponseSchema
     sorting: SortingSchema
@@ -78,8 +78,8 @@ def build_common_query(
     )
 
 
-@router.get("", response_model=IndexSchema, include_in_schema=False)
-@router.get("/", response_model=IndexSchema)
+@router.get("", response_model=CreaturesIndexSchema, include_in_schema=False)
+@router.get("/", response_model=CreaturesIndexSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
@@ -99,7 +99,7 @@ def index(
         .get_scalars(session)
     )
     creatures_model = CreatureModel.from_orm_list(creatures_orm)
-    return IndexSchema(
+    return CreaturesIndexSchema(
         data=creatures_model,
         pagination=PaginationResponseSchema.from_request(
             pagination, creatures_count
@@ -108,24 +108,24 @@ def index(
     )
 
 
-FilterSchema = build_filtering_schema(SORTING_FILTER_FIELDS)
+FilterSchema = build_filtering_schema("Creature", SORTING_FILTER_FIELDS)
 
 
-class SearchSchema(BaseModel):
+class CreaturesSearchSchema(BaseModel):
     data: List[CreatureModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
     sorting: SortingSchema
 
 
-class SearchRequest(BaseModel):
+class CreaturesSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
     sorting: Optional[SortingSchema] = SortingSchema()
 
 
-@router.post("/search", response_model=SearchSchema)
-def search(search: SearchRequest, session=Depends(has_session)):
+@router.post("/search", response_model=CreaturesSearchSchema)
+def search(search: CreaturesSearchRequest, session=Depends(has_session)):
     creatures_count = (
         select(func.count(CreatureOrm.id.distinct()))
         .filters(search.filter.filters)
@@ -146,7 +146,7 @@ def search(search: SearchRequest, session=Depends(has_session)):
         .get_scalars(session)
     )
     creatures_model = CreatureModel.from_orm_list(creatures_orm)
-    return SearchSchema(
+    return CreaturesSearchSchema(
         data=creatures_model,
         filter=search.filter,
         pagination=PaginationResponseSchema.from_request(
@@ -156,11 +156,11 @@ def search(search: SearchRequest, session=Depends(has_session)):
     )
 
 
-class GetSchema(BaseModel):
+class CreaturesGetSchema(BaseModel):
     data: CreatureModel
 
 
-@router.get("/{creature_id}", response_model=GetSchema)
+@router.get("/{creature_id}", response_model=CreaturesGetSchema)
 def get(creature_id: str, session=Depends(has_session)):
     creatures_orm = (
         select(CreatureOrm)
@@ -172,4 +172,4 @@ def get(creature_id: str, session=Depends(has_session)):
         .get_scalar(session)
     )
     creatures_model = CreatureModel.from_orm(creatures_orm)
-    return GetSchema(data=creatures_model)
+    return CreaturesGetSchema(data=creatures_model)
