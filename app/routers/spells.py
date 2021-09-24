@@ -99,7 +99,7 @@ class SpellsSearchSchema(BaseModel):
 class SpellsSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
-    sorting: Optional[SortingResponseSchema] = SortingResponseSchema()
+    sorting: Optional[SortingRequestSchema] = SortingRequestSchema()
 
 
 @router.post("/search", response_model=SpellsSearchSchema)

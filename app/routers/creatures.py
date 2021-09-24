@@ -109,7 +109,7 @@ class CreaturesSearchSchema(BaseModel):
 class CreaturesSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
-    sorting: Optional[SortingResponseSchema] = SortingResponseSchema()
+    sorting: Optional[SortingRequestSchema] = SortingRequestSchema()
 
 
 @router.post("/search", response_model=CreaturesSearchSchema)
