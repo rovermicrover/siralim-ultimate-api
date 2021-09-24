@@ -17,6 +17,10 @@ jobs:
         with:
           repository: 'rovermicrover/siralim-ultimate-nginx'
           path: ./siralim-ultimate-nginx
+      - uses: actions/checkout@v2
+        with:
+          repository: 'rovermicrover/siralim-ultimate-ui'
+          path: ./siralim-ultimate-ui
       - name: Build and run checks
         run: ./commands/api/ci
   heroku:
