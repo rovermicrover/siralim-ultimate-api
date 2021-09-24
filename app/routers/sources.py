@@ -82,7 +82,7 @@ class SourcesSearchSchema(BaseModel):
 class SourcesSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
-    sorting: Optional[PaginationRequestSchema] = PaginationRequestSchema()
+    sorting: Optional[SortingResponseSchema] = SortingResponseSchema()
 
 
 @router.post("/search", response_model=SourcesSearchSchema)

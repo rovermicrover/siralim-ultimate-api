@@ -83,7 +83,7 @@ class TraitsSearchSchema(BaseModel):
 class TraitsSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
-    sorting: Optional[PaginationRequestSchema] = PaginationRequestSchema()
+    sorting: Optional[SortingResponseSchema] = SortingResponseSchema()
 
 
 @router.post("/search", response_model=TraitsSearchSchema)
