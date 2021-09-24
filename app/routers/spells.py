@@ -37,7 +37,9 @@ SORTING_FILTER_FIELDS = [
     SpellOrm.tags,
 ]
 
-SortingSchema = build_sorting_schema("Spell", SORTING_FILTER_FIELDS)
+SortingRequestSchema, SortingResponseSchema = build_sorting_schema(
+    "Spell", SORTING_FILTER_FIELDS
+)
 
 EAGER_LOAD_OPTIONS = [
     contains_eager(SpellOrm.klass),
@@ -48,11 +50,11 @@ EAGER_LOAD_OPTIONS = [
 class SpellsIndexSchema(BaseModel):
     data: List[SpellModel]
     pagination: PaginationResponseSchema
-    sorting: SortingSchema
+    sorting: SortingResponseSchema
 
 
 pagination_depend = has_pagination()
-sorting_depend = has_sorting(SortingSchema)
+sorting_depend = has_sorting(SortingRequestSchema)
 
 
 @router.get("", response_model=SpellsIndexSchema, include_in_schema=False)
@@ -60,7 +62,7 @@ sorting_depend = has_sorting(SortingSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
-    sorting: SortingSchema = Depends(sorting_depend),
+    sorting: SortingRequestSchema = Depends(sorting_depend),
 ):
     spells_count = select(func.count(SpellOrm.id.distinct())).get_scalar(
         session
@@ -80,7 +82,7 @@ def index(
         pagination=PaginationResponseSchema.from_request(
             pagination, spells_count
         ),
-        sorting=sorting,
+        sorting=SortingResponseSchema.from_orm(sorting),
     )
 
 
@@ -91,13 +93,13 @@ class SpellsSearchSchema(BaseModel):
     data: List[SpellModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
-    sorting: SortingSchema
+    sorting: SortingResponseSchema
 
 
 class SpellsSearchRequest(BaseModel):
     filter: FilterSchema
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema()
-    sorting: Optional[SortingSchema] = SortingSchema()
+    sorting: Optional[PaginationRequestSchema] = PaginationRequestSchema()
 
 
 @router.post("/search", response_model=SpellsSearchSchema)
@@ -126,7 +128,7 @@ def search(search: SpellsSearchRequest, session=Depends(has_session)):
         pagination=PaginationResponseSchema.from_request(
             search.pagination, spells_count
         ),
-        sorting=search.sorting,
+        sorting=SortingResponseSchema.from_orm(search.sorting),
     )
 
 

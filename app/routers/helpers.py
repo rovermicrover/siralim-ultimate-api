@@ -23,9 +23,9 @@ class PaginationRequestSchema(BaseModel):
 
 
 class PaginationResponseSchema(BaseModel):
-    page: conint(ge=0) = 0
-    size: conint(gt=0) = 25
-    count: conint(ge=0) = 0
+    page: conint(ge=0)
+    size: conint(gt=0)
+    count: conint(ge=0)
 
     @classmethod
     def from_request(cls, pagination: PaginationRequestSchema, count: int):
@@ -203,13 +203,22 @@ def build_sorting_schema(
     field_names = map(get_field_name, fields)
     sort_field_enum = strs_to_enum(enum_name, field_names)
 
-    class SortingSchema(BaseModel):
+    class SortingRequestSchema(BaseModel):
         by: sort_field_enum = default_sort_by
         direction: SortDirections = SortDirections.asc
 
-    SortingSchema.__name__ = f"{name}SortingSchema"
+    SortingRequestSchema.__name__ = f"{name}SortingRequestSchema"
 
-    return SortingSchema
+    class SortingResponseSchema(BaseModel):
+        by: sort_field_enum
+        direction: SortDirections
+
+        class Config:
+            orm_mode = True
+
+    SortingResponseSchema.__name__ = f"{name}SortingResponseSchema"
+
+    return (SortingRequestSchema, SortingResponseSchema)
 
 
 class CustomSelect(Select):

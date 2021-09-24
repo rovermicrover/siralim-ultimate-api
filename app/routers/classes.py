@@ -26,17 +26,19 @@ DEFAULT_PAGE_SIZE = 5
 
 SORTING_FILTER_FIELDS = [KlassOrm.id, KlassOrm.name]
 
-SortingSchema = build_sorting_schema("Klass", SORTING_FILTER_FIELDS)
+SortingRequestSchema, SortingResponseSchema = build_sorting_schema(
+    "Klass", SORTING_FILTER_FIELDS
+)
 
 
 class KlassesIndexSchema(BaseModel):
     data: List[KlassModel]
     pagination: PaginationResponseSchema
-    sorting: SortingSchema
+    sorting: SortingResponseSchema
 
 
 pagination_depend = has_pagination(default_size=DEFAULT_PAGE_SIZE)
-sorting_depend = has_sorting(SortingSchema)
+sorting_depend = has_sorting(SortingRequestSchema)
 
 
 @router.get("", response_model=KlassesIndexSchema, include_in_schema=False)
@@ -44,7 +46,7 @@ sorting_depend = has_sorting(SortingSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
-    sorting: SortingSchema = Depends(sorting_depend),
+    sorting: SortingRequestSchema = Depends(sorting_depend),
 ):
     klasses_count = select(func.count(KlassOrm.id.distinct())).get_scalar(
         session
@@ -61,7 +63,7 @@ def index(
         pagination=PaginationResponseSchema.from_request(
             pagination, klasses_count
         ),
-        sorting=sorting,
+        sorting=SortingResponseSchema.from_orm(sorting),
     )
 
 
@@ -72,7 +74,7 @@ class KlassesSearchSchema(BaseModel):
     data: List[KlassModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
-    sorting: SortingSchema
+    sorting: SortingResponseSchema
 
 
 class KlassesSearchRequest(BaseModel):
@@ -80,7 +82,7 @@ class KlassesSearchRequest(BaseModel):
     pagination: Optional[PaginationRequestSchema] = PaginationRequestSchema(
         size=DEFAULT_PAGE_SIZE
     )
-    sorting: Optional[SortingSchema] = SortingSchema()
+    sorting: Optional[SortingRequestSchema] = SortingRequestSchema()
 
 
 @router.post("/search", response_model=KlassesSearchSchema)
@@ -104,7 +106,7 @@ def search(search: KlassesSearchRequest, session=Depends(has_session)):
         pagination=PaginationResponseSchema.from_request(
             search.pagination, klasses_count
         ),
-        sorting=search.sorting,
+        sorting=SortingResponseSchema.from_orm(search.sorting),
     )
 
 

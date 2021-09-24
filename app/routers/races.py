@@ -32,7 +32,9 @@ SORTING_FILTER_FIELDS = [
     RaceOrm.default_klass_name,
 ]
 
-SortingSchema = build_sorting_schema("Race", SORTING_FILTER_FIELDS)
+SortingRequestSchema, SortingResponseSchema = build_sorting_schema(
+    "Race", SORTING_FILTER_FIELDS
+)
 
 EAGER_LOAD_OPTIONS = [contains_eager(RaceOrm.default_klass)]
 
@@ -40,11 +42,11 @@ EAGER_LOAD_OPTIONS = [contains_eager(RaceOrm.default_klass)]
 class RacesIndexSchema(BaseModel):
     data: List[RaceModel]
     pagination: PaginationResponseSchema
-    sorting: SortingSchema
+    sorting: SortingResponseSchema
 
 
 pagination_depend = has_pagination()
-sorting_depend = has_sorting(SortingSchema)
+sorting_depend = has_sorting(SortingRequestSchema)
 
 
 @router.get("", response_model=RacesIndexSchema, include_in_schema=False)
@@ -52,7 +54,7 @@ sorting_depend = has_sorting(SortingSchema)
 def index(
     session=Depends(has_session),
     pagination: PaginationRequestSchema = Depends(pagination_depend),
-    sorting: SortingSchema = Depends(sorting_depend),
+    sorting: SortingRequestSchema = Depends(sorting_depend),
 ):
     races_count = select(func.count(RaceOrm.id.distinct())).get_scalar(session)
     races_orm = (
@@ -69,7 +71,7 @@ def index(
         pagination=PaginationResponseSchema.from_request(
             pagination, races_count
         ),
-        sorting=sorting,
+        sorting=SortingResponseSchema.from_orm(sorting),
     )
 
 
@@ -80,7 +82,7 @@ class RacesSearchSchema(BaseModel):
     data: List[RaceModel]
     filter: FilterSchema
     pagination: PaginationResponseSchema
-    sorting: SortingSchema
+    sorting: SortingResponseSchema
 
 
 class RacesSearchRequest(BaseModel):
@@ -113,7 +115,7 @@ def search(search: RacesSearchRequest, session=Depends(has_session)):
         pagination=PaginationResponseSchema.from_request(
             search.pagination, races_count
         ),
-        sorting=search.sorting,
+        sorting=SortingResponseSchema.from_orm(search.sorting),
     )
 
 
