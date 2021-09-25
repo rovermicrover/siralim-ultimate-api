@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Text, TIMESTAMP
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
 
-from .base import BaseOrm, build_slug_defaulter
+from .base import BaseOrm, build_slug_defaulter, FullText
 
 
 class CreatureOrm(BaseOrm):
@@ -46,7 +46,12 @@ class CreatureOrm(BaseOrm):
     klass_name = association_proxy("klass", "name")
     race_name = association_proxy("race", "name")
     trait_name = association_proxy("trait", "name")
+    trait_description = association_proxy("trait", "description")
     trait_tags = association_proxy("trait", "tags")
 
     created_at = Column("created_at", TIMESTAMP, nullable=False)
     updated_at = Column("updated_at", TIMESTAMP, nullable=False)
+
+    full_text = FullText(
+        "full_text", "name", "description", "trait_name", "trait_description"
+    )

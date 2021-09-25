@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, Enum, TIMESTAMP
 
-from .base import BaseOrm, build_slug_defaulter
+from .base import BaseOrm, build_slug_defaulter, FullText
 from app.common.status_effect import StatusEffectCategoriesEnum
 
 
@@ -30,3 +30,5 @@ class StatusEffectOrm(BaseOrm):
 
     created_at = Column("created_at", TIMESTAMP, nullable=False)
     updated_at = Column("updated_at", TIMESTAMP, nullable=False)
+
+    full_text = FullText("full_text", "name", "description", "category")

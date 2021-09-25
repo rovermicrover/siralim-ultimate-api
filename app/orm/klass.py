@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, TIMESTAMP
 
-from .base import BaseOrm, build_slug_defaulter
+from .base import BaseOrm, build_slug_defaulter, FullText
 
 
 class KlassOrm(BaseOrm):

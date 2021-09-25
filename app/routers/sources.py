@@ -26,6 +26,7 @@ router = APIRouter(
 SORTING_FILTER_FIELDS = [
     SourceOrm.id,
     SourceOrm.name,
+    SourceOrm.full_text,
 ]
 
 SortingRequestSchema, SortingResponseSchema = build_sorting_schema(

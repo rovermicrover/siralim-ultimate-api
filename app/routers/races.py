@@ -29,6 +29,7 @@ SORTING_FILTER_FIELDS = [
     RaceOrm.name,
     RaceOrm.default_klass_id,
     RaceOrm.default_klass_name,
+    RaceOrm.full_text,
 ]
 
 SortingRequestSchema, SortingResponseSchema = build_sorting_schema(

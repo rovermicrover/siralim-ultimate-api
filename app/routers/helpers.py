@@ -2,9 +2,11 @@ from enum import Enum
 from typing import Dict, List, Optional, Union
 from functools import reduce
 from uuid import uuid4
+from pydantic import fields
 
 from pydantic.main import BaseModel
 from pydantic.types import conint
+from sqlalchemy import or_
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 from sqlalchemy.orm.util import _ORMJoin
 from sqlalchemy.sql.selectable import Select
@@ -14,7 +16,7 @@ from sqlalchemy.dialects import postgresql
 from sqlalchemy.ext.associationproxy import ColumnAssociationProxyInstance
 
 from app import orm as OrmMap
-from app.orm.base import Session, BaseOrm
+from app.orm.base import Session, FullText
 
 
 class PaginationRequestSchema(BaseModel):
@@ -184,7 +186,9 @@ def build_filtering_schema(
 
 
 def get_field_name(
-    field: Union[InstrumentedAttribute, ColumnAssociationProxyInstance]
+    field: Union[
+        InstrumentedAttribute, ColumnAssociationProxyInstance, FullText
+    ]
 ):
     if isinstance(field, ColumnAssociationProxyInstance):
         local, remote = field.attr
@@ -221,6 +225,13 @@ def build_sorting_schema(
     return (SortingRequestSchema, SortingResponseSchema)
 
 
+def get_comparitor(filter, field):
+    comparator_func_name = filter_comparators_to_sql_function[
+        filter.comparator
+    ]
+    return getattr(field, comparator_func_name)
+
+
 class CustomSelect(Select):
     def get_orm(self):
         final_from = self.get_final_froms()[0]
@@ -231,6 +242,8 @@ class CustomSelect(Select):
     def sorting(self, sorting):
         orm = self.get_orm()
         order_by = getattr(orm, sorting.by)
+        if isinstance(order_by, FullText):
+            order_by = getattr(orm, order_by.columns[0])
         if isinstance(order_by, ColumnAssociationProxyInstance):
             order_by = order_by.remote_attr
         if sorting.direction == SortDirections.desc:
@@ -245,11 +258,15 @@ class CustomSelect(Select):
     def filter(self, filter: Dict):
         orm = self.get_orm()
         field = getattr(orm, filter.field)
-        comparator_func_name = filter_comparators_to_sql_function[
-            filter.comparator
-        ]
-        comparator = getattr(field, comparator_func_name)
-        return self.where(comparator(filter.value))
+        if isinstance(field, FullText):
+            print(field.columns)
+            fields = [getattr(orm, c) for c in field.columns]
+            return self.where(
+                or_(*[get_comparitor(filter, f)(filter.value) for f in fields])
+            )
+        else:
+            print(field)
+            return self.where(get_comparitor(filter, field)(filter.value))
 
     def filters(self, filters):
         if not len(filters):

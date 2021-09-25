@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, TIMESTAMP
 from sqlalchemy.dialects import postgresql
 
-from .base import BaseOrm, build_slug_defaulter
+from .base import BaseOrm, build_slug_defaulter, FullText
 
 
 class TraitOrm(BaseOrm):
@@ -26,3 +26,5 @@ class TraitOrm(BaseOrm):
 
     created_at = Column("created_at", TIMESTAMP, nullable=False)
     updated_at = Column("updated_at", TIMESTAMP, nullable=False)
+
+    full_text = FullText("full_text", "name", "description", "material_name")

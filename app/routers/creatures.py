@@ -41,6 +41,7 @@ SORTING_FILTER_FIELDS = [
     CreatureOrm.trait_id,
     CreatureOrm.trait_name,
     CreatureOrm.trait_tags,
+    CreatureOrm.full_text,
 ]
 
 SortingRequestSchema, SortingResponseSchema = build_sorting_schema(

@@ -29,6 +29,7 @@ SORTING_FILTER_FIELDS = [
     StatusEffectOrm.turns,
     StatusEffectOrm.leave_chance,
     StatusEffectOrm.max_stacks,
+    StatusEffectOrm.full_text,
 ]
 
 SortingRequestSchema, SortingResponseSchema = build_sorting_schema(
