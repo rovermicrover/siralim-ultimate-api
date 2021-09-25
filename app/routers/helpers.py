@@ -235,7 +235,7 @@ class CustomSelect(Select):
             order_by = order_by.remote_attr
         if sorting.direction == SortDirections.desc:
             order_by = order_by.desc()
-        return self.order_by(order_by)
+        return self.order_by(order_by, orm.name)
 
     def pagination(self, pagination: PaginationRequestSchema):
         return self.limit(pagination.size).offset(
