@@ -10,27 +10,11 @@ It is written in [Python](https://www.python.org/) using [FastAPI](https://fasta
 
 [Live Redoc](https://siralim-ultimate.rovermicrover.com/api/redoc)
 
-## How To Dev
+## How To Dev / Test
 
-See [rovermicrover/siralim-ultimate-dev](https://github.com/rovermicrover/siralim-ultimate-dev) which allows for easy deving via docker-compose all of parts of this projet.
+See [rovermicrover/siralim-ultimate-dev](https://github.com/rovermicrover/siralim-ultimate-dev) which allows for easy deving/testing via docker-compose all of parts of this projet.
 
-Also runs everything almost just like in production, even with NGINX, so no "It worked on my box" type issues.
-
-## How to Test
-
-### Requirements
-
-1. Bash
-
-2. Docker Compose
-
-### Walk Through To Get Test To Run
-
-Run
-
-```bash
-$ commands/test
-```
+Also runs everything similar to production, even with NGINX, so no "It worked on my box" type issues.
 
 ## TODO
 
