@@ -12,6 +12,7 @@ class RaceModel(BaseModel, BaseModelOrm):
     name: str
     slug: str
     description: Optional[str] = None
+    icon: str
     default_klass: KlassModel
 
     created_at: datetime

@@ -21,6 +21,8 @@ class RaceOrm(BaseOrm):
     )
     description = Column(Text())
 
+    icon = Column(Text(), nullable=False)
+
     default_klass_id = Column(
         Integer, ForeignKey("klasses.id"), nullable=False
     )
