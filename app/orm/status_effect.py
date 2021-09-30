@@ -31,4 +31,4 @@ class StatusEffectOrm(BaseOrm):
     created_at = Column("created_at", TIMESTAMP, nullable=False)
     updated_at = Column("updated_at", TIMESTAMP, nullable=False)
 
-    full_text = FullText("full_text", "name", "description", "category")
+    full_text = FullText("full_text", "name", "description")
