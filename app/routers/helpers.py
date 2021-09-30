@@ -259,13 +259,11 @@ class CustomSelect(Select):
         orm = self.get_orm()
         field = getattr(orm, filter.field)
         if isinstance(field, FullText):
-            print(field.columns)
             fields = [getattr(orm, c) for c in field.columns]
             return self.where(
                 or_(*[get_comparitor(filter, f)(filter.value) for f in fields])
             )
         else:
-            print(field)
             return self.where(get_comparitor(filter, field)(filter.value))
 
     def filters(self, filters):
