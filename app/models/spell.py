@@ -13,6 +13,7 @@ class SpellModel(BaseModel, BaseModelOrm):
     name: str
     slug: str
     description: Optional[str] = None
+
     charges: int
     klass: KlassModel
     source: SourceModel

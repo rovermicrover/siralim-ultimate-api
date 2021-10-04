@@ -4,15 +4,22 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 from .base import BaseModelOrm
+from .specialization import SpecializationModel
 
 
-class TraitModel(BaseModel, BaseModelOrm):
+class PerkModel(BaseModel, BaseModelOrm):
     id: int
     name: str
     slug: str
     description: Optional[str] = None
 
-    material_name: Optional[str] = None
+    icon: Optional[str] = None
+    ranks: int
+    cost: int
+    annointment: bool
+    ascension: bool
+    specialization: SpecializationModel
+
     tags: List[str]
 
     created_at: datetime

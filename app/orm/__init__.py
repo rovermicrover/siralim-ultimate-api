@@ -1,7 +1,9 @@
 from .source import SourceOrm as sources
 from .klass import KlassOrm as klasses
+from .perk import PerkOrm as perks
 from .race import RaceOrm as races
 from .trait import TraitOrm as traits
 from .creature import CreatureOrm as creatures
+from .specialization import SpecializationOrm as specializations
 from .spell import SpellOrm as spells
 from .status_effect import StatusEffectOrm as status_effects

@@ -4,17 +4,15 @@ from typing import Optional
 from pydantic import BaseModel
 
 from .base import BaseModelOrm
-from .klass import KlassModel
 
 
-class RaceModel(BaseModel, BaseModelOrm):
+class SpecializationModel(BaseModel, BaseModelOrm):
     id: int
     name: str
     slug: str
     description: Optional[str] = None
 
-    icon: str
-    default_klass: KlassModel
+    icon: Optional[str] = None
 
     created_at: datetime
     updated_at: datetime

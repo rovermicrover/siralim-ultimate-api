@@ -6,6 +6,8 @@ from .sources import sources_importer
 from .traits import traits_importer
 from .spells import spells_importer
 from .creatures import creatures_importer
+from .specializations import specializations_importer
+from .perks import perks_importer
 
 
 def run():
@@ -17,3 +19,5 @@ def run():
     traits_importer()
     spells_importer()
     creatures_importer()
+    specializations_importer()
+    perks_importer()

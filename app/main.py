@@ -11,8 +11,10 @@ from .middleware import content_policy, not_found
 from .routers import (
     classes,
     creatures,
+    perks,
     races,
     sources,
+    specializations,
     spells,
     traits,
     status_effects,
@@ -49,8 +51,10 @@ app.add_middleware(BaseHTTPMiddleware, dispatch=not_found)
 
 app.include_router(classes.router)
 app.include_router(creatures.router)
+app.include_router(perks.router)
 app.include_router(races.router)
 app.include_router(sources.router)
+app.include_router(specializations.router)
 app.include_router(spells.router)
 app.include_router(status_effects.router)
 app.include_router(traits.router)

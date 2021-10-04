@@ -53,5 +53,11 @@ class CreatureOrm(BaseOrm):
     updated_at = Column("updated_at", TIMESTAMP, nullable=False)
 
     full_text = FullText(
-        "full_text", "name", "description", "trait_name", "trait_description", "race_name", "klass_name"
+        "full_text",
+        "name",
+        "description",
+        "trait_name",
+        "trait_description",
+        "race_name",
+        "klass_name",
     )
