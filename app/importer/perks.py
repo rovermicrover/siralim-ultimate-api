@@ -66,6 +66,7 @@ def perks_importer():
             set_={
                 "name": stmt.excluded.name,
                 "description": stmt.excluded.description,
+                "icon": stmt.excluded.icon,
                 "specialization_id": stmt.excluded.specialization_id,
                 "ranks": stmt.excluded.ranks,
                 "cost": stmt.excluded.cost,

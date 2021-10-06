@@ -9,7 +9,7 @@ from app.orm.base import Session
 from app.orm.specialization import SpecializationOrm
 from .icons import load_icon_to_base64
 
-SPECS_ICONS_PATH = os.path.join(ROOT_DIR, "data", "specializations_icons")
+SPECS_ICONS_PATH = os.path.join(ROOT_DIR, "data", "specialization_icons")
 
 
 def specializations_importer():
@@ -23,6 +23,10 @@ def specializations_importer():
                 value = row.copy()
                 slug_default("name", value)
 
+                icon = value.pop("icon")
+                icon_file = os.path.join(SPECS_ICONS_PATH, icon)
+                value["icon"] = load_icon_to_base64(icon_file)
+
                 values.append(value)
 
         stmt = insert(SpecializationOrm).values(values)
@@ -31,6 +35,7 @@ def specializations_importer():
             set_={
                 "name": stmt.excluded.name,
                 "description": stmt.excluded.description,
+                "icon": stmt.excluded.icon,
                 "updated_at": text("now()"),
             },
         )
