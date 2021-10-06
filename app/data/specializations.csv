@@ -1,31 +1,31 @@
 name,icon,description
-Rune Knight,spec_deathknight_0.png,
-Cleric,spec_cleric_0.png,
-Fanatic,spec_fanatic_0.png,
-Tribalist,spec_tribalist_0.png,
-Astrologer,spec_astrologer_0.png,
-Grovetender,spec_grovetender_0.png,
-Druid,spec_druid_0.png,
-Reaver,spec_reaver_0.png,
-Paladin,spec_paladin_0.png,
-Witch Doctor,spec_witchdoctor_0.png,
-Cabalist,spec_cabalist_0.png,
-Sorcerer,spec_sorceror_0.png,
-Windrunner,spec_windrunner_0.png,
-Pyromancer,spec_pyromancer_0.png,
-Evoker,spec_evoker_0.png,
-Doombringer,spec_doombringer_0.png,
-Necromancer,spec_necromancer_0.png,
-Hell Knight,spec_hellknight_0.png,
-Dreamshade,spec_dreamshade_0.png,
-Warden,spec_warden_0.png,
-Royal,spec_royal_0.png,
-Siegemaster,spec_siegemaster_0.png,
-Trickster,spec_trickster_0.png,
-Animator,spec_animator_0.png,
-Spellweaver,spec_spellweaver_0.png,
-Monk,spec_monk_0.png,
-Defiler,spec_occultist_0.png,
-Purgatorian,spec_purgatorian_0.png,
-Inquisitor,spec_inquisitor_0.png,
-Bloodmage,spec_bloodmage_0.png,
+Rune Knight,spec_deathknight_0.png,"Rune Knights call upon their runic powers - Cor, Dun, Lua, Nax and Sah - to bolster their creatures' strength and grant them powerful spells that are unavailable anywhere else."
+Cleric,spec_cleric_0.png,"The best offense, as some say, is a good defense. Clerics protect their creatures with powerful healing abilities and steadfast barriers, ensuring that not even the most tenacious of foes can overcome them."
+Fanatic,spec_fanatic_0.png,"Fanatics devote their lives to serving the gods. From dusk until dawn, these magi toil away at a neverending list of demands to better-serve each of the 21 gods of Rodia. Such devotion is not without purpose, however, for the Fanatic is able to call on the gods' power to serve him in his time of need."
+Tribalist,spec_tribalist_0.png,"Strength in numbers. Tribalists prefer to use creatures that belong to the same race or class, and take full advantage of the synergy and camaraderie they offer each other."
+Astrologer,spec_astrologer_0.png,"Astrologers are magi who specialize in creating a sound strategy before each battle. Oftentimes, their plans are so well-constructed that their creatures are able to take combat into their own hands without any further input from their master."
+Grovetender,spec_grovetender_0.png,"Grovetenders take great pride in their Herbling companions, strongly preferring to focus the bulk of their efforts on this prized creature over all the others. This peculiar mage knows just the right techniques to bring out her Herbling's full potential as it transforms rapidly in combat to wreak havoc on its foes."
+Druid,spec_druid_0.png,"Many people foolishly mistake a Druid's introversion for weakness. These magi believe that quality always trumps quantity on the battlefield. Contrary to tradition, they are often seen with fewer than six creatures at their disposal, but the havoc their limited numbers wreak when augmented by Druidic magic is a sight to behold."
+Reaver,spec_reaver_0.png,"Perseverance, an iron will, and a touch of insanity are the perfect recipe for victory. Reavers live and die by this mantra, instilling their creatures with a cold and calculated anger that allows them to grow more powerful during battle while their foes tire out."
+Paladin,spec_paladin_0.png,"Eye for an eye, tooth for a tooth. Paladins are patient combatants who prefer to allow their enemies to strike first, and then return the favor tenfold with holy fury."
+Witch Doctor,spec_witchdoctor_0.png,"Witch Doctors are spiritual warriors who cast deadly hexes and curses on their enemies, forcing them to fight against each other."
+Cabalist,spec_cabalist_0.png,"Cabalists can conjure Spell Gems out of thin air to be used by their creatures at any given moment. These magi prefer to employ high-risk, high-reward battle strategies to ensure their victory."
+Sorcerer,spec_sorceror_0.png,Sorcerers are masters of controlling the battlefield. Why worry about offense or defense when your enemies can't move to begin with?
+Windrunner,spec_windrunner_0.png,"Windrunners are vigilant sentinels who imbue their creatures with unmatched speed and vigor, allowing them to move so quickly that their opponents can't ever catch them."
+Pyromancer,spec_pyromancer_0.png,"Pyromancers quite literally thrive on watching the world burn. These maniacal magi ignite both friend and foe alike with a brilliant conflagration, causing their enemies to suffer gruesome deaths while empowering their allies with the power of flame."
+Evoker,spec_evoker_0.png,Evokers are the ultimate spellcasters. They excel at casting enhanced versions of spells multiple times in a row to overwhelm their enemies before they can act.
+Doombringer,spec_doombringer_0.png,"The Doombringer draws magic from the Bastion of the Void to fuel his creatures with vast amounts of power. Doombringers specialize in allowing their creatures to perform actions multiple times in a row, all while nullifying his enemies' efforts."
+Necromancer,spec_necromancer_0.png,Necromancers prefer to overwhelm their foes by summoning minions to aid their creatures in battle. Enemies are often so perplexed by the number of undead monstrosities charging at them from across the battlefield that they're dead long before they realize what even happened.
+Hell Knight,spec_hellknight_0.png,"Careful planning and uptight caution are nothing but a cause to doubt oneself. Hell Knights realize this fact, and instead opt to send their creatures charging headlong into battle, relying on brute strength and reckless attacks to ensure a swift victory."
+Dreamshade,spec_dreamshade_0.png,Dreamshades blur the line between dreams and reality. This mystical magi is adept at redirecting his foes' efforts for his own benefit.
+Warden,spec_warden_0.png,Wardens are wholly attuned to the needs of their creatures. These powerful magi empower their creatures with various boons to give them an edge over their opponents in battle.
+Royal,spec_royal_0.png,"Authority is passed down through generations, but true power must be earned. A master of all professions, the Royal possesses the unique ability to combine the powers of other specializations at will."
+Siegemaster,spec_siegemaster_0.png,The Siegemaster is a stalwart protector who amplifies the defenses of his creatures to keep them strong in battle.
+Trickster,spec_trickster_0.png,"Luck is not merely a matter of chance, but instead a force that can be manipulated to a clever man's will. Tricksters capitalize on this fact, enabling their creatures to re-roll the proverbial dice whenever fate doesn't turn out quite they way they hoped."
+Animator,spec_animator_0.png,"There's a fine line between genius and insanity, and it's difficult to say on what side of that line Animators reside. These fanatical magi spend their days perfecting their Animatus creations: unique creatures that grow more powerful as their master's dark experiments unveil new opportunities."
+Spellweaver,spec_spellweaver_0.png,"Chaos, Death, Life, Nature and Sorcery: the five components that gave birth to the land of Rodia. Spellweavers can call upon these elements to imbue their creatures with powerful inscriptions to decimate their foes in battle."
+Monk,spec_monk_0.png,"A strong defense is unnecessary when your foe is unable to strike you in the first place. Monks grant their creatures unmatched agility, enabling them to dodge incoming attacks and spells, and respond with devastating counter-attacks."
+Defiler,spec_occultist_0.png,"The difference between good and evil is often a matter of perspective, but the morality of a Defiler is simple enough for anyone to decide. These dark magi take sadistic pleasure in afflicting their adversaries with crippling diseases, reducing them to weakened husks that no longer have the capacity to defend themselves."
+Purgatorian,spec_purgatorian_0.png,Purgatorians blur the line between life and death. These mystical spellcasters are able to call upon the spirits of their slain creatures to continue fighting in the afterlife.
+Inquisitor,spec_inquisitor_0.png,"Burn the witch, judge the heretic, and slay the non-believer. Inquisitors make use of healing effects just as much for offense as they do for defense. They enact justice on behalf of the gods, and no one will be spared from holy rapture."
+Bloodmage,spec_bloodmage_0.png,The Blood Mage is a deranged spellcaster who is willing to do anything to overcome his foes - even at the cost of his own creatures' lives. This menacing spellcaster is adept at manipulating the lifeforce of allies and foes alike in his endless pursuit for power.
