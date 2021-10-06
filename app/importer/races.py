@@ -1,6 +1,5 @@
 import os
 import csv
-from collections import Counter
 
 from sqlalchemy import select, text
 from sqlalchemy.dialects.postgresql import insert

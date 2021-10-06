@@ -1,6 +1,5 @@
 import os
 import csv
-from collections import Counter
 
 from sqlalchemy import select, text
 from sqlalchemy.dialects.postgresql import insert
@@ -15,6 +14,7 @@ from .tags import get_tag_regexes, get_tags
 NEEDED_KEYS = [
     "name",
     "description",
+    "icon",
     "specialization",
     "ranks",
     "cost",
@@ -23,7 +23,7 @@ NEEDED_KEYS = [
 ]
 
 
-RACE_ICONS_PATH = os.path.join(ROOT_DIR, "data", "race_icons")
+PERKS_ICONS_PATH = os.path.join(ROOT_DIR, "data", "perk_icons")
 
 
 def perks_importer():
@@ -51,6 +51,10 @@ def perks_importer():
 
                 value["ascension"] = value["ascension"].lower() == "yes"
                 value["annointment"] = value["annointment"].lower() == "yes"
+
+                icon = value.pop("icon")
+                icon_file = os.path.join(PERKS_ICONS_PATH, icon)
+                value["icon"] = load_icon_to_base64(icon_file)
 
                 value["tags"] = get_tags(tag_regexes, value["description"])
 
