@@ -67,6 +67,13 @@ class NumericFilterComparators(str, Enum):
     is_not_null = "is_not_null"
 
 
+class BoolFilterComparators(str, Enum):
+    eq = "=="
+    ne = "!="
+    is_null = "is_null"
+    is_not_null = "is_not_null"
+
+
 class StringFilterComparators(str, Enum):
     eq = "=="
     ne = "!="
@@ -98,6 +105,7 @@ def build_filtering_schema(
     filters_by_type = {
         "int": [],
         "str": [],
+        "bool": [],
         "array_str": [],
         "array_int": [],
     }
@@ -113,6 +121,8 @@ def build_filtering_schema(
             type, sqltypes.Numeric
         ):
             filters_by_type["int"].append(get_field_name(field))
+        elif isinstance(type, sqltypes.Boolean):
+            filters_by_type["bool"].append(get_field_name(field))
         elif isinstance(type, postgresql.ARRAY):
             if isinstance(type.item_type, sqltypes.Integer) or isinstance(
                 type.item_type, sqltypes.Numeric
@@ -143,6 +153,17 @@ def build_filtering_schema(
         IntFilterSchema.__name__ = f"{name}IntFilterSchema"
 
         filter_schemas.append(IntFilterSchema)
+
+    if len(filter_type_enums["bool"]):
+
+        class BoolFilterSchema(BaseModel):
+            field: filter_type_enums["bool"]
+            comparator: BoolFilterComparators
+            value: Union[bool, None]
+
+        BoolFilterSchema.__name__ = f"{name}BoolFilterSchema"
+
+        filter_schemas.append(BoolFilterSchema)
 
     if len(filter_type_enums["str"]):
 

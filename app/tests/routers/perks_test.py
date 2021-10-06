@@ -83,6 +83,28 @@ class PerksRouterTests(unittest.TestCase):
         json = response.json()
         self.assertEqual(len(json["data"]), 5)
 
+    def test_search_filter_ascension(self):
+        response = client.post(
+            "/perks/search",
+            json={
+                "filter": {
+                    "filters": [
+                        {
+                            "field": "ascension",
+                            "comparator": "==",
+                            "value": True,
+                        },
+                    ]
+                },
+                "sorting": {"by": "name", "direction": "asc"},
+                "pagination": {"size": 50},
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        json = response.json()
+        self.assertEqual(len(json["data"]), 30)
+        self.assertEqual(json["data"][0]["name"], "Amalgamation")
+
     def test_get_id(self):
         response = client.get("/perks/1")
         self.assertEqual(response.status_code, 200)
