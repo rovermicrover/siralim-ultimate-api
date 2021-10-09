@@ -46,6 +46,8 @@ filter_comparators_to_sql_function = {
     ">=": "__ge__",
     "<": "__lt__",
     "<=": "__le__",
+    "is_null": "is_",
+    "is_not_null": "is_not",
     "@>": "contains",
     "<@": "contained_by",
     "&&": "overlap",
@@ -82,6 +84,10 @@ class ArrayFilterComparators(str, Enum):
     eq = "=="
     ne = "!="
 
+class NullFilterComparators(str, Enum):
+    is_null = "is_null"
+    is_not_null = "is_not_null"
+
 
 def strs_to_enum(name, list: List[str]):
     list_of_tuples = [(str, str) for str in list]
@@ -98,9 +104,11 @@ def build_filtering_schema(
         "bool": [],
         "array_str": [],
         "array_int": [],
+        "all": [],
     }
 
     for field in fields:
+        filters_by_type["all"].append(get_field_name(field))
 
         if isinstance(field, ColumnAssociationProxyInstance):
             type = field.attr[1].type
@@ -187,6 +195,15 @@ def build_filtering_schema(
         ArrayIntFilterSchema.__name__ = f"{name}ArrayIntFilterSchema"
 
         filter_schemas.append(ArrayIntFilterSchema)
+
+    class NullFilterSchema(BaseModel):
+        field: filter_type_enums["all"]
+        comparator: NullFilterComparators
+        value: None
+
+    NullFilterSchema.__name__ = f"{name}NullFilterSchema"
+
+    filter_schemas.append(NullFilterSchema)
 
     class FiltersSchema(BaseModel):
         filters: List[Union[tuple(filter_schemas)]]
