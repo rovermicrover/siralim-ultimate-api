@@ -46,8 +46,6 @@ filter_comparators_to_sql_function = {
     ">=": "__ge__",
     "<": "__lt__",
     "<=": "__le__",
-    "is_null": "is_",
-    "is_not_null": "is_not",
     "@>": "contains",
     "<@": "contained_by",
     "&&": "overlap",
@@ -63,22 +61,16 @@ class NumericFilterComparators(str, Enum):
     gte = ">="
     lt = "<"
     lte = "<="
-    is_null = "is_null"
-    is_not_null = "is_not_null"
 
 
 class BoolFilterComparators(str, Enum):
     eq = "=="
     ne = "!="
-    is_null = "is_null"
-    is_not_null = "is_not_null"
 
 
 class StringFilterComparators(str, Enum):
     eq = "=="
     ne = "!="
-    is_null = "is_null"
-    is_not_null = "is_not_null"
     like = "like"
     ilike = "ilike"
 
@@ -89,8 +81,6 @@ class ArrayFilterComparators(str, Enum):
     contained_by = "<@"
     eq = "=="
     ne = "!="
-    is_null = "is_null"
-    is_not_null = "is_not_null"
 
 
 def strs_to_enum(name, list: List[str]):
@@ -148,7 +138,7 @@ def build_filtering_schema(
         class IntFilterSchema(BaseModel):
             field: filter_type_enums["int"]
             comparator: NumericFilterComparators
-            value: Union[int, float, None]
+            value: Union[int, float]
 
         IntFilterSchema.__name__ = f"{name}IntFilterSchema"
 
@@ -159,7 +149,7 @@ def build_filtering_schema(
         class BoolFilterSchema(BaseModel):
             field: filter_type_enums["bool"]
             comparator: BoolFilterComparators
-            value: Union[bool, None]
+            value: Union[bool]
 
         BoolFilterSchema.__name__ = f"{name}BoolFilterSchema"
 
@@ -170,7 +160,7 @@ def build_filtering_schema(
         class StrFilterSchema(BaseModel):
             field: filter_type_enums["str"]
             comparator: StringFilterComparators
-            value: Union[str, None]
+            value: Union[str]
 
         StrFilterSchema.__name__ = f"{name}StrFilterSchema"
 
