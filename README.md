@@ -10,6 +10,8 @@ It is written in [Python](https://www.python.org/) using [FastAPI](https://fasta
 
 [Live Redoc](https://siralim-ultimate.rovermicrover.com/api/redoc)
 
+[Live Siralim Ultimate Unofficial Codex Site Using This API](https://siralim-ultimate.rovermicrover.com/)
+
 ## How To Dev / Test
 
 See [rovermicrover/siralim-ultimate-dev](https://github.com/rovermicrover/siralim-ultimate-dev) which allows for easy deving/testing via docker-compose all of parts of this projet.
