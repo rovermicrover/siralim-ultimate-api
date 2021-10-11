@@ -20,15 +20,11 @@ Also runs everything similar to production, even with NGINX, so no "It worked on
 
 ### Data
 
-* Race Icons
-
 * Spell Animations
 
 * Creature Overworld Sprites Sprites
 
 * Creature Attack Animations
-
-* Specializations and Perks, including Icons
 
 * Skins including Battle and Overworld Sprites
 
@@ -37,6 +33,8 @@ Also runs everything similar to production, even with NGINX, so no "It worked on
 * Spell Gem Properties
 
 * Realm Properties
+
+* Relic Properties
 
 * Cleanup sources
 
