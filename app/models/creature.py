@@ -1,7 +1,8 @@
+from __future__ import annotations
 from datetime import datetime
 
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, root_validator
 
 from .base import BaseModelOrm
 from .klass import KlassModel
@@ -16,7 +17,14 @@ class CreatureModel(BaseModel, BaseModelOrm):
     slug: str
     description: Optional[str] = None
 
+    # url for battle sprite
     battle_sprite: str
+    @root_validator(pre=False)
+    def replace_sprite_with_url(cls, values):
+        id_ = values['id']
+        battle_sprite_url = f"/api/creatures/{id_}/images/battle_sprite.png"
+        values['battle_sprite'] = battle_sprite_url
+        return values
 
     health: int
     attack: int
