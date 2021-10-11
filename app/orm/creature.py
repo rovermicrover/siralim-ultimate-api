@@ -1,9 +1,19 @@
+import base64
 from sqlalchemy import Column, Integer, String, ForeignKey, Text, TIMESTAMP
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.sql.sqltypes import LargeBinary
 
 from .base import BaseOrm, build_slug_defaulter, FullText
 
+def default_img_data(context) -> bytes:
+    b64 = context.get_current_parameters()['battle_sprite']
+    return convert_from_base64_img_tag_data(b64)
+
+def convert_from_base64_img_tag_data(b64: str) -> bytes:
+    # get the base64 data only, chop off web type info
+    data = b64.split("data:image/png;base64,")[1]
+    return base64.b64decode(data)
 
 class CreatureOrm(BaseOrm):
     __tablename__ = "creatures"
@@ -22,6 +32,7 @@ class CreatureOrm(BaseOrm):
     description = Column(Text())
 
     battle_sprite = Column(Text(), nullable=False)
+    battle_sprite_raw = Column(LargeBinary, nullable=False, default=default_img_data)
 
     health = Column("health", Integer, nullable=False)
     attack = Column("attack", Integer, nullable=False)
