@@ -2,6 +2,7 @@ from datetime import datetime
 
 from typing import Optional
 from pydantic import BaseModel
+from pydantic.fields import Field
 
 from .base import BaseModelOrm
 from .klass import KlassModel
@@ -13,7 +14,7 @@ class RaceModel(BaseModel, BaseModelOrm):
     slug: str
     description: Optional[str] = None
 
-    icon: str
+    icon_url: str = Field(None, alias='icon')
     default_klass: KlassModel
 
     created_at: datetime
@@ -21,3 +22,5 @@ class RaceModel(BaseModel, BaseModelOrm):
 
     class Config:
         orm_mode = True
+        # The alias field must not ever be supplied else its contents will be used instead
+        allow_population_by_field_name = True
