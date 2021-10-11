@@ -1,8 +1,14 @@
 from sqlalchemy import Column, Integer, String, Text, ForeignKey, TIMESTAMP
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.sql.sqltypes import LargeBinary
 
 from .base import BaseOrm, build_slug_defaulter, FullText
+from app.orm.creature import convert_from_base64_img_tag_data
+
+def default_img_data(context) -> bytes:
+    b64 = context.get_current_parameters()['icon']
+    return convert_from_base64_img_tag_data(b64)
 
 
 class RaceOrm(BaseOrm):
@@ -21,7 +27,8 @@ class RaceOrm(BaseOrm):
     )
     description = Column(Text())
 
-    icon = Column(Text(), nullable=False)
+    icon = Column('icon', Text(), nullable=False)
+    icon_raw = Column('icon_raw', LargeBinary, nullable=False, default=default_img_data)
 
     default_klass_id = Column(
         Integer, ForeignKey("klasses.id"), nullable=False
