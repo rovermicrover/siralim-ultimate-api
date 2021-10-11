@@ -2,7 +2,7 @@ from __future__ import annotations
 from datetime import datetime
 
 from typing import List, Optional
-from pydantic import BaseModel, root_validator
+from pydantic import BaseModel, Field
 
 from .base import BaseModelOrm
 from .klass import KlassModel
@@ -18,13 +18,7 @@ class CreatureModel(BaseModel, BaseModelOrm):
     description: Optional[str] = None
 
     # url for battle sprite
-    battle_sprite: str
-    @root_validator(pre=False)
-    def replace_sprite_with_url(cls, values):
-        id_ = values['id']
-        battle_sprite_url = f"/api/creatures/{id_}/images/battle_sprite.png"
-        values['battle_sprite'] = battle_sprite_url
-        return values
+    battle_sprite_url: str = Field(None, alias='battle_sprite')
 
     health: int
     attack: int
@@ -42,3 +36,5 @@ class CreatureModel(BaseModel, BaseModelOrm):
 
     class Config:
         orm_mode = True
+        # The alias field must not ever be supplied else its contents will be used instead
+        allow_population_by_field_name = True

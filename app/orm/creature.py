@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Text, TIMESTAMP
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.sql.sqltypes import LargeBinary
+from sqlalchemy.util.langhelpers import hybridproperty
 
 from .base import BaseOrm, build_slug_defaulter, FullText
 
@@ -31,8 +32,13 @@ class CreatureOrm(BaseOrm):
     )
     description = Column(Text())
 
-    battle_sprite = Column(Text(), nullable=False)
+    battle_sprite_base64 = Column('battle_sprite',Text(), nullable=False)
     battle_sprite_raw = Column(LargeBinary, nullable=False, default=default_img_data)
+
+    @hybridproperty
+    def battle_sprite_url(self):
+        val =  f"/api/creatures/{self.id}/images/battle_sprite.png"
+        return val
 
     health = Column("health", Integer, nullable=False)
     attack = Column("attack", Integer, nullable=False)
