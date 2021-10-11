@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text, TIMESTAMP
+from sqlalchemy.sql.sqltypes import LargeBinary
 
 from .base import BaseOrm, build_slug_defaulter, FullText
 
@@ -20,7 +21,8 @@ class KlassOrm(BaseOrm):
     description = Column(Text())
 
     color = Column(String(10), nullable=False)
-    icon = Column(Text(), nullable=False)
+    icon = Column('icon', Text(), nullable=False)
+    icon_raw = Column('icon_raw', LargeBinary, nullable=False)
 
     created_at = Column("created_at", TIMESTAMP, nullable=False)
     updated_at = Column("updated_at", TIMESTAMP, nullable=False)
