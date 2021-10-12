@@ -14,7 +14,7 @@ class KlassModel(BaseModel, BaseModelOrm):
     description: Optional[str] = None
 
     color: str
-    icon_url: str = Field(None, alias='icon')
+    icon_url: str = Field(None, alias="icon")
 
     created_at: datetime
     updated_at: datetime

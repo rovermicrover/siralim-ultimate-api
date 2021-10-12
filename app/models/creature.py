@@ -18,7 +18,7 @@ class CreatureModel(BaseModel, BaseModelOrm):
     description: Optional[str] = None
 
     # url for battle sprite
-    battle_sprite_url: str = Field(None, alias='battle_sprite')
+    battle_sprite_url: str = Field(None, alias="battle_sprite")
 
     health: int
     attack: int

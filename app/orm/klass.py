@@ -5,8 +5,9 @@ from sqlalchemy.util.langhelpers import hybridproperty
 from app.orm.creature import convert_from_base64_img_tag_data
 from .base import BaseOrm, build_slug_defaulter, FullText
 
+
 def default_img_data(context) -> bytes:
-    b64 = context.get_current_parameters()['icon']
+    b64 = context.get_current_parameters()["icon"]
     return convert_from_base64_img_tag_data(b64)
 
 
@@ -27,12 +28,14 @@ class KlassOrm(BaseOrm):
     description = Column(Text())
 
     color = Column(String(10), nullable=False)
-    icon_b64 = Column('icon', Text(), nullable=False)
-    icon_raw = Column('icon_raw', LargeBinary, nullable=False, default=default_img_data)
+    icon_b64 = Column("icon", Text(), nullable=False)
+    icon_raw = Column(
+        "icon_raw", LargeBinary, nullable=False, default=default_img_data
+    )
 
     @hybridproperty
     def icon_url(self):
-        val =  f"/api/classes/{self.id}/images/icon.png"
+        val = f"/api/classes/{self.id}/images/icon.png"
         return val
 
     created_at = Column("created_at", TIMESTAMP, nullable=False)

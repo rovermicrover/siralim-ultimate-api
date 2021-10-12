@@ -14,7 +14,7 @@ class RaceModel(BaseModel, BaseModelOrm):
     slug: str
     description: Optional[str] = None
 
-    icon_url: str = Field(None, alias='icon')
+    icon_url: str = Field(None, alias="icon")
     default_klass: KlassModel
 
     created_at: datetime
