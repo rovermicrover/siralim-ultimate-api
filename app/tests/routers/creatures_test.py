@@ -83,6 +83,26 @@ class CreaturesRouterTests(unittest.TestCase):
         json = response.json()
         self.assertEqual(len(json["data"]), 4)
 
+    def test_search_filter_trait_tags(self):
+        response = client.post(
+            "/creatures/search",
+            json={
+                "filter": {
+                    "filters": [
+                        {
+                            "field": "trait_tags",
+                            "comparator": "&&",
+                            "value": ["buff-savage"],
+                        }
+                    ]
+                },
+                "sorting": {"by": "name", "direction": "desc"},
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        json = response.json()
+        self.assertEqual(len(json["data"]), 5)
+
     def test_search_filter_id(self):
         response = client.post(
             "/creatures/search",

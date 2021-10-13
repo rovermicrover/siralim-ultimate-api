@@ -84,6 +84,7 @@ class ArrayFilterComparators(str, Enum):
     eq = "=="
     ne = "!="
 
+
 class NullFilterComparators(str, Enum):
     is_null = "is_null"
     is_not_null = "is_not_null"
@@ -257,7 +258,10 @@ def get_comparitor(filter, field):
     comparator_func_name = filter_comparators_to_sql_function[
         filter.comparator
     ]
-    return getattr(field, comparator_func_name)
+    if isinstance(field, ColumnAssociationProxyInstance):
+        return getattr(field.attr[1], comparator_func_name)
+    else:
+        return getattr(field, comparator_func_name)
 
 
 class CustomSelect(Select):
