@@ -1496,7 +1496,7 @@ Indigestion,This creature ignores 10% of enemies' Defense for each dead creature
 Inoculant,"After this creature Casts a spell, it increases the potency of enemies' Burning, Poisoned and Bomb debuffs by 10%.",Old World Microbe
 Lab Assistant,Your creatures' Spell Gems that have the same name as this creature's Spell Gems deal 50% more damage. This trait does not stack.,Alchemical Catalyst
 Last Ward,"This creature takes 20% less damage. After this creature is damaged by an enemy and it survives from this damage, the enemy takes damage equal to 20% of the damage dealt. This damage counts as spell damage.",Memory of Binding
-Lizardy,Your creatures' Ethereal Spell Gems have a 50% chance to not consume any Charges. This trait does not stack.,Lizard Wizard's Tome
+Lizardry,Your creatures' Ethereal Spell Gems have a 50% chance to not consume any Charges. This trait does not stack.,Lizard Wizard's Tome
 Love Thyself,"After an enemy gains Maximum Health, this creature Casts Vitality Explosion on it. This trait does not stack.",Otherworlder's Soul
 Loyalty's Light,"After a creature is killed, this creature gains Rebirth.",Pure Heart
 Marrow Metabolism,"After this creature takes damage from an attack or spell, its minions gain 1 stack.",Skull Shard
