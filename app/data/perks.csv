@@ -141,7 +141,7 @@ Inquisitor,Condemn,1,100,No,Yes,life_inquisitor_condemn_0.png,"At the start of b
 Inquisitor,Contrition,25,4,No,Yes,life_inquisitor_contrition_0.png,"After an enemy attacks, they have a 4% chance per rank to be afflicted with Scorned. Maximum Bonus: 100% chance"
 Inquisitor,Defy Evil,10,10,No,Yes,life_inquisitor_defyevil_0.png,Your creatures' damage from attacks and spells ignores 2% of the enemies' Defense per rank. Maximum Bonus: Ignore 20% Defense
 Inquisitor,Divine Strength,25,4,No,Yes,life_inquisitor_divinestrength_0.png,"After your creatures are healed, they gain Attack and Intelligence equal to 1% of the healing received per rank. Maximum Bonus: Boost equal to 25% of healing"
-Inquisitor,Flagellation,1,100,No,Yes,life_inquisitor_chastise_0.png,Your creatures' healing effects deal damage at 35% effectiveness when applied to enemies.
+Inquisitor,Flagellation,1,100,No,Yes,life_inquisitor_chastise_0.png,Your creatures' healing effects deal damage at 100% effectiveness when applied to enemies.
 Inquisitor,Heresy,1,100,No,Yes,life_inquisitor_heresy_0.png,"When your creatures deal damage with an attack or spell, they deal 30% more damage for each debuff and Sealed Spell Gem the target has."
 Inquisitor,Judgment,25,4,No,Yes,life_inquisitor_judgment_0.png,"After an enemy Casts a spell, they have a 4% chance per rank to be afflicted with Silenced. Maximum Bonus: 100% chance"
 Inquisitor,Lay to Rest,100,1,No,Yes,life_inquisitor_laytorest_0.png,Enemies can only resurrect once per battle.
@@ -229,7 +229,7 @@ Cabalist,Prism,1,100,No,Yes,sorc_cabalist_prism_0.png,"After your creatures cast
 Cabalist,Quickdraw,20,5,No,Yes,sorc_cabalist_quickdraw_0.png,"After your creatures gain Ethereal Spell Gems, they have a 5% chance per rank to cast them. Only gems that are acquired after start-of-battle effects can be cast in this manner. Maximum Bonus: 100% chance"
 Cabalist,Shimmer,5,20,No,Yes,sorc_cabalist_shimmer_0.png,"Your creatures take 1% less damage per rank for each Ethereal Spell Gem they have equipped, up to 90% reduced damage. Maximum Bonus: 5% less damage per gem"
 Cabalist,Spellslinger,1,100,No,Yes,sorc_cabalist_spellslinger_0.png,Your creatures Ethereal Spell Gems cast 1 additional time.
-Cabalist,Flow of Magic,1,100,No,Yes,sorc_cabalist_spellweaver_0.png,"After your creatures cast an Ethereal Spell Gem, they gain Arcane."
+Cabalist,Flow of Magic,1,100,No,Yes,sorc_cabalist_spellweaver_0.png,"After your creatures manually cast an Ethereal Spell Gem, they gain a random buff."
 Cabalist,Temporal Concentration,1,100,No,Yes,sorc_cabalist_temporalconcentration_0.png,Your creatures' Ethereal Spell Gems do not consume Charges when used.
 Cabalist,Unshackled,1,100,No,No,sorc_cabalist_unshackled_0.png,Your creatures are immune to Silenced.
 Cabalist,Wild Magic,5,20,No,Yes,sorc_cabalist_wildmagic_0.png,"At the start of battle, your creatures gain 1 Ethereal Spell Gem that belongs to their class per rank. Maximum Bonus: 5 gems gained"
@@ -240,7 +240,7 @@ Sorcerer,Fade,1,100,No,Yes,sorc_sorcerer_fade_0.png,"After your creatures take d
 Sorcerer,Flabbergast,20,5,No,Yes,sorc_sorcerer_flabbergast_0.png,"After your creatures deal damage with attacks or spells to an enemy directly below them on the Timeline, that enemy has a 1% chance per rank to be sent to the bottom of the Timeline. Maximum Bonus: 20% chance"
 Sorcerer,Gravity's Void,15,10,No,Yes,sorc_sorcerer_gravitysvoid_0.png,"When your creatures damage an enemy, they deal 1% more damage per rank for each other creature between the two creatures on the timeline. Maximum Bonus: 15% more damage per creature"
 Sorcerer,Mental Fortitude,1,100,No,No,sorc_sorcerer_mentalfortitude_0.png,"At the start of battle, your creatures gain Shelled."
-Sorcerer,Perplex,25,4,No,Yes,sorc_sorcerer_perplex_0.png,"After an enemy takes damage from an attack, they have a 1% chance per rank to be afflicted with Confused. Maximum Bonus: 25% chance"
+Sorcerer,Perplex,25,4,No,Yes,sorc_sorcerer_perplex_0.png,"After an enemy takes damage, they have a 1% chance per rank to be afflicted with Confused. Maximum Bonus: 25% chance"
 Sorcerer,Psychic Scream,25,3,No,Yes,sorc_sorcerer_psychicscream_0.png,"After an enemy Casts a spell, they have a 4% chance per rank to be afflicted with Silenced. Maximum Bonus: 100% chance"
 Sorcerer,Ruin,1,100,No,Yes,sorc_sorcerer_ruin_0.png,Your creatures deal 1% more damage and take 1% less damage for each debuff each enemy has.
 Sorcerer,Singe,25,3,No,Yes,sorc_sorcerer_singe_0.png,"After an enemy Attacks, they have a 4% chance per rank to be afflicted with Scorned. Maximum Bonus: 100% chance"
@@ -382,7 +382,7 @@ Rune Knight,Aggression,10,10,No,Yes,runeknight_aggression_0.png,Your creatures d
 Rune Knight,Covenant,1,50,No,Yes,runeknight_covenant_0.png,"If your creatures have Cast each Rune spell at least once in the current battle, they activate your creatures' on-attack effects 1 additional time."
 Rune Knight,Crescendo,5,20,No,Yes,runeknight_crescendo_0.png,Your creatures gain and reduce stats 1% more per rank for each time your creatures Cast Rune of Dun in the current battle. Maximum Bonus: 5% stat change potency per Dun cast
 Rune Knight,Destiny,10,10,No,Yes,runeknight_destiny_0.png,Your creatures have an independent 1% chance per rank to dodge and deal critical damage for each time your creatures Cast Rune of Nax in the current battle. Maximum Bonus: 10% chance per Nax cast
-Rune Knight,Diabolism,1,100,No,No,runeknight_diabolism_0.png,Your creatures are immune to Silenced.
+Rune Knight,Diabolism,1,100,No,No,runeknight_diabolism_0.png,Your creatures are immune to Silenced and their Rune Spells cannot be Sealed.
 Rune Knight,Discharge,20,5,No,Yes,runeknight_discharge_0.png,Your creatures' Rune spells have a 1% chance to target all enemies for each time your creatures Cast a Rune spell in the current battle. Maximum Bonus: 20% chance
 Rune Knight,Embiggen,10,10,No,Yes,runeknight_censure_0.png,Your creatures deal 1% more damage per rank with spells for each time your creatures cast rune of Sah in the current battle. Maximum Bonus: 10% more damage per Sah cast
 Rune Knight,Empowerment,1,50,No,Yes,runeknight_empowerment_0.png,"If your creatures have Cast each Rune spell at least once in the current battle, they Cast 1 additional time and no longer consume Charges."
