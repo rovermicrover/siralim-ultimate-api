@@ -1579,7 +1579,7 @@ Mender's Oath,"After your creatures are healed, they heal your other creatures f
 Stand As One,"After your creatures take damage, your other creatures take 25% of this damage as well. Your creatures take 50% less damage. This trait does not stack.",Stoic Thread of Fate
 Unbound Corruption,"At the start of this creature's turn, it deals damage to enemies equal to 20% of its lowest stat.",Volatile Thread of Fate
 Accelerated Harvest,"After your creatures Attack, they have a 20% chance to afflict the target with a random debuff. This trait does not stack.",Ink of Eternity
-Careful Planning,"After a creature is killed, your creatures gain 50% of its Attack. This trait does not stack.",Hourglass Sand
+Careful Planning,"After this creature is killed, your creatures gain 50% of its Attack. This trait does not stack.",Hourglass Sand
 Intuition,Your creatures take 5% less damage (up to 90%) from attacks and spells for each time they've Attacked in the current battle. This trait does not stack.,Pale Feather
 Knowledge Is Power,Your creatures deal 5% more damage with spells for each time they've Attacked in the current battle. This trait does not stack.,Small Doll
 Master of Nihilists,"If all the creatures in your party are Nihilists, they are resistant to debuffs and are immune to Scorned.",Sigil of the Nihilist
