@@ -212,7 +212,7 @@ Anticipation,"After an enemy is killed, this creature Attacks random enemies 3 t
 On The Rocks,"When this creature Attacks, it Attacks an additional number of times equal to the number of spells your creatures Casted since it last Attacked.",Ranger Tuft
 Infinite Struggle,"After this creature Attacks, it has a 25% chance to continue Attacking the target for each debuff it has.",Runner Tuft
 Paradigm,"After this creature is Attacked, it Attacks the enemy.",Warrior Tuft
-Sunny Disposition,"After an enemy Casts a spell, this creature Attacks it.",Wrangler Tuft
+Sunny Disposition,"After an enemy manually Casts a spell, this creature Attacks it.",Wrangler Tuft
 Master of Centaurs,"Your Centaurs' attacks deal 20% more damage and have an independent 10% chance to deal critical damage for each Centaur fighting on your side.
 This trait does not stack.",Sigil of the Centaur
 Spell Tap,"This creature can't Cast spells manually, but can equip 3 extra Spell Gems. At the start of battle, your creatures gain copies of this creature's non-Ethereal Spell Gems. This trait does not stack.",Ashmouth Chain
@@ -449,7 +449,7 @@ Contradiction,"This creature starts battles with 200% more Speed, but also start
 Darkness Surrounding,"This creature starts battles with 125% more Health, but takes damage equal to 15% of its Maximum Health at the start of its turn.",Swampdweller Pincer
 Master of Forsaken,"If all the creatures in your party are Forsaken, their innate traits have no downside.",Sigil of the Forsaken
 Furor,"At the start of this creature's turn, it Attacks a random enemy for each creature that died since its last turn. Each attack deals 200% normal damage.",Daunting Tree Trunk
-Charge,"At the start of your creatures' turns, this creature has a 25% chance to Attack a random enemy.",Fearsome Tree Trunk
+Charge,"At the start of each creatures' turns, this creature has a 25% chance to Attack a random enemy.",Fearsome Tree Trunk
 Resprout,"At the start of this creature's turn, it recovers Health equal to 100% of the damage it took since its last turn.",Forest Tree Trunk
 Scrutiny,"At the start of this creature's turn, it Casts a random spell for each spell that the enemy creatures Cast since its last turn.",Gruesome Tree Trunk
 Bide,"When this creature Attacks, it deals additional damage equal to 100% of the damage it took since it last Attacked.",Monstrous Tree Trunk
@@ -713,12 +713,12 @@ Rise to Fall,"After this creature Attacks, it recovers 30% Health. In addition, 
 Blood Crazed,"After this creature is Attacked, it gains 35% Attack and recovers Health equal to 40% of the damage taken.",Warrior Plate
 Master of Minotaurs,Your Minotaurs Attack 1 additional time for each Minotaur fighting on your side. Your creatures deal 50% less damage. This trait does not stack.,Sigil of the Minotaur
 Cradle to the Grave,"After your creatures are killed, they have a 15% chance to resurrect with 50% Health for each dead creature on your side. This trait does not stack.",Gravedigger Goo
-Corrosion,"After this creature Attacks, it afflicts the target with Blighted. If the target is already afflicted with Blighted, the target is healed for 50% of the amount of damage dealt.",Interloper Goo
-Exacerbate,"After this creature Attacks, it increases the duration of the target's debuffs by 3 turns.",Invader Goo
+Corrosion,"After this creature Attacks, it afflicts the target with Blighted. If the target is already afflicted with Blighted, the target is healed for 100% of the amount of damage dealt.",Interloper Goo
+Neon Grave,"After this creature Attacks, it has a 35% chance to Cast Affliction.",Invader Goo
 Swell,"After this creature Attacks, it afflicts the target with a random debuff for each debuff the target already has.",Paralyzer Goo
-Villainy Thrives,The potency of the enemies' Poisoned and Burning debuffs are shared with each other but reduced by 65%. This trait does not stack.,Plaguespreader Goo
+Villainy Thrives,The potency of the enemies' Poisoned and Burning debuffs are shared with each otherf. This trait does not stack.,Plaguespreader Goo
 Intensify,"After this creature Attacks, it increases the potency of the target's Poisoned and Burning debuffs by 50%.",Skirmisher Goo
-Viscous Webs,"At the start of each enemy's turn, they take damage equal to 10% of their Current Health for each Snared, Sleeping, and Feared debuff they have. This trait does not stack.",Webweaver Goo
+Viscous Webs,"Enemies take 25% more damage for each debuff they have that they're resistant to. This trait does not stack.",Webweaver Goo
 Master of Mites,Your Mites have a 5% chance to avoid damage for each Mite fighting on your side. This trait does not stack.,Sigil of the Mite
 No Sanctuary,"The damage of this creature's attacks and the potency of this creature's spells is based on its Speed, rather than its Attack or Intelligence.",Mogwai's Sanctuary
 Inner Hatred,Your creatures have 100% more Attack. This trait is ignored when your creatures Attack. This trait does not stack.,Creep Wrappings
@@ -775,7 +775,7 @@ Master of Osseins,"If all the creatures in your party are Osseins, they start ba
 Amethyst Attunement,All creatures' Ethereal Spell Gems are created with only 1 Charge.,Giant Amethyst
 Bismuth Attunement,Creatures gain 50% less stats. This trait does not stack.,Bismuth Jewel
 Chocolate Attunement,Creatures cannot gain buffs.,Chocolate Egg
-Diamond Attunement,All Spell Gems can never be sealed.,Giant Diamond
+Diamond Attunement,All Spell Gems are 50% more potent. This trait does not stack.,Giant Diamond
 Emerald Attunement,All creatures deal 50% more damage. This trait does not stack.,Giant Emerald
 Opal Attunement,Creatures cannot lose stats.,Giant Opal
 Ruby Attunement,All creatures have 75% more Health. This trait does not stack.,Giant Ruby
@@ -917,7 +917,7 @@ Faulty Fortune,Enemies can only gain 1 buff per turn.,Squire Hoof
 Master of Satyrs,"If all the creatures in your party are Satyrs, enemies start battles with 20% less sats. This trait does not stack.",Sigil of the Satyr
 The Sickness,"After an enemy is healed, it is afflicted with Blighted.",Amorphous Hook
 Appetite For Eschar,"After your creatures deal damage as a result of Blighted, they recover health equal to 100% of the damage dealt. This trait does not stack.",Innocent Hook
-Perpetual Disease,Enemies' Blighted debuffs can't ever be removed.,Juggernaut Hook
+Vicar's Blessing,After an enemy takes damage from Blight, this creature has a 35% chance to cast Minor Healing on it. This trait does not stack.,Juggernaut Hook
 Aggravated Illness,Enemies take 50% more damage from Blighted. This trait does not stack.,Lugubrious Hook
 Chronic Affliction,"After an enemy takes damage from Blighted, it has a 50% chance to take the same amount of damage again. This trait does not stack.",Recruiter Hook
 Retrograde,Enemies with Blighted receive 50% more healing from all sources. This trait does not stack.,Benefactor Hook
@@ -1399,7 +1399,7 @@ This trait does not work on damage that is completely prevented by other effects
 Widdershins,Class strengths and weaknesses are reversed.,Contrary Clock
 Blue Tether,"When an adjacent creature would take damage or gain a buff or debuff, this creature becomes the new target instead.",Blue Shackle
 Green Tether,"After an adjacent ally heals a creature, this creature is healed for the same amount and gains a Barrier that absorbs damage equal to 100% of the amount healed. This trait does not work with creatures that also have this trait.",Green Shackle
-Master of Animations,"If all the creatures in your party are Animations, the first and last creatures in your party are considered to be adjacent to all their allies.",Sigil of the Animation
+Master of Animations,"Your Animations creatures have a 50% chance to receive all effects that require them to be adjacent to your other creatues. This trait does not stack.",Sigil of the Animation
 Purple Tether,"After an adjacent ally Casts a spell, this creature Casts that spell as well.",Purple Shackle
 Red Tether,"After an adjacent ally Attacks, this creature Attacks the enemy as well. This trait does not work with creatures that also have this trait.",Red Shackle
 Silver Tether,"After an adjacent creature is killed, this creature gains 60% of its stats (other than Health).",Silver Shackle
@@ -1421,10 +1421,10 @@ Speculation,"When your creatures Attack or Cast a spell, they have a 100% chance
 Surge of Vitality,"After your creatures Attack or are Attacked, they gain 20% Maximum Health. This trait does not stack.",N/A
 Twilight Zone,"Enemies deal damage with attacks and spells using their lowest stat, rather than their Attack or Intelligence. In addition, enemies take damage from attacks and spells based on their lowest stat, rather than Defense.",N/A
 Due Recompense,"Your Nature creatures and Beacon creatures always have Leeching. When an enemy Nature creature would gain a stat, it loses that stat instead.",Predator's Lantern
-Eternal Reprieve,"At the start of each of your creatures' turns, your creatures recover 5% Health. This trait does not stack.",Mendicant's Lantern
+Eternal Reprieve,"At the start of each of your creatures' turns, all of your creatures have a 25% hane to recover 20% Health. This trait does not stack.",Mendicant's Lantern
 Forbearance Forgone,"Your Sorcery creatures and Beacon creatures always have Protected. After an enemy Sorcery creature Casts a spell, that Spell Gem is Sealed and this creature's Spell Gems gain 1 Charge.",Stoic's Lantern
 Heavy Weighs the Crown,Your Chaos creatures and Beacon creatures always have Animated Gem.,Tyrant's Lantern
-Master of Beacons,"If all the creatures in your party are Beacons, their buffs and minions applied by their innate traits affect creatures of any class. This trait does not stack.",Sigil of the Beacon
+Master of Beacons,"At the start of battle, your Beacons' stats are averaged and then increased by 25%. This trait does not stack.",Sigil of the Beacon
 Pendulum's Return,"Your Death creatures and Beacon creatures always have Agile. When an enemy Death creature would afflict your creatures with a debuff, they afflict them with a buff instead.",Desecrator's Lantern
 Purity and Emptiness,"Your Life creatures and Beacon creatures always have Berserk. When an enemy Life creature would heal one of its allies, it heals one of your creatures instead.",Zealot's Lantern
 By My Hand,"When your creatures damage enemies with Shelled, all subsequent effects such as on-attack or on-cast effects are no longer prevented.",Celestine Energy
@@ -1594,7 +1594,7 @@ Staticstalker,"At the start of battle, this creature gains Chain Lightning. Afte
 Vilestalker,"At the start of battle, this creature gains Acid Rain. After this creature Casts this spell, it gains Invisible and 20% Speed.",Venomous Pelt
 Cull the Weak,"After an enemy is killed, your Uralos creatures gain 15% stats.",Envenomed Dagger
 Escalation,"After your Uralos creatures manually Cast a spell, your Uralos creatures gain 35% Attack and Intelligence. This trait does not stack.",Arcane Staff
-Formation,"After your Uralos creatures take damage from an attack or spell, your Uralos creatures gain 25% Defense. This trait does not stack.",Battered Shield
+Formation,"After your Uralos creatures take damage from an attack or spell, your Uralos creatures gain 5% Defense. This trait does not stack.",Battered Shield
 Healing Aura,"At the start of your Uralos creatures' turns, they recover Health equal to 25% of their highest stat. This trait does not stack.",Unidentified Flask
 Hunger for Blood,"After your Uralos creatures Attack, your Uralos creatures gain 10% Attack.",Bloodstained Claw
 Master of Uraloses,"If all the creatures in your party are Uraloses, they have a 50% chance to avoid indirect damage. This trait does not stack.",Sigil of the Uralos

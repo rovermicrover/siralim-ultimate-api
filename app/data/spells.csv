@@ -8,7 +8,7 @@ Acid Rain,Chaos,5,4080 Shop,Enemies take a moderate amount of damage and lose a 
 Adrenaline Rush,Chaos,16,Venedon Shop,Caster Attacks random enemies 3 times. Each attack deals 15% normal damage.
 Affliction,Chaos,17,Starter Spell,Enemies are afflicted with a random debuff.
 Afterlife,Life,1,Avatar of Perdition,Your creatures' on-resurrect and on-death effects activate. This spell is an Ultimate spell.
-Aftermath,Chaos,12,4080 Shop,Caster Attacks the target once for each turn the caster has taken in the current battle.
+Aftermath,Chaos,12,4080 Shop,Caster Attacks random enemeis once for each turn the caster has taken in the current battle. Maximum of 10 attacks.
 Aggravate,Death,10,False Gods (Ancestor),Enemies with Cursed Attack the caster for 25% normal damage.
 Amber Ale,Sorcery,14,Gambling Dwarves,Target Attacks a random enemy. This spell is a Booze Spell.
 Ancient Prayer,Life,10,Yseros Shop,Your creatures gain copies of all the target's buffs.
@@ -29,7 +29,7 @@ Awakened Nether Orbs,Chaos,1,Avatar of Caliban,One of the five Nether Orbs (chos
 Bangin' Bourbon,Chaos,18,Gambling Dwarves,Deals damage to a random enemy equal to 30% of their Maximum Health. This spell is a Booze Spell.
 Banish,Sorcery,10,Standard Spell,Target's minions are removed.
 Benediction,Life,4,Standard Spell,Your creatures recover a massive amount of Health.
-Black Hole,Sorcery,15,Standard Spell,"Enemies lose the traits they gained during battle, and the caster gains a copy of them."
+Astral Dimension,Sorcery,15,Standard Spell,"Your creatures' Spell Gems are unsealed. This Spell Gem cannot be Sealed."
 Black Ice,Sorcery,12,Standard Spell,"Each enemy has a 50% chance to be afflicted with Frozen, and each of your creatures have a 50% chance to gain Invisible."
 Bladestorm,Chaos,7,Chaos Guild,"Enemies take a moderate amount of damage, plus 1% more damage for every 1% Health each enemy is missing."
 Blank Slate,Sorcery,10,Standard Spell (Backer),All creatures lose access to the extra traits they gained during battle.
@@ -488,16 +488,16 @@ Reverberate,Sorcery,13,Aurum Shop,Enemies that are afflicted with Confused Attac
 Reverse Polarity,Sorcery,20,Standard Spell,Target's debuffs are converted to random buffs.
 Righteous Storm,Life,15,Perdition Shop,Enemies take a small amount of damage and lose a small amount of Attack.
 Riotous Rum,Death,12,Gambling Dwarves,Enemies are afflicted with Feared. This spell is a Booze Spell.
-Ritual of Summoning,Death,10,Standard Spell (Backer),"Target is killed, and your creatures' minions gain 3 stacks."
+Ritual of Summoning,Death,10,Standard Spell (Backer),"Caster is killed, and your creatures' minions gain 3 stacks."
 River Against the Current,Sorcery,10,Standard Spell (Backer),Enemies' buffs are removed.
 Rolling Meteor,Chaos,6,Standard Spell (Backer),"Random enemies continuously take damage equal to 20% of this creature's Current Health. After each enemy takes damage, the spell has a 25% chance to end."
 Ruby Power,Sorcery,30,Sorcery Guild,Caster Casts the Spell Gem in the target's Artifact Spell Slot. This spell is even more impressive if you manage to read its description ten times out loud.
 Ruin,Nature,5,False Gods (Jotun),"Target loses a devastating amount of its highest stat. Then, this Spell Gem is Sealed."
-Rune of Cor,Chaos,20,Rune Knight,"Target takes a large amount of damage, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's Attack instead of its Intelligence."
-Rune of Dun,Death,20,Rune Knight,"Target takes a large amount of damage, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's Defense instead of its Intelligence."
-Rune of Lua,Life,20,Rune Knight,"Target takes a large amount of damage, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's Current Health instead of its Intelligence."
-Rune of Nax,Nature,20,Rune Knight,"Target takes a large amount of damage, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's Speed instead of its Intelligence."
-Rune of Sah,Sorcery,20,Rune Knight,"Target takes a large amount of damage, and the caster's on-attack effects are activated."
+Rune of Cor,Chaos,20,Rune Knight,"Target takes a large amount of damage, loses a moderate amount of a random stat, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat."
+Rune of Dun,Death,20,Rune Knight,"Target takes a large amount of damage, caster gains a random minion, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat."
+Rune of Lua,Life,20,Rune Knight,"Target takes a large amount of damage, caster recovers equal to 50% of the damage dealt, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat."
+Rune of Nax,Nature,20,Rune Knight,"Target takes a large amount of damage, caster gains a moderate amount of a random stat, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat."
+Rune of Sah,Sorcery,20,Rune Knight,"Target takes a large amount of damage and its buffs and minions are removed, caster's debuffs are remved, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat"
 Rupture,Chaos,14,Venedon Shop,"Target takes a small amount of damage. This damage is increased by the percentage of Attack, Intelligence, Defense and Speed the caster has over those of the target."
 Ruse,Nature,12,False Gods (Jotun),"At the start of the target's next turn, it Casts its top-most Spell Gem twice."
 Sabotage,Chaos,20,Genaros Shop,"Target attacks the caster 3 times for 5% normal damage. These attacks cannot be dodged, and always deal at least 1 damage."
@@ -543,7 +543,7 @@ Soul Harvest,Death,5,Alexandria Shop,Caster steals a small amount of Intelligenc
 Soul Rage,Death,10,Standard Spell (Backer),Your creatures gain Leeching and Splashing.
 Soul Sacrifice,Death,15,Alexandria Shop,Your creatures' Health is set to 70%
 Spectral Crash,Life,15,Standard Spell,"Target takes a moderate amount of damage, plus 100% more damage if the caster has Savage."
-Spectral Rain,Sorcery,7,Standard Spell (Backer),Increases the potency of all creatures' buffs and debuffs by 50%.
+Spectral Rain,Sorcery,7,Standard Spell (Backer),Increases the potency of all creatures' buffs and debuffs by 50%. This spell does not affect Inverted.
 Spectral Swords,Sorcery,15,Standard Spell,Target takes a moderate amount of damage. The damage is based on the caster's Speed instead of Intelligence.
 Spell Blast,Sorcery,18,Standard Spell,Target takes a small amount of damage. The amount of damage is increased by 10% for each Charge the Spell Gem has.
 Spell Breath,Sorcery,10,Standard Spell,Enemies take a moderate amount of damage. 50% of the damage is based on the caster's Attack instead of Intelligence.
