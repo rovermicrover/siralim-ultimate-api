@@ -141,3 +141,5 @@ cython_debug/
 
 app/data/sprites
 app/data/textures
+
+.~lock.*

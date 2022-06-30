@@ -917,7 +917,7 @@ Faulty Fortune,Enemies can only gain 1 buff per turn.,Squire Hoof
 Master of Satyrs,"If all the creatures in your party are Satyrs, enemies start battles with 20% less sats. This trait does not stack.",Sigil of the Satyr
 The Sickness,"After an enemy is healed, it is afflicted with Blighted.",Amorphous Hook
 Appetite For Eschar,"After your creatures deal damage as a result of Blighted, they recover health equal to 100% of the damage dealt. This trait does not stack.",Innocent Hook
-Vicar's Blessing,After an enemy takes damage from Blight, this creature has a 35% chance to cast Minor Healing on it. This trait does not stack.,Juggernaut Hook
+Vicar's Blessing,"After an enemy takes damage from Blight, this creature has a 35% chance to cast Minor Healing on it. This trait does not stack.",Juggernaut Hook
 Aggravated Illness,Enemies take 50% more damage from Blighted. This trait does not stack.,Lugubrious Hook
 Chronic Affliction,"After an enemy takes damage from Blighted, it has a 50% chance to take the same amount of damage again. This trait does not stack.",Recruiter Hook
 Retrograde,Enemies with Blighted receive 50% more healing from all sources. This trait does not stack.,Benefactor Hook
