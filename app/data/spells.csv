@@ -359,7 +359,7 @@ Living Ribbon,Life,15,Arena Shop,"Your creatures gain Immune. This spell is an A
 Living Ring,Sorcery,7,Arena Shop,Target takes a devastating amount of damage. The damage is based on the caster's lowest stat instead of Intelligence. This spell is an Arsenal Spell.
 Living Sorcery Lance,Sorcery,10,Arena Shop,"Target takes a small amount of damage, or massive damage if the target is a Sorcery creature. The damage is based on the caster's Attack instead of Intelligence. This spell is an Arsenal Spell."
 Living Sorcery Shield,Sorcery,22,Arena Shop,"Caster's class is changed to Sorcery, it gains Warded, and it gains a moderate amount of Defense. The potency is based on the caster's Defense instead of Intelligence. This spell is an Arsenal Spell."
-Living Staff,Sorcery,5,Arena Shop,Enemies take a moderate amount of damage, plus 20% for each non-Ethereal Spell Gem the caster has equipped. This spell is an Arsenal Spell.
+Living Staff,Sorcery,5,Arena Shop,"Enemies take a moderate amount of damage, plus 20% for each non-Ethereal Spell Gem the caster has equipped. This spell is an Arsenal Spell."
 Living Sword,Chaos,5,Arena Shop,"Target takes a large amount of damage, plus damage equal to 50% of the caster's Attack. This spell is an Arsenal Spell."
 Living Wizard Hat,Sorcery,6,Arena Shop,Caster's Spell Gems do not consume Charges for the rest of the battle. This spell is an Arsenal Spell.
 Loveless,Death,5,False Gods (Loid),"Enemies take damage equal to the amount of Intelligence the caster has gained in the current battle. Then, its Intelligence is set to its minimum value."
