@@ -337,31 +337,31 @@ Lightning Storm,Nature,4,Standard Spell,"Enemies take a massive amount of damage
 Lightning Strike,Nature,12,Torun Shop,"Target takes a small amount of damage, or massive damage if the target is Provoking."
 Lingering Insanity,Sorcery,11,Standard Spell,Enemies take a small amount of damage. 100% of the damage is based on the enemies' Intelligence instead of the caster's.
 Lionheart,Life,10,Perdition Shop,Target gains a large amount of Attack and Defense.
-Living Armor,Life,10,Arena Shop,Caster gains a Barrier that absorbs damage equal to 100% of its Current Health. This spell is an Arsenal Spell.
-Living Axe,Chaos,8,Arena Shop,"Target takes a large amount of damage. If this damage exceeds 50% of the target's Maximum Health, it is killed. This spell is an Arsenal Spell."
-Living Boots,Nature,20,Arena Shop,Target's Speed is set equal to its highest stat. This spell is an Arsenal Spell.
-Living Bow,Nature,8,Arena Shop,Caster Casts 3 random Arrow spells. This spell is an Arsenal Spell.
+Living Armor,Life,10,Arena Shop,Caster gains a Barrier that absorbs damage equal to 100% of its Maximum Health. This spell is an Arsenal Spell.
+Living Axe,Chaos,6,Arena Shop,"Target takes a large amount of damage, plus 25% more damage for each Arsenal Spell spell the caster has Cast in the current battle. This spell is an Arsenal Spell."
+Living Boots,Nature,7,Arena Shop,"Your creatures gain a moderate amount of Speed, plus 65% more for each turn they've taken in the current battle. This spell is an Arsenal Spell."
+Living Bow,Nature,5,Arena Shop,Caster Casts 3 random Arrow spells. This spell is an Arsenal Spell.
 Living Chaos Lance,Chaos,10,Arena Shop,"Target takes a small amount of damage, or massive damage if the target is a Chaos creature. The damage ia based on the caster's Attack instead of Intelligence. This spell is an Arsenal Spell."
 Living Chaos Shield,Chaos,7,Arena Shop,"Caster's class is changed to Chaos, it gains Taunting, and it gains a moderate amount of Defense. The potency is based on the caster's Defense instead of Intelligence. This spell is an Arsenal Spell."
 Living Cloak,Nature,10,Arena Shop,Caster gains a large amount of Speed and Invisible. This spell is an Arsenal Spell.
 Living Death Lance,Death,10,Arena Shop,"Target takes a small amount of damage, or massive damage if the target is a Death creature. The damage ia based on the caster's Attack instead of Intelligence. This spell is an Arsenal Spell."
 Living Death Shield,Death,7,Arena Shop,"Caster's class is changed to Death, it gains Leeching, and it gains a moderate amount of Defense. The potency is based on the caster's Defense instead of Intelligence. This spell is an Arsenal Spell."
-Living Gauntlet,Chaos,5,Arena Shop,Caster gains a massive amount of Attack. This spell is an Arsenal Spell.
-Living Heavy Shield,Death,5,Arena Shop,Caster gains a massive amount of Defense. This spell is an Arsenal Spell.
-Living Helmet,Death,7,Arena Shop,Caster gains Immune. This spell is an Arsenal Spell.
+Living Gauntlet,Chaos,4,Arena Shop,Caster gains a massive amount of Attack and Savage. This spell is an Arsenal Spell.
+Living Heavy Shield,Death,4,Arena Shop,Caster gains a massive amount of Defense and Shelled. This spell is an Arsenal Spell.
+Living Helmet,Death,4,Arena Shop,Caster gains a massive amount of Maximum Health and Protected. This spell is an Arsenal Spell.
 Living Life Lance,Life,10,Arena Shop,"Target takes a small amount of damage, or massive damage if the target is a Life creature. The damage is based on the caster's Attack instead of Intelligence. This spell is an Arsenal Spell."
 Living Life Shield,Life,7,Arena Shop,"Caster's class is changed to Life, it gains Protected, and it gains a moderate amount of Defense. The potency is based on the caster's Defense instead of Intelligence. This spell is an Arsenal Spell."
-Living Mace,Death,12,Arena Shop,Target takes a moderate amount of damage and is afflicted with Stone. The duration of Stone is increased by 1 turn for every 100% the caster's Attack exceeds its base value. This spell is an Arsenal Spell.
+Living Mace,Death,2,Arena Shop,Target takes a devastating amount of damage. This spell is an Arsenal Spell.
 Living Nature Lance,Nature,10,Arena Shop,"Target takes a small amount of damage, or massive damage if the target is a Nature creature. The damage ia based on the caster's Attack instead of Intelligence. This spell is an Arsenal Spell."
 Living Nature Shield,Nature,7,Arena Shop,"Caster's class is changed to Nature, it gains Invisible, and it gains a moderate amount of Defense. The potency is based on the caster's Defense instead of Intelligence. This spell is an Arsenal Spell."
-Living Necklace,Life,12,Arena Shop,Caster's Spell Gems gain 1 Charge. This spell is an Arsenal Spell.
-Living Ribbon,Life,15,Arena Shop,"Caster's Disarmed debuff is removed, and its Spell Gems are no longer sealed. This spell is an Arsenal Spell."
+Living Necklace,Life,6,Arena Shop,"Your ceatures' Spell Gems are unsealed and their Silenced debuffs are removed. This spell is an Arsenal Spell."
+Living Ribbon,Life,15,Arena Shop,"Your creatures gain Immune. This spell is an Arsenal Spell."
 Living Ring,Sorcery,7,Arena Shop,Target takes a devastating amount of damage. The damage is based on the caster's lowest stat instead of Intelligence. This spell is an Arsenal Spell.
 Living Sorcery Lance,Sorcery,10,Arena Shop,"Target takes a small amount of damage, or massive damage if the target is a Sorcery creature. The damage is based on the caster's Attack instead of Intelligence. This spell is an Arsenal Spell."
 Living Sorcery Shield,Sorcery,22,Arena Shop,"Caster's class is changed to Sorcery, it gains Warded, and it gains a moderate amount of Defense. The potency is based on the caster's Defense instead of Intelligence. This spell is an Arsenal Spell."
-Living Staff,Sorcery,7,Arena Shop,Enemies take a small amount of damage for each non-Ethereal Spell Gem the caster has equipped. This spell is an Arsenal Spell.
+Living Staff,Sorcery,5,Arena Shop,Enemies take a moderate amount of damage, plus 20% for each non-Ethereal Spell Gem the caster has equipped. This spell is an Arsenal Spell.
 Living Sword,Chaos,5,Arena Shop,"Target takes a large amount of damage, plus damage equal to 50% of the caster's Attack. This spell is an Arsenal Spell."
-Living Wizard Hat,Sorcery,3,Arena Shop,Caster's Spell Gems do not consume Charges for the rest of the battle. This spell is an Arsenal Spell.
+Living Wizard Hat,Sorcery,6,Arena Shop,Caster's Spell Gems do not consume Charges for the rest of the battle. This spell is an Arsenal Spell.
 Loveless,Death,5,False Gods (Loid),"Enemies take damage equal to the amount of Intelligence the caster has gained in the current battle. Then, its Intelligence is set to its minimum value."
 Lucious Lager,Life,12,Gambling Dwarves,Afflicts 3 random enemies with Sleeping. This spell is a Booze Spell.
 Luck of the Draw,Chaos,10,Standard Spell (Backer),All creatures gain a random buff and a random debuff.
