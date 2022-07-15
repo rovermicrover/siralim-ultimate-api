@@ -229,7 +229,7 @@ Cabalist,Prism,1,100,No,Yes,sorc_cabalist_prism_0.png,"After your creatures cast
 Cabalist,Quickdraw,20,5,No,Yes,sorc_cabalist_quickdraw_0.png,"After your creatures gain Ethereal Spell Gems, they have a 5% chance per rank to cast them. Only gems that are acquired after start-of-battle effects can be cast in this manner. Maximum Bonus: 100% chance"
 Cabalist,Shimmer,5,20,No,Yes,sorc_cabalist_shimmer_0.png,"Your creatures take 1% less damage per rank for each Ethereal Spell Gem they have equipped, up to 90% reduced damage. Maximum Bonus: 5% less damage per gem"
 Cabalist,Spellslinger,1,100,No,Yes,sorc_cabalist_spellslinger_0.png,Your creatures Ethereal Spell Gems cast 1 additional time.
-Cabalist,Flow of Magic,1,100,No,Yes,sorc_cabalist_spellweaver_0.png,"After your creatures manually cast an Ethereal Spell Gem, they gain a random buff."
+Cabalist,Flow of Magic,1,100,No,Yes,sorc_cabalist_spellweaver_0.png,"After your creatures manually cast an Ethereal Spell Gem, they gain 50% Intelligence."
 Cabalist,Temporal Concentration,1,100,No,Yes,sorc_cabalist_temporalconcentration_0.png,Your creatures' Ethereal Spell Gems do not consume Charges when used.
 Cabalist,Unshackled,1,100,No,No,sorc_cabalist_unshackled_0.png,Your creatures are immune to Silenced.
 Cabalist,Wild Magic,5,20,No,Yes,sorc_cabalist_wildmagic_0.png,"At the start of battle, your creatures gain 1 Ethereal Spell Gem that belongs to their class per rank. Maximum Bonus: 5 gems gained"
