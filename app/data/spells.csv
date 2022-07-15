@@ -10,7 +10,7 @@ Affliction,Chaos,17,Starter Spell,Enemies are afflicted with a random debuff.
 Afterlife,Life,1,Avatar of Perdition,Your creatures' on-resurrect and on-death effects activate. This spell is an Ultimate spell.
 Aftermath,Chaos,12,4080 Shop,Caster Attacks random enemeis once for each turn the caster has taken in the current battle. Maximum of 10 attacks.
 Aggravate,Death,10,False Gods (Ancestor),Enemies with Cursed Attack the caster for 25% normal damage.
-Amber Ale,Sorcery,14,Gambling Dwarves,Target Attacks a random enemy. This spell is a Booze Spell.
+Amber Ale,Sorcery,10,Gambling Dwarves,Target Attacks a random enemy for 300% normal damage. This spell is a Booze Spell.
 Ancient Prayer,Life,10,Yseros Shop,Your creatures gain copies of all the target's buffs.
 Anger,Chaos,20,Genaros Shop,Target creature's Attack is set equal to its Intelligence.
 Angry Orchard,Nature,2,Nature Guild,Enemies take a moderate amount of damage 4 times.
@@ -21,12 +21,12 @@ Arbitration,Chaos,2,Standard Spell (Backer),"Enemies' buffs are removed, and you
 Arcane Enchantment,Sorcery,15,Zonte Shop,Target gains Warded and Protected.
 Arcane Fallacy,Sorcery,5,False Gods (Mindwurm),Target Casts one of its multiple-target spells on its allies.
 Archangel's Blessing,Life,11,Standard Spell (Backer),Your creatures recover 30% Health and gain a random buff.
-Arid Alcohol,Sorcery,12,Gambling Dwarves,Afflicts 3 random enemies with Frozen. This spell is a Booze Spell.
+Arid Alcohol,Sorcery,8,Gambling Dwarves,"Enemies are afflicted with a random debuff (minimum of 1, maximum of 3) for every 2 debuffs they have. This spell is a Booze Spell."
 Ascension,Life,20,Shallan Shop,"Caster gains a random trait. This spell cannot be cast manually, but has a 50% chance to cast when the caster Defends or Provokes."
 Atonement,Life,5,Lister Shop,Enemies lose a large amount of Speed and Defense.
 Avalanche,Nature,1,Avatar of Torun,Enemies take a devastating amount of damage and are sent to the bottom of the Timeline. This spell is an Ultimate spell.
 Awakened Nether Orbs,Chaos,1,Avatar of Caliban,One of the five Nether Orbs (chosen randomly) is awakened to cast a powerful spell. This spell is an Ultimate Spell.
-Bangin' Bourbon,Chaos,18,Gambling Dwarves,Deals damage to a random enemy equal to 30% of their Maximum Health. This spell is a Booze Spell.
+Bangin' Bourbon,Chaos,7,Gambling Dwarves,"Deals a massive amount of damage to the target, then bounes to each of the target's allies at random. The damage is reduced by 20% for each bounce. This spell is a Booze Spell."
 Banish,Sorcery,10,Standard Spell,Target's minions are removed.
 Benediction,Life,4,Standard Spell,Your creatures recover a massive amount of Health.
 Astral Dimension,Sorcery,15,Standard Spell,"Your creatures' Spell Gems are unsealed. This Spell Gem cannot be Sealed."
@@ -206,7 +206,7 @@ Falling Feathers,Life,10,Standard Spell (Backer),"Random enemies take a moderate
 False Beliefs,Life,11,Standard Spell,Enemies take damage equal to 100% of the Health they've recovered in the current battle.
 Feeling Lucky,Chaos,15,Standard Spell (Backer),Caster Casts one of its other spells. The targets are chosen at complete random.
 Feign Death,Death,10,False Gods (Ancestor),Caster's on-death effects are activated.
-Fermented Hops,Death,11,Gambling Dwarves,Enemies with Blighted are healed for an amount equal to 35% of their Maximum Health. This spell is a Booze Spell.
+Fermented Hops,Death,9,Gambling Dwarves,"Enemies with Blighted are healed for an amount equal to 35% of their Maximum Health. Otherwise, they are afflicted with Blighted. This spell is a Booze Spell."
 Fiery Gleam,Chaos,15,Standard Spell,Target is afflicted with Burning and Blind.
 Fiery Stew,Chaos,7,Standard Spell (Backer),"Target recovers a small amount of Health and gains a small amount of Defense. Then, a random enemy is afflicred with Burning."
 Final Form,Sorcery,12,Sorcery Guild,"Target gains Rebirth, Protected and Berserk."
@@ -254,8 +254,8 @@ Giant's Strength,Nature,5,Meraxis Shop,Target gains a massive amount of Attack.
 Gift of the Wild,Nature,13,Standard Spell,Your creatures recover a small amount of Health and gain Repelling.
 Glacier,Nature,10,Standard Spell,Target takes a large amount of damage and is afflicted with Frozen.
 Glory,Life,10,Muse Shop,"Each of the caster's other, non-Ethereal Spell Gems have a 30% chance to be cast. Maximum of 3 spells can be Cast."
-Godly Gin,Life,5,Gambling Dwarves,Your creatures gain Immune. This spell is a Booze Spell.
-Golden Stout,Chaos,11,Gambling Dwarves,Your creatures gain Proficient. This spell is a Booze Spell.
+Godly Gin,Life,4,Gambling Dwarves,Your creatures gain Immune. This spell is a Booze Spell.
+Golden Stout,Chaos,30,Gambling Dwarves,Caster Casts the Spell Gem in its Artifact's Spell Slot. This spell is a Booze Spell.
 Good Fortune,Nature,1,Avatar of Meraxis,Your creatures gain all buffs. This spell does not activate on-buff effects. This spell is an Ultimate spell.
 Gore Claws,Death,12,Standard Spell,"Target takes a moderate amount of damage, plus 5% more damage for every 1% Health the target is missing."
 Graft Bone,Death,15,Erebyss Shop,Target creature takes a moderate amount of damage and gains Defense equal to 200% of the damage taken.
@@ -363,7 +363,7 @@ Living Staff,Sorcery,5,Arena Shop,"Enemies take a moderate amount of damage, plu
 Living Sword,Chaos,5,Arena Shop,"Target takes a large amount of damage, plus damage equal to 50% of the caster's Attack. This spell is an Arsenal Spell."
 Living Wizard Hat,Sorcery,6,Arena Shop,Caster's Spell Gems do not consume Charges for the rest of the battle. This spell is an Arsenal Spell.
 Loveless,Death,5,False Gods (Loid),"Enemies take damage equal to the amount of Intelligence the caster has gained in the current battle. Then, its Intelligence is set to its minimum value."
-Lucious Lager,Life,12,Gambling Dwarves,Afflicts 3 random enemies with Sleeping. This spell is a Booze Spell.
+Lucious Lager,Life,12,Gambling Dwarves,Enemies are afflicted with Sleeping and Blind. This spell is a Booze Spell.
 Luck of the Draw,Chaos,10,Standard Spell (Backer),All creatures gain a random buff and a random debuff.
 Luck's Gambit,Chaos,5,Standard Spell (Backer),All creatures' Ethereal Spell Gems are replaced with different ones.
 Lycanthropy,Nature,10,Reclusa Shop,"Caster transforms into a random Nature creature with 100% Health. Then, this Spell Gem is Sealed. This spell cannot be cast manually, but has a 100% chance to cast when this creature takes damage while it is below 25% Health."
@@ -387,7 +387,7 @@ Memento of Defense,Death,20,False Gods (Construct),This spell doesn't do anythin
 Memento of Intelligence,Sorcery,20,False Gods (Construct),This spell doesn't do anything when Cast. The caster has 5% more Intelligence for each Charge this Spell Gem is missing.
 Memento of Speed,Nature,20,False Gods (Construct),This spell doesn't do anything when Cast. The caster has 5% more Speed for each Charge this Spell Gem is missing.
 Mental Barrier,Sorcery,7,Sorcery Guild,Your creatures gain a Barrier that absorbs a massive amount of damage.
-Merry Malt,Nature,24,Gambling Dwarves,Caster gains a random trait. This spell is a Booze Spell.
+Merry Malt,Nature,12,Gambling Dwarves,Caster gains a random trait that belongs to its race. This spell is a Booze Spell.
 Metamorphosis,Nature,20,Regalis Shop,Target's Health is set to a random amount between 1% and 100%.
 Meteor Shower,Nature,6,Anneltha Shop,Enemies take a moderate amount of damage three times.
 Might of the Jotun,Nature,3,False Gods (Jotun),"Target gains a massive amount of Attack. At the start of its next turn, it Attacks a random enemy."
@@ -487,7 +487,7 @@ Revelation,Death,10,False Gods (Ancestor),Caster's on-resurrect effects are acti
 Reverberate,Sorcery,13,Aurum Shop,Enemies that are afflicted with Confused Attack one of their allies.
 Reverse Polarity,Sorcery,20,Standard Spell,Target's debuffs are converted to random buffs.
 Righteous Storm,Life,15,Perdition Shop,Enemies take a small amount of damage and lose a small amount of Attack.
-Riotous Rum,Death,12,Gambling Dwarves,Enemies are afflicted with Feared. This spell is a Booze Spell.
+Riotous Rum,Death,10,Gambling Dwarves,Enemies take a moderate amount of damage and are afflicted with Feared. This spell is a Booze Spell.
 Ritual of Summoning,Death,10,Standard Spell (Backer),"Caster is killed, and your creatures' minions gain 3 stacks."
 River Against the Current,Sorcery,10,Standard Spell (Backer),Enemies' buffs are removed.
 Rolling Meteor,Chaos,6,Standard Spell (Backer),"Random enemies continuously take damage equal to 20% of this creature's Current Health. After each enemy takes damage, the spell has a 25% chance to end."
@@ -515,11 +515,11 @@ Scourge Death,Life,10,Standard Spell,"Target takes a small amount of damage, or 
 Scourge Life,Nature,10,Standard Spell,"Target takes a small amount of damage, or massive damage if the target is a Life creature."
 Scourge Nature,Sorcery,10,Standard Spell,"Target takes a small amount of damage, or massive damage if the target is a Nature creature."
 Scourge Sorcery,Chaos,10,Standard Spell,"Target takes a small amount of damage, or massive damage if the target is a Sorcery creature."
-Secret Stuff,Nature,10,Gambling Dwarves,A random enemy Attacks one of its allies for 200% normal damage. This spell is a Booze Spell.
+Secret Stuff,Nature,7,Gambling Dwarves,The enmey with the highest Attck Attacks one of its allies for 200% normal damage. This spell is a Booze Spell.
 Seduction,Nature,1,Avatar of Regalis,"Each enemy gives 25% of their Attack, Intelligence, Defense, and Speed to your creatures in the enemies' corresponding positions. This spell is an Ultimate Spell."
 Seismic Crash,Nature,12,Standard Spell,"Target takes a moderate amount of damage. If the target has Stone, it has a 25% chance to be killed."
 Self Analysis,Sorcery,5,Standard Spell (Backer),Caster gains stats equal to 5% of its allies' stats (other than Health).
-Sensual Cider,Life,15,Gambling Dwarves,Your creature with the lowest Health recovers 50% Health. This spell is a Booze Spell.
+Sensual Cider,Life,8,Gambling Dwarves,Your creature recover a large amount of Health. This spell is a Booze Spell.
 Serendipity,Life,10,Standard Spell,Your creatures gain Savage and Agile.
 Shadow Crash,Death,8,Ariamaki Shop,Enemies take damage equal to 10% of the caster's Intelligence for each time they've cast a spell in the current battle.
 Shadow Infusion,Death,10,Vertraag Shop,Target gains a large amount of Attack and Speed.
@@ -552,7 +552,7 @@ Spell Leak,Sorcery,5,Standard Spell,Enemies' Ethereal Spell Gems are sealed.
 Spell Lock,Sorcery,10,Standard Spell,All creatures are afflicted with Silenced.
 Spell Strike,Sorcery,15,Standard Spell,Target takes a moderate amount of damage. 50% of the damage is based on the caster's Attack instead of Intelligence.
 Spell Ward,Sorcery,10,Standard Spell,Your creatures gain Warded.
-Spicy Suds,Chaos,13,Gambling Dwarves,Your creatures with Splashing Attack random enemeis. This spell is a Booze Spell.
+Spicy Suds,Chaos,9,Gambling Dwarves,"Your creatures with Splashing Attack random enemeis. Otherwise, they gain Splashing This spell is a Booze Spell."
 Spirit Bond,Nature,20,False Gods (Jotun),Target gains the caster's trait.
 Spirit Breaker,Life,20,Lister Shop,"Target takes a small amount of damage, plus 50% more damage for each turn it has taken in the current battle."
 Spirit Offering,Death,10,Mortem Shop,"Target loses a large amount of Intelligence, and your creatures gain 20% of that amount."
@@ -573,7 +573,7 @@ Stubborn Will,Life,8,Standard Spell (Backer),Target recovers a small amount of H
 Stun Beam,Sorcery,5,Standard Spell (Backer),Target is sent to the bottom of the Timeline.
 Submerge,Nature,11,Standard Spell (Backer),"Enemies take a moderate amount of damage, plus 25% damage for each turn they've taken in the current battle."
 Subterfuge,Sorcery,5,False Gods (Mindwurm),"Target Attacks itself. Then, it has a 30% chance to attack itself again. This effect can occur multiple times in a row."
-Succulent Scotch,Nature,12,Gambling Dwarves,All the creatures on the battlefield Attack themselves. This spell is a Booze Spell.
+Succulent Scotch,Nature,10,Gambling Dwarves,All the creatures on the battlefield Attack themselves. This spell is a Booze Spell.
 Sudden Death,Death,7,Vertraag Shop,"Target is killed, and enemies take damage equal to 25% of its Current Health."
 Suffocation,Sorcery,6,Standard Spell,Target is afflicted with Silenced and Stone.
 Summon Animated Gem,Sorcery,8,Standard Spell,Caster gains Animated Gem.
