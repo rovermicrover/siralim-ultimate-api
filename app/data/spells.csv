@@ -658,3 +658,12 @@ Tectonic Upheaval,Nature,1,Avatar of Anneltha,"Enemies take a massive amount of 
 Total Carnage,Chaos,1,Avatar of Genaros,Enemies are afflicted with Bleeding and this creature Attacks each enemy. This spell is an Ultimate Spell.
 Work of Art,Life,1,Avatar of Muse,Your creatures gain an army of minions. This spell does not activate on-minion effects. This spell is an Ultimate Spell.
 Virus,Death,12,Standard Spell,Enemies take damage equal to 2 turns of their Poisoned debuff.
+Whitchcraft,Sorcery,7,Standard Spell,"Enemies with Cursed Cast one of their single-target damage spells on a random creature."
+Evil Eye,Death,12,Standard Spell,"Target takes a small amount of damage, or a massive amount of damage if they are afflicated with Cursed."
+Gunpowder,Chaos,7,Standard Spell,"Potency of enemies' Bomb debuffs is increased by 30% of the caster's Speed."
+Curse Of Doom,Death,5,Standard Spell,"Enemies with Cursed gain a large amount of Attack and Intelligence and lose a large amount of Defense and Speed."
+Short Fuse,Chaos,7,Standard Spell,"Enemies take damage equal to 100% of the potency of their Bomb debuffs."
+Herd Immunity,Nature,15,Standard Spell,"Your creatures recover Health equal to 100% of the target's Poisoned potency."
+Dissonance,Chaos,12,Standard Spell,"Potencies of enemies' Bomb, Poisoned, and Burning debuffs are averaged."
+Vaccination,Sorcery,18,Standard Spell,"Your creatures gain their lowest stat equal to 100% of the target's Poisoned potency."
+Discombobulate,Sorcery,12,Standard Spell,"Enemies with Confused either Attack or Cast one of their spells, depending on whether their Attack or Intelligence is higher."
