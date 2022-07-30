@@ -1000,24 +1000,24 @@ spr_crits_battle_2394.png,Coldslam Yeti,Yeti,Sorcery,34,19,14,22,17,106,Azural G
 spr_crits_battle_2390.png,Icemane Yeti,Yeti,Sorcery,36,21,16,21,16,110,Azural God Shop,Lingering Frost
 spr_crits_battle_2393.png,Chillbreeze Yeti,Yeti,Sorcery,35,20,15,20,15,105,Azural God Shop,Thermal Void
 spr_crits_battle_2388.png,Ancient Yeti,Yeti,Sorcery,36,21,16,21,16,110,Azural God Shop,Winter Has Come
-spr_crits_battle_placeholder.png,Living Arbiter,Arbiter,Nature,28,18,18,21,21,106,"Land of Breath & Balance ",In Favor of Survival
-spr_crits_battle_placeholder.png,Feeling Arbiter,Arbiter,Nature,29,19,19,19,19,105,Land of Breath & Balance,In Favor of Destruction
-spr_crits_battle_placeholder.png,Thinking Arbiter,Arbiter,Nature,30,20,20,19,19,108,Land of Breath & Balance,In Favor of Creation
-spr_crits_battle_placeholder.png,Breathing Arbiter,Arbiter,Nature,30,19,19,19,19,106,Land of Breath & Balance,In Favor of Protection
-spr_crits_battle_placeholder.png,Moving Arbiter,Arbiter,Nature,29,19,19,19,19,105,Land of Breath & Balance,In Favor of Escape
-spr_crits_battle_placeholder.png,Final Arbiter,Arbiter,Nature,30,20,20,19,19,108,Land of Breath & Balance,In Favor of All
+spr_crits_battle_3095.png,Living Arbiter,Arbiter,Nature,28,18,18,21,21,106,"Land of Breath & Balance ",In Favor of Survival
+spr_crits_battle_3094.png,Feeling Arbiter,Arbiter,Nature,29,19,19,19,19,105,Land of Breath & Balance,In Favor of Destruction
+spr_crits_battle_3064.png,Thinking Arbiter,Arbiter,Nature,30,20,20,19,19,108,Land of Breath & Balance,In Favor of Creation
+spr_crits_battle_3065.png,Breathing Arbiter,Arbiter,Nature,30,19,19,19,19,106,Land of Breath & Balance,In Favor of Protection
+spr_crits_battle_3063.png,Moving Arbiter,Arbiter,Nature,29,19,19,19,19,105,Land of Breath & Balance,In Favor of Escape
+spr_crits_battle_3062.png,Final Arbiter,Arbiter,Nature,30,20,20,19,19,108,Land of Breath & Balance,In Favor of All
 spr_crits_battle_placeholder.png,Atlas Beacon,Beacon,Life,36,16,18,18,18,106,"Refuge of the Magi, Land of Breath & Balance",Heavy Weighs The Crown
 spr_crits_battle_placeholder.png,Luna Beacon,Beacon,Life,38,18,18,18,18,110,"Refuge of the Magi, Land of Breath & Balance",Forbearance Forgone
 spr_crits_battle_placeholder.png,Lappet Beacon,Beacon,Life,38,18,18,18,18,110,"Refuge of the Magi, Land of Breath & Balance",Due Recompense
 spr_crits_battle_placeholder.png,Deathshead Beacon,Beacon,Life,32,18,18,18,18,104,"Refuge of the Magi, Land of Breath & Balance",Pendulum's Return
 spr_crits_battle_placeholder.png,Pellucid Beacon,Beacon,Life,38,18,18,18,18,110,"Refuge of the Magi, Land of Breath & Balance",Purity and Emptiness
 spr_crits_battle_placeholder.png,Rosy Beacon,Beacon,Life,38,18,18,18,18,110,"Refuge of the Magi, Land of Breath & Balance",Eternal Reprieve
-spr_crits_battle_placeholder.png,Bhasa Cherub,Cherub,Life,41,16,21,11,21,110,"Azure Dream, Land of Breath & Balance",Great Conjunction
-spr_crits_battle_placeholder.png,Surya Cherub,Cherub,Life,41,16,21,11,21,110,"Azure Dream, Land of Breath & Balance",Triple Suns
-spr_crits_battle_placeholder.png,Preta Cherub,Cherub,Life,38,16,21,11,21,107,"Azure Dream, Land of Breath & Balance",Sundered and Undone
-spr_crits_battle_placeholder.png,Vipina Cherub,Cherub,Life,42,17,21,11,21,112,"Azure Dream, Land of Breath & Balance",The Two Made One
-spr_crits_battle_placeholder.png,Chandra Cherub,Cherub,Life,40,15,20,13,20,108,"Azure Dream, Land of Breath & Balance",By My Hand
-spr_crits_battle_placeholder.png,Nisha Cherub,Cherub,Life,43,18,23,8,18,110,"Azure Dream, Land of Breath & Balance",Or Else By None
+spr_crits_battle_3079.png,Bhasa Cherub,Cherub,Life,41,16,21,11,21,110,"Azure Dream, Land of Breath & Balance",Great Conjunction
+spr_crits_battle_3083.png,Surya Cherub,Cherub,Life,41,16,21,11,21,110,"Azure Dream, Land of Breath & Balance",Triple Suns
+spr_crits_battle_3082.png,Preta Cherub,Cherub,Life,38,16,21,11,21,107,"Azure Dream, Land of Breath & Balance",Sundered and Undone
+spr_crits_battle_3084.png,Vipina Cherub,Cherub,Life,42,17,21,11,21,112,"Azure Dream, Land of Breath & Balance",The Two Made One
+spr_crits_battle_3080.png,Chandra Cherub,Cherub,Life,40,15,20,13,20,108,"Azure Dream, Land of Breath & Balance",By My Hand
+spr_crits_battle_3081.png,Nisha Cherub,Cherub,Life,43,18,23,8,18,110,"Azure Dream, Land of Breath & Balance",Or Else By None
 spr_crits_battle_placeholder.png,Electropod Ant,Electropod,Nature,28,16,16,21,26,107,"Forgotten Lab, Gambler's Hive",Thread Pool
 spr_crits_battle_placeholder.png,Electropod Beetle,Electropod,Nature,30,15,15,20,25,105,"Forgotten Lab, Gambler's Hive",High Performance
 spr_crits_battle_placeholder.png,Electropod Fly,Electropod,Nature,32,15,15,20,25,107,"Forgotten Lab, Gambler's Hive",Infinite Scaling
@@ -1109,18 +1109,18 @@ spr_crits_battle_placeholder.png,Hydrangea Fae,Fae,Life,25,25,25,9,19,103,Fae La
 spr_crits_battle_placeholder.png,Polygala Fae,Fae,Life,21,21,21,13,23,99,Fae Lands,True North
 spr_crits_battle_placeholder.png,Rhododendron Fae,Fae,Life,24,24,24,9,19,100,Fae Lands,The Great Beyond
 spr_crits_battle_placeholder.png,Roseaea Fae,Fae,Life,26,26,24,9,19,104,Fae Lands,Outgrow
-spr_crits_battle_placeholder.png,Club Luckmantria,Luckmantria,Nature,24,4,27,17,27,99,Gambler's Hive,Showdown
-spr_crits_battle_placeholder.png,Diamond Luckmantria,Luckmantria,Nature,27,7,27,17,27,105,Gambler's Hive,Semi-Bluff
-spr_crits_battle_placeholder.png,Heart Luckmantria,Luckmantria,Nature,26,6,26,16,26,100,Gambler's Hive,Ante
-spr_crits_battle_placeholder.png,Spade Luckmantria,Luckmantria,Nature,26,6,26,16,26,100,Gambler's Hive,Drawing Dead
-spr_crits_battle_placeholder.png,Ace Luckmantria,Luckmantria,Nature,21,7,27,17,27,99,Gambler's Hive,Royal Flush
-spr_crits_battle_placeholder.png,Joker Luckmantria,Luckmantria,Nature,25,5,28,18,18,94,Gambler's Hive,Implied Odds
-spr_crits_battle_placeholder.png,Junkyard Bot,Modron,Sorcery,41,16,16,20,20,113,Forgotten Lab,Junkyard Might
-spr_crits_battle_placeholder.png,Bio Bot,Modron,Sorcery,38,15,15,20,20,108,Forgotten Lab,Big Brained
-spr_crits_battle_placeholder.png,Brave Little Bot,Modron,Sorcery,40,15,15,20,20,110,Forgotten Lab,Bravely Inspired
-spr_crits_battle_placeholder.png,Wizard's Companion,Modron,Sorcery,38,15,15,20,20,108,Forgotten Lab,Uninterrupted
-spr_crits_battle_placeholder.png,Wizard's Defender,Modron,Sorcery,43,18,13,18,18,110,Forgotten Lab,Protect the Glass Cannon
-spr_crits_battle_placeholder.png,Sentry Bot,Modron,Sorcery,39,14,14,22,19,108,Forgotten Lab,Shall Not Pass
+spr_crits_battle_3052.png,Club Luckmantria,Luckmantria,Nature,24,4,27,17,27,99,Gambler's Hive,Showdown
+spr_crits_battle_3056.png,Diamond Luckmantria,Luckmantria,Nature,27,7,27,17,27,105,Gambler's Hive,Semi-Bluff
+spr_crits_battle_3092.png,Heart Luckmantria,Luckmantria,Nature,26,6,26,16,26,100,Gambler's Hive,Ante
+spr_crits_battle_3055.png,Spade Luckmantria,Luckmantria,Nature,26,6,26,16,26,100,Gambler's Hive,Drawing Dead
+spr_crits_battle_3053.png,Ace Luckmantria,Luckmantria,Nature,21,7,27,17,27,99,Gambler's Hive,Royal Flush
+spr_crits_battle_3054.png,Joker Luckmantria,Luckmantria,Nature,25,5,28,18,18,94,Gambler's Hive,Implied Odds
+spr_crits_battle_3067.png,Junkyard Bot,Modron,Sorcery,41,16,16,20,20,113,Forgotten Lab,Junkyard Might
+spr_crits_battle_3088.png,Bio Bot,Modron,Sorcery,38,15,15,20,20,108,Forgotten Lab,Big Brained
+spr_crits_battle_3089.png,Brave Little Bot,Modron,Sorcery,40,15,15,20,20,110,Forgotten Lab,Bravely Inspired
+spr_crits_battle_3090.png,Wizard's Companion,Modron,Sorcery,38,15,15,20,20,108,Forgotten Lab,Uninterrupted
+spr_crits_battle_3091.png,Wizard's Defender,Modron,Sorcery,43,18,13,18,18,110,Forgotten Lab,Protect the Glass Cannon
+spr_crits_battle_3066.png,Sentry Bot,Modron,Sorcery,39,14,14,22,19,108,Forgotten Lab,Shall Not Pass
 spr_crits_battle_placeholder.png,Mythicant Populi,Mythicant,Sorcery,38,18,18,16,18,108,"Torture Chamber, Bastion of the Void",Of Creation Undivided
 spr_crits_battle_placeholder.png,Mythicant Solis,Mythicant,Sorcery,38,18,18,18,18,110,"Torture Chamber, Bastion of the Void",Of Determination Unyielding
 spr_crits_battle_placeholder.png,Mythicant Calti,Mythicant,Sorcery,35,18,18,18,18,107,"Torture Chamber, Bastion of the Void",Of Rituals Unbound
@@ -1134,29 +1134,29 @@ spr_crits_battle_placeholder.png,Nephilim Shieldbearer,Nephilim,Life,38,18,18,18
 spr_crits_battle_placeholder.png,Nephilim Skirmisher,Nephilim,Life,38,18,18,18,18,110,"Refuge of the Magi, Sanctum Umbra",Balanced Swordplay
 spr_crits_battle_placeholder.png,Nephilim Sorcerer,Nephilim,Life,38,18,18,18,18,110,"Refuge of the Magi, Sanctum Umbra",Balanced Spellcasting
 spr_crits_battle_placeholder.png,Nihilist Ender,Nihilist,Chaos,35,25,5,15,25,105,"Damarel, Amalgam Gardens",Nihilism
-spr_crits_battle_placeholder.png,Nihilist Paralyzer,Nihilist,Chaos,35,25,5,15,25,105,"Damarel, Amalgam Gardens",Careful Planning
+spr_crits_battle_3149.png,Nihilist Paralyzer,Nihilist,Chaos,35,25,5,15,25,105,"Damarel, Amalgam Gardens",Careful Planning
 spr_crits_battle_placeholder.png,Nihilist Protector,Nihilist,Chaos,33,26,6,16,26,107,"Damarel, Amalgam Gardens",Riverside
 spr_crits_battle_placeholder.png,Nihilist Sealer,Nihilist,Chaos,37,26,6,16,26,111,"Damarel, Amalgam Gardens",Accelerated Harvest
 spr_crits_battle_placeholder.png,Nihilist Seeker,Nihilist,Chaos,31,21,7,17,27,103,"Damarel, Amalgam Gardens",Knowledge Is Power
 spr_crits_battle_placeholder.png,Nihilist Summoner,Nihilist,Chaos,38,26,6,16,26,112,"Damarel, Amalgam Gardens",Intuition
-spr_crits_battle_placeholder.png,Rimeskin Spellmane,Spellmane,Sorcery,38,13,23,16,18,108,"Great Pandemonium, Cutthroat Jungle",Snowstalker
-spr_crits_battle_placeholder.png,Ashskin Spellmane,Spellmane,Sorcery,41,14,24,14,19,112,"Great Pandemonium, Cutthroat Jungle",Flamestalker
-spr_crits_battle_placeholder.png,Voltskin Spellmane,Spellmane,Sorcery,40,15,25,13,18,111,"Great Pandemonium, Cutthroat Jungle",Staticstalker
-spr_crits_battle_placeholder.png,Venomskin Spellmane,Spellmane,Sorcery,43,13,23,13,18,110,"Great Pandemonium, Cutthroat Jungle",Vilestalker
-spr_crits_battle_placeholder.png,Dryskin Spellmane,Spellmane,Sorcery,39,14,24,14,19,110,"Great Pandemonium, Cutthroat Jungle",Sandstalker
-spr_crits_battle_placeholder.png,Cloudskin Spellmane,Spellmane,Sorcery,38,13,25,15,20,111,"Great Pandemonium, Cutthroat Jungle",Skystalker
+spr_crits_battle_3150.png,Rimeskin Spellmane,Spellmane,Sorcery,38,13,23,16,18,108,"Great Pandemonium, Cutthroat Jungle",Snowstalker
+spr_crits_battle_3152.png,Ashskin Spellmane,Spellmane,Sorcery,41,14,24,14,19,112,"Great Pandemonium, Cutthroat Jungle",Flamestalker
+spr_crits_battle_3155.png,Voltskin Spellmane,Spellmane,Sorcery,40,15,25,13,18,111,"Great Pandemonium, Cutthroat Jungle",Staticstalker
+spr_crits_battle_3151.png,Venomskin Spellmane,Spellmane,Sorcery,43,13,23,13,18,110,"Great Pandemonium, Cutthroat Jungle",Vilestalker
+spr_crits_battle_3153.png,Dryskin Spellmane,Spellmane,Sorcery,39,14,24,14,19,110,"Great Pandemonium, Cutthroat Jungle",Sandstalker
+spr_crits_battle_3154.png,Cloudskin Spellmane,Spellmane,Sorcery,38,13,25,15,20,111,"Great Pandemonium, Cutthroat Jungle",Skystalker
 spr_crits_battle_placeholder.png,Uralos Healer,Uralos,Nature,42,17,17,17,17,110,"The Swamplands, Amalgam Gardens",Healing Aura
 spr_crits_battle_placeholder.png,Uralos Knight,Uralos,Nature,42,17,17,17,17,110,"The Swamplands, Amalgam Gardens",Formation
 spr_crits_battle_placeholder.png,Uralos Savage,Uralos,Nature,40,18,18,18,18,112,"The Swamplands, Amalgam Gardens",Hunger for Blood
 spr_crits_battle_placeholder.png,Uralos Spearmaster,Uralos,Nature,40,18,18,18,18,112,"The Swamplands, Amalgam Gardens",War Dance
 spr_crits_battle_placeholder.png,Uralos Spellslinger,Uralos,Nature,42,17,17,17,17,110,"The Swamplands, Amalgam Gardens",Escalation
 spr_crits_battle_placeholder.png,Uralos Trickster,Uralos,Nature,40,15,18,18,18,109,"The Swamplands, Amalgam Gardens",Cull the Weak
-spr_crits_battle_placeholder.png,Plated Warhog,Warhog,Nature,39,24,9,14,24,110,Genaros God Shop,Steel Eater
-spr_crits_battle_placeholder.png,Mystic Warhog,Warhog,Nature,43,23,8,13,23,110,Genaros God Shop,Magic Eater
-spr_crits_battle_placeholder.png,Oozing Warhog,Warhog,Nature,39,24,9,14,24,110,Genaros God Shop,Life Eater
-spr_crits_battle_placeholder.png,Barbed Warhog,Warhog,Nature,39,24,9,14,24,110,Genaros God Shop,Blade Eater
-spr_crits_battle_placeholder.png,Accursed Warhog,Warhog,Nature,38,23,8,16,23,108,Genaros God Shop,Spirit Eater
-spr_crits_battle_placeholder.png,Dire Warhog,Warhog,Nature,38,23,8,16,23,108,Genaros God Shop,Hog Wild
+spr_crits_battle_3051.png,Plated Warhog,Warhog,Nature,39,24,9,14,24,110,Genaros God Shop,Steel Eater
+spr_crits_battle_3050.png,Mystic Warhog,Warhog,Nature,43,23,8,13,23,110,Genaros God Shop,Magic Eater
+spr_crits_battle_3046.png,Oozing Warhog,Warhog,Nature,39,24,9,14,24,110,Genaros God Shop,Life Eater
+spr_crits_battle_3044.png,Barbed Warhog,Warhog,Nature,39,24,9,14,24,110,Genaros God Shop,Blade Eater
+spr_crits_battle_3042.png,Accursed Warhog,Warhog,Nature,38,23,8,16,23,108,Genaros God Shop,Spirit Eater
+spr_crits_battle_3041.png,Dire Warhog,Warhog,Nature,38,23,8,16,23,108,Genaros God Shop,Hog Wild
 spr_crits_battle_placeholder.png,Alexandria,Avatar,Death,38,18,18,18,18,110,Gate of the Gods,Boundless Creativity
 spr_crits_battle_placeholder.png,Anneltha,Avatar,Nature,38,18,18,18,18,110,Gate of the Gods,Grandiose
 spr_crits_battle_placeholder.png,Ariamaki,Avatar,Nature,38,18,18,18,18,110,Gate of the Gods,Twilight Zone
@@ -1193,10 +1193,10 @@ spr_crits_battle_placeholder.png,Inkjet Kraken,Kraken,Chaos,38,18,18,18,18,110,"
 spr_crits_battle_placeholder.png,Ironside Kraken,Kraken,Chaos,33,18,18,17,18,104,"Faraway Enclave, Where the Dead Ships Dwell",Iron Shell
 spr_crits_battle_placeholder.png,Kraken Shipbreaker,Kraken,Chaos,31,19,19,19,19,107,"Faraway Enclave, Where the Dead Ships Dwell",Shipbreaker
 spr_crits_battle_placeholder.png,Unblinking Kraken,Kraken,Chaos,32,17,17,20,20,106,"Faraway Enclave, Where the Dead Ships Dwell",Unblinking Eyes
-spr_crits_battle_placeholder.png,Experimental Clockwork,Clockwork,Sorcery,29,19,19,19,19,105,Damarel,Autonomous Attack
-spr_crits_battle_placeholder.png,Foghorn Clockwork,Clockwork,Sorcery,30,20,18,18,18,104,Damarel,Autonomous Intelligence
-spr_crits_battle_placeholder.png,Industrial Clockwork,Clockwork,Sorcery,31,21,21,16,16,105,Damarel,Autonomous Speed
-spr_crits_battle_placeholder.png,Siege Clockwork,Clockwork,Sorcery,30,20,18,18,18,104,Damarel,Autonomous Defense
-spr_crits_battle_placeholder.png,Battle Clockwork,Clockwork,Sorcery,27,17,17,20,20,101,Damarel,Autonomous Health
-spr_crits_battle_placeholder.png,War Clockwork,Clockwork,Sorcery,29,19,19,18,18,103,Damarel,Autonomous Network
+spr_crits_battle_3040.png,Experimental Clockwork,Clockwork,Sorcery,29,19,19,19,19,105,Damarel,Autonomous Attack
+spr_crits_battle_3096.png,Foghorn Clockwork,Clockwork,Sorcery,30,20,18,18,18,104,Damarel,Autonomous Intelligence
+spr_crits_battle_3061.png,Industrial Clockwork,Clockwork,Sorcery,31,21,21,16,16,105,Damarel,Autonomous Speed
+spr_crits_battle_3060.png,Siege Clockwork,Clockwork,Sorcery,30,20,18,18,18,104,Damarel,Autonomous Defense
+spr_crits_battle_3058.png,Battle Clockwork,Clockwork,Sorcery,27,17,17,20,20,101,Damarel,Autonomous Health
+spr_crits_battle_3057.png,War Clockwork,Clockwork,Sorcery,29,19,19,18,18,103,Damarel,Autonomous Network
 spr_crits_battle_3396.png,Shambler Benefactor,Death,32,19,22,18,14,105,You Monsters Are People
