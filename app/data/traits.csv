@@ -1605,4 +1605,5 @@ Life Eater,"After this creature Attacks, it afflicts the target with Blighted an
 Magic Eater,"After this creature Attacks, it afflicts the target with Silenced and decreases their Intelligence by 15%.",Runic Tusk
 Master of Warhogs,"If all the creatures in your party are Warhogs, their innate traits are 100% more effective. This trait does not stack.",Sigil of the Warhog
 Spirit Eater,"After this creature Attacks, it afflicts the target with Cursed and decreases their Speed by 15%.",Baleful Tusk
-Steel Eater,"After this creature Attacks, it afflicts the target with Vulnerable and decreases their Defense by 15%.",Armored Tusk,
+Steel Eater,"After this creature Attacks, it afflicts the target with Vulnerable and decreases their Defense by 15%.",Armored Tusk
+You Monsters Are People,"Enemies take 25% more damage from Blighted for eah debuff they have. This trait does not stack.",Benefactor Hook
