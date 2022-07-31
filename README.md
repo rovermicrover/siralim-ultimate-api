@@ -24,13 +24,13 @@ Also runs everything similar to production, even with NGINX, so no "It worked on
 
 * Spell Animations
 
-* Creature Overworld Sprites Sprites
+* Creature Overworld Sprites
 
 * Creature Attack Animations
 
 * Skins including Battle and Overworld Sprites
 
-* Wardrobe including Overworld Sprites
+* Wardrobe Overworld Sprites
 
 * Spell Gem Properties
 
