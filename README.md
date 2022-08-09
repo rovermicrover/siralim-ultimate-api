@@ -1,5 +1,9 @@
 # Siralim Ultimate API
 
+## Data State
+
+Up to date with live version 1.1.1
+
 ## About
 
 This project is a JSON API for Game data from [Siralim Ultimate](https://store.steampowered.com/app/1289810/Siralim_Ultimate/) by [Thylacine Studios](http://www.thylacinestudios.com/).
