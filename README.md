@@ -18,13 +18,13 @@ It is written in [Python](https://www.python.org/) using [FastAPI](https://fasta
 
 ## How To Dev / Test
 
-See [rovermicrover/siralim-ultimate-dev](https://github.com/rovermicrover/siralim-ultimate-dev) which allows for easy deving/testing via docker-compose all of parts of this projet.
+See [rovermicrover/siralim-ultimate-dev](https://github.com/rovermicrover/siralim-ultimate-dev) which allows for easy deving/testing via docker-compose for all parts of this projet.
 
 Also runs everything similar to production, even with NGINX, so no "It worked on my box" type issues.
 
 ## TODO
 
-### Data
+### Data Nice To Haves
 
 * Spell Animations
 
