@@ -28,7 +28,7 @@ class BaseOrm(object):
     @classmethod
     def where_slug_or_id(orm, slug_or_id: str):
         return (
-            orm.id == slug_or_id
+            (orm.slug == slug_or_id) | (orm.id == slug_or_id)
             if slug_or_id.isdigit()
             else orm.slug == slug_or_id
         )
