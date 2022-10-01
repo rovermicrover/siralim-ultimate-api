@@ -203,7 +203,7 @@ spr_crits_battle_1134.png,Blobbarian,Concoction,Chaos,34,19,19,22,12,106,"Causti
 spr_crits_battle_1136.png,Mystery Mucus,Concoction,Chaos,33,21,21,21,11,107,"Caustic Reactor, Kingdom of Heretics",Dissolve
 spr_crits_battle_1135.png,Gooarrior,Concoction,Chaos,35,20,20,20,10,105,"Caustic Reactor, Kingdom of Heretics",Overcome
 spr_crits_battle_1137.png,Sludgechemist,Concoction,Chaos,35,20,20,20,10,105,"Caustic Reactor, Kingdom of Heretics",Reticence
-spr_crits_battle_1133.png,Gloopidator,Concoction,Chaos,34,19,22,22,12,109,"Caustic Reactor, Kingdom of Heretics",Squelch
+spr_crits_battle_1133.png,Gloopdiator,Concoction,Chaos,34,19,22,22,12,109,"Caustic Reactor, Kingdom of Heretics",Squelch
 spr_crits_battle_1132.png,Swordslime,Concoction,Chaos,37,21,21,21,11,111,"Caustic Reactor, Kingdom of Heretics",Yuck
 spr_crits_battle_1141.png,Magma Construct,Construct,Chaos,33,25,15,20,15,108,Arena Shop,Chaos Through Creation
 spr_crits_battle_1140.png,Heavenshield Construct,Construct,Life,27,17,22,22,17,105,Arena Shop,Defiance
@@ -555,7 +555,7 @@ spr_crits_battle_1546.png,Martyaxwar,Manticore,Chaos,32,21,16,16,21,106,"Arachni
 spr_crits_battle_1545.png,Flailing Manticore,Manticore,Chaos,32,21,16,16,21,106,"Arachnid Nest, Blood Grove",Parry
 spr_crits_battle_1549.png,Sawback Manticore,Manticore,Chaos,32,21,16,16,21,106,"Arachnid Nest, Blood Grove",Razor Hide
 spr_crits_battle_1543.png,Crimson Manticore,Manticore,Chaos,32,22,16,16,21,107,"Arachnid Nest, Blood Grove",The Crimson
-spr_crits_battle_1542.png,Manticore Conquerer,Manticore,Chaos,31,21,16,16,21,105,"Arachnid Nest, Blood Grove",Whiplash
+spr_crits_battle_1542.png,Manticore Conqueror,Manticore,Chaos,31,21,16,16,21,105,"Arachnid Nest, Blood Grove",Whiplash
 spr_crits_battle_1541.png,Masochist Witch,Masochist,Sorcery,28,23,23,8,23,105,"Eternity's End, Kingdom of Heretics",Binary Affliction
 spr_crits_battle_1537.png,Macabre Masochist,Masochist,Sorcery,28,23,23,8,23,105,"Eternity's End, Kingdom of Heretics",Boon to Bane
 spr_crits_battle_1534.png,Favored Masochist,Masochist,Sorcery,28,23,23,8,23,105,"Eternity's End, Kingdom of Heretics",Lust for Punishment
@@ -833,7 +833,7 @@ spr_crits_battle_1527.png,Soulflayer Peacemaker,Soulflayer,Sorcery,32,17,22,17,1
 spr_crits_battle_1526.png,Soulflayer Prober,Soulflayer,Sorcery,31,18,23,18,18,108,"Sanctum Umbra, Temple of Lies",Marshal
 spr_crits_battle_1529.png,Soulflayer Overlord,Soulflayer,Sorcery,32,17,22,17,17,105,"Sanctum Umbra, Temple of Lies",Mass Resurrection
 spr_crits_battle_1528.png,Soulflayer Depriver,Soulflayer,Sorcery,30,15,23,18,18,104,"Sanctum Umbra, Temple of Lies",Of One Mind
-spr_crits_battle_1524.png,Soulflayer DreamCaster,Soulflayer,Sorcery,32,17,22,17,17,105,"Sanctum Umbra, Temple of Lies",Suicide Pact
+spr_crits_battle_1524.png,Soulflayer Dreamcaster,Soulflayer,Sorcery,32,17,22,17,17,105,"Sanctum Umbra, Temple of Lies",Suicide Pact
 spr_crits_battle_1434.png,Sparktail Student,Sparktail,Sorcery,38,21,21,16,16,112,"Faraway Enclave, Where the Dead Ships Dwell",Bombshell
 spr_crits_battle_1436.png,Sparktail Engineer,Sparktail,Sorcery,38,21,21,16,16,112,"Faraway Enclave, Where the Dead Ships Dwell",Comeuppance
 spr_crits_battle_1439.png,Sparktail Searcher,Sparktail,Sorcery,39,19,19,16,16,109,"Faraway Enclave, Where the Dead Ships Dwell",Conviviality
@@ -1170,7 +1170,7 @@ spr_crits_battle_2895.png,Adaxial,Godspawn,Death,40,15,18,18,18,109,Alexandria G
 spr_crits_battle_2893.png,Akara,Godspawn,Nature,42,17,17,16,16,108,Ariamaki God Shop,Darkbloom
 spr_crits_battle_2891.png,8004,Godspawn,Chaos,42,17,17,17,17,110,4080 God Shop,Something From Nothing
 spr_crits_battle_2896.png,Emus,Godspawn,Life,42,17,17,17,17,110,Muse God Shop,Fear of Success
-spr_crits_battle_2889.png,Grom'met,Godspawn,Sorcery,42,17,17,17,17,110,T'mere M'rgo God Shop,Echobreather
+spr_crits_battle_2889.png,Grom'Met,Godspawn,Sorcery,42,17,17,17,17,110,T'mere M'rgo God Shop,Echobreather
 spr_crits_battle_2897.png,Nalas,Godspawn,Life,42,17,17,17,17,110,Shallan God Shop,Oathbreaker
 spr_crits_battle_2890.png,Rengas,Godspawn,Chaos,42,17,17,17,17,110,Genaros God Shop,Rodian Aftermath
 spr_crits_battle_2892.png,Saurel,Godspawn,Death,40,17,17,17,17,108,Reclusa God Shop,Syndicate
