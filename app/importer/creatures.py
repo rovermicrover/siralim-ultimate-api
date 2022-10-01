@@ -1,6 +1,7 @@
 from app.importer.traits import NEEDED_KEYS
 import os
 import csv
+import re
 
 from sqlalchemy import select, text
 from sqlalchemy.dialects.postgresql import insert
@@ -13,6 +14,13 @@ from app.orm.race import RaceOrm
 from app.orm.source import SourceOrm
 from app.orm.trait import TraitOrm
 from .icons import load_icon_to_base64
+
+BIO_NEW_LINE_REGEX = re.compile(r'([^\n])\n')
+
+BIO_KEYS = [
+    "name",
+    "bio",
+]
 
 NEEDED_KEYS = [
     "name",
@@ -46,6 +54,12 @@ def creatures_importer():
         traits = session.execute(select(TraitOrm)).scalars().all()
         slug_to_traits = {trait.slug: trait for trait in traits}
 
+        creature_to_bio = {}
+
+        with open(os.path.join(ROOT_DIR, "data", "bios.csv")) as csvfile:
+            for row in csv.DictReader(csvfile):
+                creature_to_bio[row["name"]] = BIO_NEW_LINE_REGEX.sub(r'\1 ', row["bio"])
+
         with open(os.path.join(ROOT_DIR, "data", "creatures.csv")) as csvfile:
             for row in csv.DictReader(csvfile):
                 value = {key: row[key] for key in NEEDED_KEYS}
@@ -70,6 +84,8 @@ def creatures_importer():
                 value["battle_sprite"] = load_icon_to_base64(
                     battle_sprite_file
                 )
+
+                value["description"] = creature_to_bio.get(value["name"], "")
 
                 values.append(value)
 
