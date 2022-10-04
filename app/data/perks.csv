@@ -10,7 +10,7 @@ Hell Knight,Indomitable,1,100,No,No,chaos_hellknight_indomitable_0.png,Your crea
 Hell Knight,Inner Focus,25,4,No,Yes,chaos_hellknight_innerfocus_0.png,"When your creatures cast a spell, 1% of their Attack per rank is added to their Intelligence to determine the amount of damage dealt. Maximum Bonus: 25% of attack stat contributed"
 Hell Knight,Kindling,1,100,No,Yes,chaos_hellknight_kindling_0.png,"At the start of battle, the first creature in your party casts Firestorm."
 Hell Knight,Magma Diver,1,100,No,Yes,chaos_hellknight_magmadiver_0.png,Your creatures always have Splashing and Savage.
-Hell Knight,Massacre,1,100,No,Yes,chaos_hellknight_massacre_0.png,Your creatures' Splashing debuff now deals damage to all enemies.
+Hell Knight,Massacre,1,100,No,Yes,chaos_hellknight_massacre_0.png,Your creatures' Splashing buffs now deals damage to all enemies.
 Hell Knight,Pyromania,20,5,No,Yes,chaos_hellknight_pyromania_0.png,"After your creatures attack, they have a 1% chance per rank to cast Flamestrike. Maximum Bonus: 20% chance"
 Hell Knight,Reckless Abandon,1,100,No,Yes,chaos_hellknight_recklessabandon_0.png,Your creatures' Savage buff now causes them to have a 100% chance to deal critical damage.
 Hell Knight,Touch of Chaos,25,4,No,Yes,chaos_hellknight_touchofchaos_0.png,"After your creatures Attack, they have a 1% chance per rank to afflict the target with a random debuff. Maximum Bonus: 25% chance"

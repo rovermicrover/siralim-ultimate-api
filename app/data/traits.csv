@@ -716,7 +716,7 @@ Cradle to the Grave,"After your creatures are killed, they have a 15% chance to 
 Corrosion,"After this creature Attacks, it afflicts the target with Blighted. If the target is already afflicted with Blighted, the target is healed for 100% of the amount of damage dealt.",Interloper Goo
 Neon Grave,"After this creature Attacks, it has a 35% chance to Cast Affliction.",Invader Goo
 Swell,"After this creature Attacks, it afflicts the target with a random debuff for each debuff the target already has.",Paralyzer Goo
-Villainy Thrives,The potency of the enemies' Poisoned and Burning debuffs are shared with each otherf. This trait does not stack.,Plaguespreader Goo
+Villainy Thrives,The potency of the enemies' Poisoned and Burning debuffs are shared with each other. This trait does not stack.,Plaguespreader Goo
 Intensify,"After this creature Attacks, it increases the potency of the target's Poisoned and Burning debuffs by 50%.",Skirmisher Goo
 Viscous Webs,Enemies take 25% more damage for each debuff they have that they're resistant to. This trait does not stack.,Webweaver Goo
 Master of Mites,Your Mites have a 5% chance to avoid damage for each Mite fighting on your side. This trait does not stack.,Sigil of the Mite
@@ -974,7 +974,7 @@ Forbidden Lullaby,"After this creature is Attacked, the enemy is afflicted with 
 Beautiful Sorrow,"After one of your creatures dies, this creature gains their innate trait.",Reaper Bell
 In Plain View,"At the start of battle, this creature afflicts each enemy with Scorned or Silenced for 1 turn, depending on whether their Attack or Intelligence is higher.",Oracle Bell
 Dream Touch,"After this creature Attacks, it afflicts the target with Sleeping. In addition, your creatures' attacks never wake up enemies that have Sleeping.",Purifier Bell
-Filtered Truth,Enemies always have equal Attack and Intelligence, whichever is lower., whichever is lower.
+Filtered Truth,"Enemies always have equal Attack and Intelligence; whichever is lower.",Soothsayer Bell
 Katarina's Asylum,"When your creatures take damage, they take 35% more damage but gain Invisible.",Katarina's Visage
 Katarina's Guidance,"At the start of battle, your creature that is highest on the Timeline gains 5 random buffs. This trait does not stack.",Katarina's Essence
 Katarina's Return,"After your creatures take damage, they recover 30% Health. This trait does not stack.",Katarina's Brace

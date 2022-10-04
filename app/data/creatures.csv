@@ -417,7 +417,7 @@ spr_crits_battle_1362.png,Iconus,Godspawn,Chaos,33,18,18,18,18,105,Gonfurian God
 spr_crits_battle_1358.png,Diamant,Godspawn,Sorcery,22,20,25,20,15,102,Aurum God Shop,Skyttels
 spr_crits_battle_1370.png,Tenbran,Godspawn,Life,29,22,22,17,17,107,Perdition God Shop,To Move On Is To Grow
 spr_crits_battle_1368.png,Noxpit,Godspawn,Chaos,33,18,18,18,18,105,Venedon God Shop,Ultimate Sacrifice
-spr_crits_battle_1356.png,Colg,Godspawn,Chaos,30,18,18,18,18,102,Defeat Caliban at the Gate of the Gods,What's Yours Is Mine
+spr_crits_battle_1356.png,Colg,Godspawn,Chaos,30,18,18,18,18,102,"Defeat Caliban at the Gate of the Gods to unlock it's project. Main project resource is a random find in any realm.",What's Yours Is Mine
 spr_crits_battle_2822.png,Treasure Golem,Golem,Sorcery,42,17,17,17,17,110,Rare Encounter,Animated Treasure
 spr_crits_battle_2819.png,Nightmare Golem,Golem,Death,40,18,18,18,18,112,Frostbite Caverns,Bad Dreams
 spr_crits_battle_2816.png,Magma Golem,Golem,Chaos,40,18,18,18,18,112,Frostbite Caverns,Cataclysm
@@ -694,14 +694,14 @@ spr_crits_battle_2719.png,Raven Seer,Raven,Sorcery,37,7,27,13,23,107,Sorcery Gui
 spr_crits_battle_1626.png,Raven Guardian,Raven,Sorcery,31,11,26,16,21,105,"Refuge of the Magi, Sanctum Umbra",Mindful Awareness
 spr_crits_battle_1628.png,Raven Ritualist,Raven,Sorcery,31,11,26,14,21,103,"Refuge of the Magi, Sanctum Umbra",Psychic Barrier
 spr_crits_battle_1623.png,Raven Batmaster,Raven,Sorcery,28,11,26,16,21,102,"Refuge of the Magi, Sanctum Umbra",Swiftcasting
-spr_crits_battle_1634.png,Plague Reaper,Reaper,Death,30,27,17,12,22,108,"Path of the Damned, Where the Dead Ships Dwell",Assumption
-spr_crits_battle_1631.png,Bone Reaper,Reaper,Death,29,26,16,11,21,103,"Path of the Damned, Where the Dead Ships Dwell",Bonecraft
-spr_crits_battle_1630.png,Blood Reaper,Reaper,Death,28,23,18,13,23,105,"Path of the Damned, Where the Dead Ships Dwell",Decapitation
-spr_crits_battle_1633.png,Incursion Reaper,Reaper,Death,30,26,16,11,21,104,"Path of the Damned, Where the Dead Ships Dwell",Defy the Gods
+spr_crits_battle_1634.png,Plague Reaper,Reaper,Death,30,27,17,12,22,108,Tenebris God Shop,Assumption
+spr_crits_battle_1631.png,Bone Reaper,Reaper,Death,29,26,16,11,21,103,Tenebris God Shop,Bonecraft
+spr_crits_battle_1630.png,Blood Reaper,Reaper,Death,28,23,18,13,23,105,Tenebris God Shop,Decapitation
+spr_crits_battle_1633.png,Incursion Reaper,Reaper,Death,30,26,16,11,21,104,Tenebris God Shop,Defy the Gods
 spr_crits_battle_2694.png,Tech Reaper,Reaper,Death,30,20,17,17,22,106,Death Guild,Heart Versus Mind
-spr_crits_battle_1635.png,Shadow Reaper,Reaper,Death,26,27,17,12,22,104,"Path of the Damned, Where the Dead Ships Dwell",Shadow Scythe
-spr_crits_battle_1632.png,Cursed Reaper,Reaper,Death,31,26,16,11,21,105,"Path of the Damned, Where the Dead Ships Dwell",Soul Corruption
-spr_crits_battle_1636.png,Soul Reaper,Reaper,Death,32,27,17,9,22,107,"Path of the Damned, Where the Dead Ships Dwell",Soul Siphon
+spr_crits_battle_1635.png,Shadow Reaper,Reaper,Death,26,27,17,12,22,104,Tenebris God Shop,Shadow Scythe
+spr_crits_battle_1632.png,Cursed Reaper,Reaper,Death,31,26,16,11,21,105,Tenebris God Shop,Soul Corruption
+spr_crits_battle_1636.png,Soul Reaper,Reaper,Death,32,27,17,9,22,107,Tenebris God Shop,Soul Siphon
 spr_crits_battle_1645.png,Revenant Soldier,Revenant,Death,36,17,17,27,12,109,Friden God Shop,Blood For Blood
 spr_crits_battle_1642.png,Revenant Horror,Revenant,Death,40,16,16,26,11,109,Friden God Shop,Delirium
 spr_crits_battle_1638.png,Ascendant Revenant,Revenant,Death,43,18,18,25,10,114,Life Guild,Fireworks
@@ -759,12 +759,12 @@ spr_crits_battle_1706.png,Dungeon Shade,Shade,Death,26,21,16,17,21,101,Vertraag 
 spr_crits_battle_1705.png,Drifting Shade,Shade,Death,26,21,16,16,21,100,Vertraag God Shop,Shadow Aegis
 spr_crits_battle_1708.png,Gateway Shade,Shade,Death,23,18,18,18,23,100,Vertraag God Shop,Spook
 spr_crits_battle_1710.png,Spooky Shade,Shade,Death,22,22,17,17,22,100,Death Guild,Spooky Technique
-spr_crits_battle_1716.png,Shadow Cobra,Shadow,Death,27,22,22,12,22,105,Tenebris God Shop,All Hope Is Lost
-spr_crits_battle_1717.png,Shadow Moth,Shadow,Death,24,22,22,12,22,102,Tenebris God Shop,Cowardice
-spr_crits_battle_1713.png,Shadow Demon,Shadow,Death,22,23,23,13,23,104,Tenebris God Shop,Haunt
-spr_crits_battle_1715.png,Shadow Zealot,Shadow,Death,26,21,21,11,21,100,Tenebris God Shop,Horrifying Visage
-spr_crits_battle_1714.png,Shadow Juggernaut,Shadow,Death,27,22,22,12,22,105,Tenebris God Shop,Taste of Fear
-spr_crits_battle_1718.png,Shadow Wolf,Shadow,Death,26,21,21,11,21,100,Tenebris God Shop,Unspeakable Frights
+spr_crits_battle_1716.png,Shadow Cobra,Shadow,Death,27,22,22,12,22,105,"Path of the Damned, Bastion of the Void",All Hope Is Lost
+spr_crits_battle_1717.png,Shadow Moth,Shadow,Death,24,22,22,12,22,102,"Path of the Damned, Bastion of the Void",Cowardice
+spr_crits_battle_1713.png,Shadow Demon,Shadow,Death,22,23,23,13,23,104,"Path of the Damned, Bastion of the Void",Haunt
+spr_crits_battle_1715.png,Shadow Zealot,Shadow,Death,26,21,21,11,21,100,"Path of the Damned, Bastion of the Void",Horrifying Visage
+spr_crits_battle_1714.png,Shadow Juggernaut,Shadow,Death,27,22,22,12,22,105,"Path of the Damned, Bastion of the Void",Taste of Fear
+spr_crits_battle_1718.png,Shadow Wolf,Shadow,Death,26,21,21,11,21,100,"Path of the Damned, Bastion of the Void",Unspeakable Frights
 spr_crits_battle_1720.png,Chaos Shapeshifter,Shapeshifter,Chaos,42,17,17,17,17,110,"Refuge of the Magi, Temple of Lies",Chaos Transformation
 spr_crits_battle_1721.png,Death Shapeshifter,Shapeshifter,Death,42,17,17,17,17,110,"Refuge of the Magi, Temple of Lies",Death Transformation
 spr_crits_battle_2720.png,Unstable Shapeshifter,Shapeshifter,Sorcery,36,21,21,11,21,110,Sorcery Guild,Diamond Hands

@@ -497,7 +497,7 @@ Rune of Cor,Chaos,20,Rune Knight,"Target takes a large amount of damage, loses a
 Rune of Dun,Death,20,Rune Knight,"Target takes a large amount of damage, caster gains a random minion, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat."
 Rune of Lua,Life,20,Rune Knight,"Target takes a large amount of damage, caster recovers equal to 50% of the damage dealt, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat."
 Rune of Nax,Nature,20,Rune Knight,"Target takes a large amount of damage, caster gains a moderate amount of a random stat, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat."
-Rune of Sah,Sorcery,20,Rune Knight,"Target takes a large amount of damage and its buffs and minions are removed, caster's debuffs are remved, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat"
+Rune of Sah,Sorcery,20,Rune Knight,"Target takes a large amount of damage and its buffs and minions are removed, caster's debuffs are removed, and the caster's on-attack effects are activated. 100% of this spell's damage is based on the caster's highest stat"
 Rupture,Chaos,14,Venedon Shop,"Target takes a small amount of damage. This damage is increased by the percentage of Attack, Intelligence, Defense and Speed the caster has over those of the target."
 Ruse,Nature,12,False Gods (Jotun),"At the start of the target's next turn, it Casts its top-most Spell Gem twice."
 Sabotage,Chaos,20,Genaros Shop,"Target attacks the caster 3 times for 5% normal damage. These attacks cannot be dodged, and always deal at least 1 damage."
