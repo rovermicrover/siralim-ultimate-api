@@ -315,7 +315,7 @@ Innervate,Life,15,Standard Spell,"Target recovers a small amount of Health, or a
 Inoculate,Life,10,Standard Spell (Backer),Target is healed for a massive amount of Health and is afflicted with Poisoned.
 Insight,Sorcery,10,Standard Spell,"Target gains Arcane. if it already has Arcane, it Casts a non-Ethereal Spell Gem."
 Insincerity,Sorcery,10,False Gods (Mindwurm),Target Casts all its buffing spells in your favor.
-Internal Combustion,Chaos,20,Standard Spell (Backer),Target gains Taunting and Splashing.
+Internal Combustion,Chaos,10,Standard Spell (Backer),"Target takes a moderate amount of damage. If the target is killed by this spell, all other enemeis take a moderate amount of damage and are afflicated with Burning."
 Intimidate,Death,10,Standard Spell,Target loses a large amount of Attack and Defense.
 Invisibility,Sorcery,20,Standard Spell,Target gains Invisible.
 Iron Skin,Nature,5,Anneltha Shop,Target gains a massive amount of Defense.
