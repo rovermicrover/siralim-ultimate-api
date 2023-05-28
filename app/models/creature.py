@@ -1,7 +1,8 @@
+from __future__ import annotations
 from datetime import datetime
 
 from typing import List, Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .base import BaseModelOrm
 from .klass import KlassModel
@@ -16,7 +17,8 @@ class CreatureModel(BaseModel, BaseModelOrm):
     slug: str
     description: Optional[str] = None
 
-    battle_sprite: str
+    # url for battle sprite
+    battle_sprite_url: str = Field(None, alias="battle_sprite")
 
     health: int
     attack: int
@@ -34,3 +36,5 @@ class CreatureModel(BaseModel, BaseModelOrm):
 
     class Config:
         orm_mode = True
+        # The alias field must not ever be supplied else its contents will be used instead
+        allow_population_by_field_name = True
